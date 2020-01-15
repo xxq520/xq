@@ -1,0 +1,14 @@
+/* view/fuwuxy/fuwuxy.wxss */
+
+.container-fw {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+
+.text {
+  text-align: justify;
+  /* text-align-last: justify; */
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}

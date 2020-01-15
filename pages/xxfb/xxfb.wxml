@@ -1,0 +1,167 @@
+<!--pages/xxfb/xxfb.wxml-->
+<!-- <text>pages/xxfb/xxfb.wxml</text> -->
+<view class="{{xuzhitc ? 'scroll-lock' : ''}}">
+  <view class='p-15 font-size-30 bg-white'>
+    <view class='flexcenter border-b-sd p-y-15'>
+      <view class='w-25'>信息类别</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{functions}}" range-key="{{'typeName'}}">
+        <input class="w-70" disabled='true' placeholder="请选择信息类别" value='{{typeName}}'>
+        </input>
+      </picker>
+    </view>
+    <view>内容描述</view>
+    <textarea class="weui-input" placeholder="请输入内容描述（最多540个字）" maxlength='540' bindinput='details'></textarea>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen-1' wx:for='{{images2}}' wx:key=''>
+          <view class='item flexColCCen-1'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg2'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-30  flexcenter' data-index='{{index}}' data-type='image' catchtap='del2'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen-1' data-type='image' bindtap='upload2'>
+          <view class='item border-dashed flexColCCen-1'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='col-3 text-center'>*最多上传{{imgLimit2}}张(400px*400px)</view>
+  </view>
+  <view class='p-20 bg-white '>
+    <view class=' font-size-30 '>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>联系人：</view>
+        <input class="" placeholder="请输入联系人姓名" bindinput='name' value='{{shop.userName}}'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>联系方式：</view>
+        <input class="" placeholder="请输入您的联系方式" type='number' value='{{shop.tel}}' maxlength='11' bindinput='phone'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>具体位置：</view>
+        <input class="w-70" placeholder="默认位置" value='{{shop.address}}'></input>
+        <!-- <image src='/images/position.png' class='img-30'></image> -->
+      </view>
+      <!-- <view class='flexcenter p-y-15'>
+      <view class='w-25'>发布费用：</view>
+      <view>0.00</view>
+    </view> -->
+    </view>
+  </view>
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 bg-white flexcenter flexspbet'>
+      <view>是否设置为信息红包</view>
+      <view>
+        <switch color="{{color}}" bindchange="fhb" />
+      </view>
+    </view>
+  </view>
+  <view class='p-20 bg-color' wx:if="{{fhb}}">
+    <view class=' font-size-30 '>
+      <view class='flexcenter border-b-sd p-15'>
+        <view class='w-25'>红包总金额</view>
+        <input class="text-right w-70 m-x-20" placeholder="0.00" bindinput='money' type='number' maxlength='4'></input>
+        <view class=''>元</view>
+      </view>
+      <view class='flexcenter border-b-sd p-15'>
+        <view class='w-25'>红包个数</view>
+        <input class="text-right w-70 m-x-20" placeholder="0" bindinput='num' type='number' maxlength='5' value='{{num}}'></input>
+        <view class=''>个</view>
+      </view>
+    </view>
+    <!-- <view class='text-align'>
+    <view class='font-size-52 font-w  m-y-40'>￥0.00</view>
+    <button class='footc0  m-y-40'>塞钱进红包</button>
+  </view>
+  <view class='footc1'>未领取的红包，将于7天后发起退款</view> -->
+  </view>
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 flexcenter'>
+      <view wx:if="{{!xuzhi}}" class='fa fa-circle-o color-f36 font-size-40 m-r-20' bindtap='xuzhi'>
+        <image src='/images/mrdz.png' class='img-30'></image>
+      </view>
+      <view wx:else class='fa fa-check-circle color-f36 font-size-40 m-r-20' bindtap='xuzhi'>
+        <image src='/images/mrdzed.png' class='img-30'></image>
+      </view>
+      我已阅读并同意
+      <view class='color-e51' bindtap='xuzhitc' hover-class='none'>《发布须知》</view>
+    </view>
+  </view>
+  <view style='height:100px;'></view>
+  <button bindtap='fb' class='footc'>确认发布</button>
+  <!-- 发布须知弹窗 -->
+  <view class='modal1 flexColCCen ' wx:if="{{xuzhitc}}">
+    <view class='modal-content-x1  footfixed bg-color font-size-30'>
+      <view class='m-30'>
+        <view class='font-size-28 color-333 text-align'>喜钱
+        </view>
+        <view class='font-size-28 color-333 text-align'>消费赚钱两不误的生活服务平台
+        </view>
+        <scroll-view scroll-y="true" style='height:800rpx'>
+          <view class='font-size-28 color-333'> 尊敬的客户,欢迎入驻成为”喜钱”平台合作商家,以下简称“喜钱”或“本平台”用户,在入驻前请仔细阅读如下服务条款: 本平台由广东拉动网科技有限责任公司(以下简称“本公司”)运营管理,并根据本协议的规定向用户提供服务。本协议双方为金划算合作商家与本公司,适用于用户注册并使用本平台服务的全部活动。在入驻本平台之前,请务必认真阅读并充分理解本协议全部内容。点击本协议下方的“支付”按钮,并按照本平台入驻程序进行注册,上述入驻程序完成时即视为用户已经充分理解和同意本协议全部內容,并签署了本协议,本协议已在用户与本公司之间产生合同法律效力,用户使用本平台服务的全部活动将受到本协议的约束并应承担相应的责任和义务。
+          </view>
+          <view class='font-size-28 color-333'>1、协议组成说明
+          </view>
+          <view class='font-size-28 color-333'>1.1本协议的内容包括本协议以下全部条款以及本平台已经公示发布的及将来可能公示发布的各项规则,该等规则均为本协议不可分割的一部分,与本协议以下所列条款具有同等法律效力。
+          </view>
+          <view class='font-size-28 color-333'>1.2本平台有权根据需要修改本协议的内容。如以下条款或本平台各项规则有任何变更,本平台将在平台上刊载公告不再向用户作个别通知。经修订的相关条款和规则一经公告,即于公告规定的特定生效日期自动生效。请及时关注本平台关于相关条款和规则的公告,如不同意该变更,请在变更公告刊载之日起72小时内以用户在本平台注册时提供的邮箱向本平台公布的服务邮箱发送邮件或拨打客服电话表明希望终止本协议("注册终止申请”),本平台确认收到邮件和电话后将与用户协商本协议终止后双方义务的属行。如用户在本条所述时限内未发送注册终止申请,则本条所述时限届满之时,视为用户已经同意接受该等变更,并应遵照修改后的协议履行应尽义务,经修订的相关条款和规则一经公告,即于公告规定的特定生效日期自动生效并对用户产生法律约束力。
+          </view>
+          <view class='font-size-28 color-333'> 1.3本协议不涉及用户与本平台的其他用户之间因网上交易而产生的法律关系及法律纠纷。但用户在此不可撤销地同意,将全面接受井履行与本平台其他用户在本平台签订的任何电子法律文本,并承诺按照该法律文本享有和(或)放弃相应的权利、承担和(或)豁免相应的义务。
+          </view>
+          <view class='font-size-28 color-333'>2、用户入驻须知
+          </view>
+          <view class='font-size-28 color-333'>2.1入驻成为本平台用户必须满足如下相应主体资格条件之 一：
+          </view>
+          <view class='font-size-28 color-333'>1)用户必须是中国境内的居民,年龄在18周岁以上,且具有完全的民事权利能力及民事行为能力;
+          </view>
+          <view class='font-size-28 color-333'>2)用户必须是在中国境内注册成立并经营的具备民事行为能力且能独立承担民事义务的法人;
+          </view>
+          <view class='font-size-28 color-333'>3)用户必须是在中国境内依法成立的其他组织。如不具备上述资格,应立即停止在本平台的注册程序、停止使用本平台服务,若违反前述规定注册使用本平台服务,本平台有权随时终止用户的注册进程及本平台服务,并保留追究用户法律责任的权利。
+          </view>
+          <view class='font-size-28 color-333'>4)用户必须是合法经营的商家或企业。
+          </view>
+          <view class='font-size-28 color-333'>2.2在注册和使用本平台服务期间,用户应根据本平台的要求提供自身的真实资料和信息,并保证自注册之时起至使用本平台服务期间,其所提交的所有资料和信息(包括但不限于真实姓名/名称、电子邮件地址、联系电话、身份信息等)真实、准确、完整、有效和合法,复印件与原件一致,如有变更,应及时更新,如因用户未及时更新信息和资料导致本平台无法提供服务,由此产生的法律责任和后果由用户自担。如使用他人信息和文件注册使用本平台服务或向本平台提供的信息和资料不符合上述规定,由此引起的一切责任和后果均由用户自担,本公司及本平台不因此承担任何法律责任,如因此给本公司或本平台造成损失,用户应当承担赔偿责任。
+          </view>
+          <view class='font-size-28 color-333'>3、平台服务内容及服务费用
+          </view>
+          <view class='font-size-28 color-333'>3.1本平台向用户提供线上商城框架、商品展示、活动推送等服务。
+          </view>
+          <view class='font-size-28 color-333'>3.2用户使用本平台服务时,本公司有权收取服务费用,具体服务费用收取标准以本平台公告或者本公司与用户另行签订的相关协议为准。用户在此不可撤销地承诺,将按照用户签署的相关协议约定向本公司支付服务费用,同意并授权本平台自其有关账户中直接扣划服务费用。用户通过本平台与其他方签订协议的,应按照签署的协议约定向其他方支付费用。
+          </view>
+          <view class='font-size-28 color-333'>4、用户使用规则
+          </view>
+          <view class='font-size-28 color-333 mt-10'> 4.1用户不得利用本平台或本平台服务从事任何不符合中国法律法规或侵犯他人权益的活动。不得自行发布、转载、传送含有下列内容之一的信息,本平台在发现用户从事该等活动或发布信息时,有权基于本平台的独立判断直接删除用户在本平台上作出的相关信息,有权不经通知而立即停止用户对本台的全部或部分功能的使用(包括但不限于中止、终止、限制用户使用本平台服务)而无需通知用户,亦无需承担任何责任。如因此给本公司或本平台造成损失的,应当赔偿损失。
+          </view>
+          <view class='font-size-28 color-333'>(1)违反宪法确定的基本原则的;
+          </view>
+          <view class='font-size-28 color-333'>(2)危害国家安全,泄露国家机密,颠覆国家政权,破坏国家统一的;
+          </view>
+          <view class='font-size-28 color-333'>(3)损害国家荣誉和利益的;
+          </view>
+          <view class='font-size-28 color-333'>(4)煽动民族仇恨、民族歧视,破坏民族团结的;
+          </view>
+          <view class='font-size-28 color-333'>(5)破坏国家宗教政策,宣扬邪教和封建迷信的;
+          </view>
+          <view class='font-size-28 color-333'>(6)散布谣言,扰乱社会秩序,破坏社会稳定的;
+          </view>
+          <view class='font-size-28 color-333'>(6)散布谣言,扰乱社会秩序,破坏社会稳定的;
+          </view>
+          <view class='font-size-28 color-333'>(8)侮辱或者诽谤他人,侵害他人合法权益的;
+          </view>
+          <view class='font-size-28 color-333'>(9)煽动非法集会、结社、游行。
+          </view>
+        </scroll-view>
+      </view>
+      <view class='center btn-lg'>
+        <scroll-view scroll-y class='full-height text-justify'>
+          <button bindtap='qd' class=' wddd '>确认</button>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>

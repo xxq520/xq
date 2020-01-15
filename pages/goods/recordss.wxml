@@ -1,0 +1,33 @@
+<!--pages/goods/recordss.wxml-->
+<!-- <text>pages/goods/recordss.wxml</text> -->
+
+<view class='m-20'>
+  <view class='rounded-md bg-color p-20 mb-20 flexspbet flexcenter'>
+    <image src='{{imghost+orderlist[0].qprocedureImg}}' mode="aspectFill" class='img-md rounded-md m-r-20'></image>
+    <view class='w-60 br'>
+      <view class='color-333 font-size-34 font-w'>{{orderlist[0].qprocedureName}}</view>
+      <view class='color-999 font-size-26 '>
+        <text class='m-r-20'>已售{{orderlist.length}}份</text>
+      </view>
+      <view class='logoyy-q font-size-34 font-w p-y-20'>￥{{orderlist[0].qsum/orderlist[0].qtotal}}</view>
+    </view>
+    <view class='w-10 center'>
+      <view>
+        <image src='/images/fex.png' class='img-30'></image>
+      </view>
+      <view class='color-999 font-size-22'>分享</view>
+    </view>
+  </view>
+  <view class='rounded-md bg-color p-20'>
+    <view class='flexspbet flexcenter p-y-20' wx:for="{{orderlist}}" wx:key="index">
+      <view class='flexcenter font-size-32'>
+        <image src='{{item.qsubmitterIcon}}' mode="aspectFill" class='img-80 rounded-x m-r-10'></image>
+        <text class='m-r-10 color-333 w250 line-clamp-1'>{{item.qsubmitterName}}</text>
+        <text class='m-r-10 color-666'>买了<text class='logoyy-q'>{{item.qtotal}}</text>份</text>
+
+      </view>
+      <view class='color-999 font-size-24'>{{item.qcreateTime}}</view>
+    </view>
+
+  </view>
+</view>

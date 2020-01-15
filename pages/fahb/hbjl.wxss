@@ -1,0 +1,11 @@
+/* pages/fahb/hbjl.wxss */
+
+page {
+  background: #f8f8f8;
+  font-family: '微软雅黑';
+}
+.mb-10 {
+  margin-bottom: 10rpx !important;
+}
+.but-hbsc{padding-right: 0;padding-left: 0;color: #999;font-size: 28rpx;}
+.but-hbsc::after{border: none;}

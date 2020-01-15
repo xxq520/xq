@@ -1,0 +1,29 @@
+<view class=''>
+  <view class='p-x-20 font-size-28 bg-white'>
+    <view wx:for="{{procedureType}}" wx:key="{{item.id}}" class='flexcenter flexspbet  border-b-sd p-y-15 wh-0'>
+      <view class="w-75 bg-fl">
+        <input bindblur="update" data-id='{{item.id}}' class="p-y-10 m-l-10" placeholder="请输入商品类别" value='{{item.qcaption}}'></input>
+      </view>
+      <view class=''>
+        <button bindtap='sc' data-id='{{item.id}}' class='gg-but'>删除</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:100px;'></view>
+<button bindtap='tj' class='footc'>添加分类</button>
+<view class='modal flexColCCen ' wx:if="{{tc}}">
+  <view class='modal-content-x bg-white footfixed p-20-30 font-size-28'>
+    <view class="close_icon" bindtap='gbtc' data-status="0">×</view>
+    <view class='font-size-30 center'>添加商品类型</view>
+    <view class='p-y-30'>
+      <view class='flexcenter m-y-20'>
+        <view class='w-25'>类型名</view>
+        <input class="weui-input" placeholder="请输入商品类型" bindinput='tpname' />
+      </view>
+      <view scroll-y class='full-height text-justify center'>
+        <button bindtap='qrtj' class='gg-but mt-15 p-y-10 '>确认添加</button>
+      </view>
+    </view>
+  </view>
+</view>

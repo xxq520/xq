@@ -1,0 +1,65 @@
+page{
+  background-color: rgb(248,248,248);
+}
+.bg{
+  background-color: white;
+}
+.sp-pay{
+  margin-top: 20rpx;
+}
+.sp-pay-header{
+  padding-top: 65rpx;
+  text-align: center;
+  line-height: 1;
+}
+.sp-pay-header image{
+  width: 127rpx;
+  height: 121rpx;
+  padding-bottom: 16rpx;
+}
+.success{
+  font-weight: bold;
+  font-size: 38rpx;
+}
+.sp-pay-p{
+  display: flex;
+  padding:46rpx 160rpx 59rpx; 
+}
+.sp-pay-btn{
+  width: 192rpx;
+  height: 60rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid rgb(247, 47, 26);
+  color: rgb(247, 47, 26);
+  text-align: center;
+  line-height: 60rpx;
+}
+.btn-bg{
+  margin-left: 46rpx;
+  background-color: rgb(247, 47, 26);
+  color: white;
+}
+.sp-pay-content{
+  padding: 0 30rpx;
+}
+.p-b-30{
+  padding-bottom: 30rpx;
+  color: rgb(102, 102, 102);
+}
+.p-r-27{
+  display: inline-block;
+  width: 210rpx;
+  margin-right: 16rpx;
+}
+
+.shdz{
+  padding-bottom: 78rpx;
+  display: flex;
+}
+.shdz-l{
+  width: 170rpx;
+  margin-right: 26rpx;
+}
+.shdz-r{
+  width: 530rpx;
+}

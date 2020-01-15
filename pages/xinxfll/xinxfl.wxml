@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class='bg-color p-20 mb-10'>
+  <view class='search'>
+    <icon type="search" color="#999999" size="18"></icon>
+    <input bindtap='sousuo' disabled='true' value='{{inputValue}}' confirm-type='search' type="text" maxlength="100" placeholder="查找店铺信息" placeholder-style="color:#999999" />
+  </view>
+</view>
+<scroll-view class='scroller ' style="width:{{width}}px;height:{{height}}px;" scroll-y="true" lower-threshold="800" scroll-top='{{topNum}}' bindscroll="scrolltoupper">
+  <view class='navbtns '>
+    <view class="flex-0 flexcenter box-pack-around">
+      <view bindtap='luntan' data-luntan='1' class="items {{luntan==1?'actives':''}}">附近商家
+        <text class='fa fa-caret-down'></text>
+      </view>
+      <view bindtap='luntan' data-luntan='2' class="items {{luntan==2?'actives':''}}">信息红包</view>
+      <view bindtap='luntan' data-luntan='3' class="items {{luntan==3?'actives':''}}">商家红包</view>
+    </view>
+  </view>
+  <navigator wx:if="{{luntan!=3}}" wx:for="{{information}}" url='/pages/shangjhb/shangjhb?id={{item.id}}' wx:key="*this" class='bg-color p-x-20 cp-bom p-y-15' hover-class='none'>
+    <view class='flex-0 wh-0'>
+      <view class='rounded mt-5 w-10'>
+        <image src="{{item.show||index<2?host+item.logo:''}}" class="image-72 img rounded-x m-r-15" mode="aspectFill"></image>
+      </view>
+      <view class='m-l-5 w-90'>
+        <view class=' flexcenter'>
+          <view class='wh-0'>
+            <view class='flexcenter flexspbet'>
+              <view class='line-clamp-2 font-size-30 font-w color-333'>{{item.storeName}}</view>
+              <view class='font-size-24 color-999 fa fa-eye'>
+                <text class='m-l-5'>{{item.views}}</text>
+              </view>
+            </view>
+            <view class='color-999 font-size-24 p-y-5'>{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='font-size-28 line-20 color-666 line-clamp-02'>{{item.details}}</view>
+    <view class='imgs row-xx'>
+      <image wx:for="{{item.img}}" wx:for-index="indexs" wx:for-item="items" wx:key="*this" mode="aspectFill" style="width: {{(window_width -50) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" class='rounded' src="{{item.show||index<2?host+items:''}}" />
+    </view>
+    <view wx:if="{{item.hbmoney != null}}" class='flexcenter flexspbet mt-10'>
+      <view class='flex-0 flexcenter'>
+        <image src='/images/hb.png' class='img-30'></image>
+        <view class='color-f36 font-size-28'>{{item.hbMoney}}</view>
+      </view>
+      <view class='color-999 font-size-28'>剩余20个</view>
+    </view>
+  </navigator>
+
+
+  <navigator wx:if="{{luntan==3}}" wx:for="{{business}}" url='/pages/shangjzy/shangjzy?id={{item.id}}' wx:key="*this" class='bg-color p-x-20 cp-bom p-y-15' hover-class='none'>
+    <view class='flex-0 wh-0'>
+      <view class='rounded mt-5 w-10'>
+        <image src="{{host+item.logo}}" class="image-72 rounded-x m-r-15" mode="aspectFill"></image>
+      </view>
+      <view class='m-l-5 w-90'>
+        <view class=' flexcenter'>
+          <view class='wh-0'>
+            <view class='flexcenter flexspbet'>
+              <view class='line-clamp-2 font-size-30 font-w color-333'>{{item.storeName}}</view>
+              <view class='font-size-24 color-999 fa fa-eye'>
+                <text class='m-l-5'>{{item.views}}</text>
+              </view>
+            </view>
+            <view class='color-999 font-size-24 p-y-5'>{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='font-size-28 line-20 color-666 line-clamp-02'>{{item.details}}</view>
+    <view class='imgs row-xx'>
+      <image wx:for="{{item.img}}" wx:key="*this" mode="aspectFill" style="width: {{(window_width -50) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" class='rounded' src="{{host+item}}" />
+    </view>
+    <view wx:if="{{item.hbmoney != null}}" class='flexcenter flexspbet mt-10'>
+      <view class='flex-0 flexcenter'>
+        <image src='/images/hb.png' class='img-30'></image>
+        <view class='color-f36 font-size-28'>{{item.hb}}</view>
+      </view>
+      <view class='color-999 font-size-28'>剩余20个</view>
+    </view>
+  </navigator>
+  <view class='color-999 p-5 font-size-26 text-align'>没有更多了~~</view>
+</scroll-view>
+<view class='dialog'>
+  <image src='../../images/zd.png' class='goTop' hidden='{{!floorstatus}}' catchtap="goTop"></image>
+</view>

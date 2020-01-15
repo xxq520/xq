@@ -1,0 +1,31 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class="drz-header">
+  <view class="mb-20 jine">￥{{qsum}}</view>
+  <view class="mb-20 jine-tit">金额</view>
+</view>
+<view class="drz-box drz" wx:for="{{arr}}" wx:key="index">
+  <view class="user">
+    <view class="user-title">
+      <image src="{{item[0].qsubmitterIcon}}"></image>
+      <text>{{item[0].qsubmitterName}}</text></view>
+    <view class="drz-f">待入账</view>
+  </view>
+  <view class="goods-list">
+    <view wx:for="{{item}}" wx:for-item="items" wx:key="{{items.id}}">
+      <view class="gods-title">{{items.qprocedureName}}
+        <view class="right">
+          <text class="cheng">x{{items.qtotal}}</text>
+          <text class="price">￥{{filters.toFix(items.cost||items.qsum/items.qtotal)}}</text>
+        </view>
+      </view>
+      <view class="zj"> <text style="float:left;font-size: 24rpx;color: #aaa;">{{items.guige}}</text></view>
+    </view>
+    <view class="zj" style="margin-top:40rpx">
+      总计：<text>￥{{filters.toFix(item[0].hj)}}</text>
+    </view>
+    <view class="time">
+      <text class="time-time">{{item[0].qfhtime}}</text>
+      <text class="yvji">预计到账{{item[0].endTime}}</text>
+    </view>
+  </view>
+</view>

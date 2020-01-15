@@ -1,0 +1,70 @@
+<!--pages/user/shoucang.wxml-->
+<view class="page">
+  <view class='navbtns'>
+    <view class="flex-0 box-pack-around">
+      <view bindtap='luntan' data-luntan='1' class="items {{luntan==1?'actives':''}}">代金券</view>
+      <view bindtap='luntan' data-luntan='2' class="items {{luntan==2?'actives':''}}">优惠券</view>
+    </view>
+  </view>
+  <view class="search_no" wx:if="{{!productData}}">
+    <view class="font_14">
+      <image class="scimg" src="/images/search_no.png"></image>
+    </view>
+    <text>暂时还没有优惠劵/(ㄒoㄒ)/~~</text>
+  </view>
+</view>
+<!-- 代金券 bindtap='xq' -->
+<view class='bg-color  p-20 container' data-id='{{item.id}}' data-shopid='{{item.storeId}}' wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{luntan==1&&item.typeId==1}}" hover-class='none'>
+  <view class=''>
+    <view class='djq  font-size-30 color-333 b-djq p-x-30 p-y-10' hover-class='none'>
+      <view class='flexcenter flexspbet'>
+        <view class='djq_left_top djq-djq'></view>
+        <view class='djq_right_top djq-djq'></view>
+        <view class=''>
+          <view class='font-w-yhq'>{{item.money}}元{{item.name}}代金券</view>
+          <view class='font-size-26 color-999 line-56'>{{item.time}}至{{item.endTime}}可用</view>
+          <view class='flex-0 flexcenter'>
+            <view class='text-yh m-r-10 font-size-40 font-w-yhq '>￥{{item.money}}</view>
+            <view class='text-yh text-br p-x-10   font-size-22 m-r-10 text-align'>{{item.reduce}}折</view>
+            <view class='text-sc font-size-24 color-999 m-r-10'>{{item.full}}</view>
+          </view>
+        </view>
+        <view catchtap='del' data-id='{{item.id}}' class='bgcolor-ccc color-fff p-x-20 p-y-10 text-align rounded-md font-size-28'>删除此券</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 优惠券 -->
+<view wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{luntan==2&&item.typeId==2}}" hover-class='none' class='flexcenter flexspbet p-20'>
+  <view class='yhq-je'>
+    <view class='cro h-100 bgcolor-ff6 p-20 yhq-radius text-align flexColCCen'>
+      <view class='color-fff font-size-36 font-w-yhq '><text class='font-size-18'>¥</text>{{item.money}}</view>
+      <view class='font-size-24 color-fff line-20 color-eee'>满{{item.full}}减{{item.money}}</view>
+    </view>
+  </view>
+  <view class='yhq'>
+    <view class='cro h-100 b-yhj-ysy p-20 yhq-radius'>
+      <view class='cro_right_bottom'></view>
+      <view class='cro_right_top'></view>
+      <view class='line-clamp-1 color-333  font-size-28 '>
+        {{item.name}}</view>
+      <view>
+        <text class='font-size-22 bgcolor-ff6 color-fff p-x-20 m-r-30'>满减券</text> </view>
+      <view class='font-size-24 color-999 '>有限期:{{item.endTime}}</view>
+    </view>
+  </view>
+  <view class='yhq-lq text-align'>
+    <view class='cro-lq h-100 b-yhjy-ysy p-20 yhq-radius-lq text-align flexColCCen'>
+      <view class='cro_left_bottom'></view>
+      <view class='cro_left_top'></view>
+      <view class='text-align '>
+        <view bindtap='del' data-id='{{item.id}}' class='font-size-28 color-fff text-align bgcolor-ccc p-x-15 p-y-10 text-align rounded-md '>删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:50px;'></view>
+<view class='full-height text-justify center'>
+  <navigator class='footc ' hover-class='none' url='/pages/yhfb/yhfb'>添加</navigator>
+</view>

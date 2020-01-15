@@ -1,0 +1,15 @@
+<!--pages/fahb/fahb.wxml-->
+<view class='m-20'>
+  <view class=' font-size-30 '>
+    <view class='flexcenter border-b-sd p-15 m-y-40'>
+      <view class='w-25'>充值金额</view>
+      <input class="text-right w-70 m-x-20" value="{{money}}" type='number' maxlength='4' placeholder="0.00" bindinput='money'></input>
+      <view class=''>元</view>
+    </view>
+  </view>
+  <view class='text-align'>
+    <view class='font-size-52 font-w  m-y-40'>￥{{money==''?'0.00':money}}</view>
+    <button bindtap='fahb' class='footc  m-y-40'>充值</button>
+  </view>
+  <view class='footc1'>账户充值可用于红包、店铺推广</view>
+</view>

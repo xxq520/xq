@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "客户详情",
+  "navigationBarBackgroundColor": "#0099ff",
+    "usingComponents": {
+      "i-load-more": "../../components/load-more/index",
+      "i-icon": "../../dist/icon/index",
+      "van-icon": "../../dist/icon/index"
+    }
+}

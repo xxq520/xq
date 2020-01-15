@@ -1,0 +1,18 @@
+<view wx:for="{{information}}" wx:key="*this" class=' m-20 wddd p-20 rounded' hover-class='none'>
+  <view class='font-size-30 color-333 line-clamp-02'>{{item.hbType==1?'信息红包':''}}[{{item.state==1?'待审核':'已通过'}}]{{item.details}}</view>
+  <view class='color-999 font-size-24'>{{item.time}}</view>
+  <view class='imgs row'>
+    <image wx:for="{{item.img}}" wx:key="*this" mode="aspectFill" style="width: {{(window_width -40) / 3}}px; height: {{(window_width -40) / 3}}px; margin: 2px 0 0 2px;" src="{{host+item}}" />
+  </view>
+
+  <view class='color-999 font-size-28 text-right' bindtap='del' data-index='{{index}}' data-id='{{item.id}}'>删除</view>
+
+</view>
+<view class="search_no">
+  <text>没有更多了~~</text>
+</view>
+
+<view style='height:50px;'></view>
+<view class='full-height text-justify center'>
+  <navigator class='footc ' hover-class='none' url='/pages/xxfb/xxfb'>发布信息</navigator>
+</view>

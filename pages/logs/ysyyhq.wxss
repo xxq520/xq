@@ -1,0 +1,61 @@
+/* pages/logs/ysyyhq.wxss */
+page{background: #f8f8f8;
+font-family: "苹方";
+line-height: 100%;
+}
+font-w-yhq1{ 
+ font-weight: bold;
+ font-size: 36rpx;
+ line-height: 45rpx;
+ }
+  
+  w-95{  width: 95%;}
+.scimg {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  background-size: 100px;
+}
+
+
+.mr-15{margin-right: 30rpx;}
+/*背景*/
+.background {
+  position: absolute;
+  right:30rpx;
+  top:30rpx;
+  width: 150rpx;
+  height: 150rpx;
+  /* position:fixed;  */
+  background-size:100% 100%;
+  z-index: 1;
+}
+.font-w-yhq1{ 
+  width: 95%;
+ font-weight: bold;
+ font-size: 36rpx;
+ line-height: 45rpx;
+ }
+.w95{width: 95%;}
+.bg-color-f8{background: #f8f8f8;}
+.img-24{width: 24rpx;height: 24rpx;}
+.m-x-25{margin-left: 25rpx;margin-right: 25rpx;}
+.back{
+  position: relative;
+  right:0;
+  left:0;
+  top:15rpx;
+  bottom: 20rpx;
+  /* width: 150rpx;
+  height: 150rpx; */
+  /* position:fixed;  */
+  background-size:100% 100%;
+  z-index: 1;
+}
+.bb{border-top: 1rpx #ccc dashed;
+border-radius: 0 0 10rpx 10rpx;
+}
+.bba{
+border-radius: 10rpx 10rpx 0 0 ;
+}
+.pt-20{padding-top: 20rpx;}

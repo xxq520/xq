@@ -1,0 +1,43 @@
+<view wx:if="{{canIUse}}" class="alertBox">
+    <image src="/images/xiqian.png"/>
+    <button class='sqdl' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信快捷登录</button>
+    <view>(若您的微信手机号未注册，将为您直接注册)</view>
+</view>
+<view class='haomany'>
+    <view class='lq-header pr'>
+        <image src="{{host+'bwyhq.png'}}" mode="aspectFill" class='wh-0'></image>
+        <view class='header-ps'>活动规则</view>
+    </view>
+    <view class='lq-yhq'>
+        <view class='lq-yhq-title'>
+            <text class='circle m-r-30'></text>领券买单才优惠
+            <text class='circle m-l-30'></text>
+        </view>
+        <view class='ticket' wx:for="{{userlq}}" wx:key="{{index}}" wx:if="{{item.number>1}}" bindtap='shouye'
+              data-id='{{item.storeId}}'>
+            <view class='yhq-item'>
+                <view>
+                    <view class='yhq-item-l  flexColCCen'>
+                        <image src='/images/adds.png' class='img-ads'></image>
+                        <view text class='font-size-18 text-p'>{{item.money}}元现金券</view>
+                    </view>
+                    <view class='yhq-item-2 flexColCCen'>
+                        <view class='color-fff font-size-22'>满{{item.full}}赠{{item.money}}元</view>
+                    </view>
+                </view>
+                <view class='yhq-item-r'>
+                    <view class='store-name line-clamp-2 font-size-30'>[{{item.storeName}}]{{item.name}}</view>
+                    <view class='kc color-h font-size-20'>库存：{{item.number}}张</view>
+                    <view class='color-h font-size-20 box-pack-between flex'>
+                        <text class='dis'>到期时间:{{item.time}}到{{item.endTime}}</text>
+                        <view class='rush-btns' catchtap='coupon' data-lqid="{{item.id}}"
+                              data-storeid="{{item.storeId}}" data-kc="{{item.number}}" data-index='{{index}}'>
+                            {{item.isPt?'已领取':'免费领取'}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='footer'>没有更多了~</view>
+    </view>
+</view>

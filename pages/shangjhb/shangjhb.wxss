@@ -1,0 +1,299 @@
+page {
+  font-family: "苹方";
+  
+}
+
+.image-72 {
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.w-ss {
+  width: 480rpx;
+}
+
+.line-clamp-02a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+
+}
+
+.act {
+ 
+  color: #fff;
+  margin-left: 20rpx;
+  /* right: 20rpx; */
+  width: 0rpx;
+  height: 0;
+  border-bottom: 20rpx solid #f2f2f2;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+}
+
+.fenstx {
+  line-height: 30rpx;
+  background-color: #f2f2f2;
+  border-radius: 8rpx;
+}
+
+.image-48 {
+  width: 48rpx;
+  height: 48rpx;
+  /* margin:5prx; */
+}
+
+.font-w {
+  font-weight: bold;
+}
+
+.p5-5 {
+  padding-left: 14rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-right: 0;
+}
+
+.line-48 {
+  height: 42rpx;
+}
+
+.bc {
+  background-color: #f4f4f4;
+}
+
+.xqbb {
+  border-bottom: 1rpx solid #f4f4f4;
+}
+
+.sjies {
+  width: 33.33%;
+}
+
+.w-55 {
+  width: 55%;
+}
+
+.img-68 {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.image-40 {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.img-44 {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.img-25 {
+  width: 25rpx;
+  height: 25rpx;
+  margin-top: 5rpx;
+}
+
+.z-index {
+  z-index: 99;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.posit-fix {
+  position: fixed;
+}
+
+.button-1 {
+
+  background: none;
+  border-radius: 0rpx;
+}
+
+.button-1::after {
+  border: none;
+}
+
+
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+.bg-themes {
+  background-color: rgba(0, 0, 0, 0.589) !important;
+}
+
+.btn-lg {
+
+  font-size: 30rpx;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.row-xx {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sjdh {
+  height: 98rpx;
+  border-top: #eee solid 0.5rpx;
+}
+
+.pb-30 {
+  padding-bottom: 30rpx;
+}
+
+.p-pl {
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
+}
+
+.z-index {
+  z-index: 99;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.posit-fix {
+  position: fixed;
+}
+
+.but-lx {
+  background: #f72f1a;
+}
+
+button::after {
+  border: none;
+}
+
+/* button, view, navigator {
+  box-sizing: border-box;
+} */
+
+.modal-content-xx {
+  width: 510rpx;
+  height: 619rpx;
+}
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+.bg-theme {
+  background-color: #f2f2f2;
+}
+
+.b-butt {
+  width: 150rpx;
+  height: 150rpx;
+  /* left: 0;
+  right: 0;
+  bottom: 240px; */
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 28rpx;
+  z-index: 100;
+  /* position:absolute; */
+}
+
+.kai-but{
+  position: absolute;
+top:185px;
+padding-left:180rpx;
+padding-right:180rpx;
+z-index:101;
+width: 150rpx;
+height: 150rpx;
+margin: auto 0;
+text-align: center
+}
+
+.bgcolor-chb {
+  background-color: #ffd500;
+  border: rgb(255, 166, 0) 3rpx solid;
+}
+
+.mx-60 {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.px-60 {
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+.wddd {
+  /* position: relative; */
+  box-shadow: 0 0 30rpx firebrick;
+}
+
+/* .mb-15 {
+  margin: 30rpx;
+} */
+
+.hbtc {
+  position: fixed;
+  bottom: 200rpx;
+  right: 20rpx;
+  z-index: 999;
+}
+
+.hbtc-img {
+  width: 97rpx;
+  height: 138rpx;
+}
+.footfixed {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+  /* background: #fff; */
+  z-index: 100;
+  /* width: 100%; */
+  font-size: 14px;
+  /* border-top: 1px solid #eee; */
+  /* line-height: 50px; */
+}
+
+button {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1.5;
+  background: none;
+}
+
+button::after {
+  border: none;
+}
+.btn-lg1 {
+  position: absolute;
+  top: 50rpx;
+  right: 50rpx;
+  z-index: 101;
+}

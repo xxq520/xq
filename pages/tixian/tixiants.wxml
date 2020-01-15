@@ -1,0 +1,9 @@
+<view class='text-align bg-color p-30 line-20'>
+  <image src='/images/spflgl.png' class='img-167'></image>
+  <view class='font-size-30 color-333'>提现申请已提交，等待人工审核</view>
+  <view class='font-size-24 color-999 p-y-20'>{{time}}</view>
+  <view class='font-size-26 color-666'>预计3个工作日内到账！</view>
+  <view class='m-y-20 m-x-80'>
+    <view class='but-qb1' bindtap='wancheng' hover-class='none' url='/pages/user/user'>完成</view>
+  </view>
+</view>

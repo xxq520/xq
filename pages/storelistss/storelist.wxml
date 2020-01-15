@@ -1,0 +1,114 @@
+<view class="search">
+    <view class='text-align color-fff'>
+        <view class='search-padding-100'>
+            <view class='font-size-72 f-w' style='line-height:1;'>{{userTrue?shop.money:user.qnum}}</view>
+        </view>
+        <view>
+            <view style='line-height:1.1;padding-top:26rpx'>
+                <text class="font-size-24 font-size-28">账户余额(元)</text>
+            </view>
+        </view>
+        <image src='/images/my-f.png' class='bgimg'></image>
+    </view>
+</view>
+<view class='flexcenter box-pack-around b-line'>
+    <view bindtap='luntan' data-luntan='1' class="font-size-36 color-333 w-50 text-align">
+        <text class="{{luntan==1?'xqbb':''}} {{luntan==1?'':'font-c'}}">收入
+        </text>
+        <text class="b-circle {{luntan==1?'show':''}}"></text>
+    </view>
+    <view bindtap='luntan' data-luntan='2' class="font-size-36 color-333 w-50 text-align ">
+        <text class="p-y-20  {{luntan==2?'xqbb':''}} {{luntan==2?'':'font-c'}} ">支出记录
+        </text>
+        <text class="b-circle {{luntan==2?'show':''}}"></text>
+    </view>
+</view>
+<view wx:if="{{luntan==1}}">
+    <view wx:if="{{!shopzj}}" wx:for="{{zj}}" wx:key="index"
+          class='flexcenter flexspbet  p-20    rounded wddd bg-color'>
+        <view class='w-10'>
+            <view mode="aspectFill" class='img-80  bgcolor-m  rounded-x  text-align color-fff font-size-40 flexColCCen'>
+                ￥
+            </view>
+        </view>
+        <view class='b-p-l'>
+            <view class='flexspbet'>
+                <view class='font-size-30 color-e51 p-b-10'>+{{item.money}}元</view>
+                <view class='font-size-28 color-999 '>{{item.qtime}}</view>
+            </view>
+            <view class='font-size-24 color-999 line-clamp-1'>来自{{item.qstore}}的红包</view>
+        </view>
+    </view>
+    <view wx:if="{{shopzj}}" wx:for="{{shopzj}}" wx:key="index"
+          class='flexcenter flexspbet  p-20    rounded wddd  bg-color'>
+        <!-- 改后 -->
+        <view class='flexcenter '>
+            <view>
+                <view mode="aspectFill"
+                      class='img-80  bgcolor-m m-r-20 rounded-x  text-align color-fff font-size-40 flexColCCen'>￥
+                </view>
+            </view>
+            <view class='b-p-l'>
+                <view class='font-size-30 color-e51 p-b-10' wx:if="{{item.qtype==5}}">+{{item.qsum}}元[订单收入]</view>
+                <view class='font-size-30 color-e51 p-b-10' wx:if="{{item.qstatus==4}}">+{{item.qsum}}元[红包退款]</view>
+                <view class='font-size-24 color-999' wx:if="{{item.qstatus==4}}">{{item.qtime}}</view>
+                <view class='font-size-30 color-e51 p-b-10' wx:if="{{item.qtype==6}}">+{{item.qsum}}元[充值收入]</view>
+                <view class='font-size-24 color-999 ' wx:if="{{item.qtype==6}}">您在{{item.qtime}}充值一笔</view>
+                <view class='font-size-24 color-999 w-60' wx:if="{{item.qtype==5}}">{{item.qtime}}来自{{item.qstore}}的订单
+                </view>
+                <view class='font-size-30 color-e51 p-b-10' wx:if="{{item.qtype==10}}">+{{item.qsum}}元[代金券收入]</view>
+                <view class='font-size-24 color-999' wx:if="{{item.qtype==10}}">{{item.qtime}}来自{{item.qstore}}的购买记录
+                </view>
+            </view>
+        </view>
+        <view class='font-size-22 color-999'>{{item.time}}</view>
+    </view>
+</view>
+
+<view wx:else>
+    <view wx:if="{{!shopzj}}" wx:for="{{usertx}}" wx:key="index"
+          class='flexcenter flexspbet  p-20    rounded wddd  bg-color'>
+        <view class='flexcenter'>
+            <view>
+                <view mode="aspectFill"
+                      class='img-68  bgcolor-m m-r-20 rounded-x  text-align color-fff font-size-40 flexColCCen'>￥
+                </view>
+            </view>
+            <view>
+                <view class='font-size-24 color-999'>{{item.qtime}}账户提现</view>
+            </view>
+        </view>
+        <view class='font-size-28 color-e51'>-{{item.qsum}}元[{{item.qstatus==1?'审核中':(item.qstatus==2?'已到账':'未通过')}}]
+        </view>
+    </view>
+    <view else wx:for="{{shoptx}}" wx:key="index" class='flexcenter flexspbet  p-20    rounded wddd  bg-color'>
+        <view class=' flexcenter'>
+            <view>
+                <view mode="aspectFill"
+                      class='img-68  bgcolor-m m-r-20 rounded-x  text-align color-fff font-size-40 flexColCCen'>￥
+                </view>
+            </view>
+            <view>
+                <view class='font-size-24 color-999' wx:if="{{item.qtype==8}}">{{item.qtime}}商户提现</view>
+                <view class='font-size-24 color-999' wx:if="{{item.qtype==2}}">{{item.qtime}}信息红包</view>
+                <view class='font-size-24 color-999' wx:if="{{item.qtype==1}}">{{item.qtime}}普通红包</view>
+                <view class='font-size-24 color-999' wx:if="{{item.hbMoney}}">{{item.qtime}}信息红包</view>
+            </view>
+        </view>
+        <view class='font-size-28 color-e51' wx:if="{{item.qtype==8}}">
+            -{{item.qsum}}元[{{item.qstatus==1?'审核中':(item.qstatus==2?'已到账':'未通过')}}]
+        </view>
+        <view class='font-size-28 color-e51' wx:if="{{item.qtype==1}}">-{{item.qsum}}元</view>
+        <view class='font-size-28 color-e51' wx:if="{{item.qtype==2}}">-{{item.qsum}}元</view>
+        <view class='font-size-28 color-e51' wx:if="{{item.hbMoney}}">
+            -{{item.hbMoney}}元[{{item.state==1?'审核中':(item.state==2?'已通过':(item.state==4?'被拒绝':'已删除'))}}]
+        </view>
+    </view>
+</view>
+<i-load-more tip="没有更多了" loading="{{ false }}"/>
+<view style='height:50px; padding:0 30rpx;'></view>
+<view class='full-height text-justify center'>
+    <navigator class='footc ' hover-class='none'
+               url='/pages/tixian/tixian?money={{!shopzj?user.qnum:shop.money}}&tp={{!shopzj?1:2}}'>提现
+    </navigator>
+</view>

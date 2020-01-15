@@ -1,0 +1,321 @@
+/* pages/user/zhuczc.wxss */
+
+page {
+  background-color: #f4f4f4;
+}
+
+.center1 {
+  /* text-align: center; *//* width: 33.33%; *//* flex-flow: column; *//* margin-left: 20rpx;
+  margin-right: 20rpx; */
+  position: relative;
+  margin: auto 0;
+}
+
+.checkbox {
+  width: 33.33%;
+}
+
+.color-text {
+  color: #ff4a50;
+}
+
+.wh-text {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.br-text {
+  background: #ff4a50;
+  /* border: 3rpx solid #ff4a50; */
+}
+
+.br-text1 {
+  /* border: 3rpx solid #999; */
+  background: #999;
+}
+
+.img-text {
+  height: 33rpx;
+  width: 33rpx;
+}
+
+/* pages/user/selfInfo/selfInfo.wxss */
+
+.container-grxx {
+  /* padding: 30rpx; */
+  box-sizing: border-box;
+}
+
+.row-text {
+  /* margin-left: -10rpx;
+  margin-right: -10rpx; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.rowxx {
+  /* margin-left: -10rpx;
+  margin-right: -10rpx; */
+  padding: 15rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.img-68 {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.text-xx {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.rounded {
+  border-radius: 15rpx !important;
+}
+
+.bg-white {
+  background-color: #fff !important;
+}
+
+.mt-10 {
+  margin-top: 20rpx;
+  /* margin-bottom: 20rpx; */
+}
+
+.col-3 {
+  width: 25%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+  color: #333;
+}
+
+.col-9 {
+  width: 75%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+  color: #999;
+}
+
+.col-9s {
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+  color: #999;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border-bottom {
+  border-bottom: 1rpx solid #eee;
+}
+
+.content {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.z-index {
+  z-index: 99;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.posit-fix {
+  /* position: fixed; */
+}
+
+button {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1.5;
+  background: none;
+}
+
+button::after {
+  border: none;
+}
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+.bg-theme {
+  background-color: #f72f1a !important;
+}
+
+.btn-lg {
+  padding: 26rpx 40px;
+  font-size: 30rpx;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.radius0::after {
+  border: none;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  display: flex !important;
+  flex-direction: row;
+}
+
+button, view, navigator {
+  box-sizing: border-box;
+}
+
+.blockItem {
+  width: calc(100% / 3);
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.flexColCCen {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.border-dashed {
+  border: 1px dashed #ddd;
+}
+
+.font-size-20 {
+  font-size: 40rpx;
+}
+
+.color-aaa {
+  color: #aaa;
+}
+
+.font-size-12 {
+  font-size: 24rpx;
+}
+
+.mt-5 {
+  margin-top: 10rpx;
+}
+
+.color-9 {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.img {
+  overflow: unset;
+}
+
+.posit-rel {
+  position: relative;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.full {
+  /* width: 100% !important; */
+  height: 540rpx;
+}
+
+.close {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  z-index: 9;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.rounded-x {
+  border-radius: 50% !important;
+}
+
+.bg-white {
+  background-color: #f4f4f4 !important;
+}
+
+.color-ddd {
+  color: #ddd;
+}
+
+.image-30 {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.bg-text {
+  background-color: #f2f2f2;
+}
+
+.pt-30 {
+  padding-top: 30rpx;
+}
+
+.rz-b {
+  border-bottom: 1rpx dashed #999;
+}
+
+.rz-b1 {
+  border-bottom: 1rpx dashed rgb(247, 47, 26);
+}
+
+.rz-b0 {
+  border-bottom: 1rpx dashed #fff;
+}
+
+.rz-pp {
+  position: relative;
+  top: 20rpx;
+}
+
+.rz-z {
+  z-index: 9;
+}

@@ -1,0 +1,11 @@
+<view wx:if="{{canIUse}}" class="alertBox">
+  <image src="/images/xiqian.png" />
+  <button class='sqdl'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信快捷登录</button>
+  <view>(若您的微信手机号未注册，将为您直接注册)</view>
+</view>
+<image src="{{host+'fenxyl-bg.png'}}" mode="widthFix" class='fenxyl-bg'></image>
+<view class='p-x-20 pb-20'>
+  <button open-type='share' plain='true' class='btn' style='border:0;'>
+    <image src='/images/fx-but.png' mode="widthFix" class='fenxyl-bg'></image>
+  </button>
+</view>

@@ -1,0 +1,73 @@
+<view wx:if="{{canIUse}}" class="alertBox">
+  <image src="/images/xiqian.png" />
+  <button class='sqdl'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信快捷登录</button>
+  <view>(若您的微信手机号未注册，将为您直接注册)</view>
+</view>
+<view class='sjrz'>
+  <view>
+    <image src="{{imghost+'rz_header.png'}}" mode="aspectFill" class='header-bgimg'>
+    </image>
+    <view class='xlb font-size-24 flexcenter headLine box box-lr'>
+     <image src='/images/xlb.png' mode="aspectFill" class='img-30'></image>
+        <swiper wx:if="{{nameList}}"  autoplay="true" current="0" interval="3000" duration="3000" circular="true" vertical="{{true}}" class='headLineSwiper'>
+        <swiper-item wx:for="{{nameList}}" wx:key="{{index}}" class="box box-lr box-align-center">
+            <view>
+            {{item}}
+          </view>
+        </swiper-item>
+    </swiper>
+    </view>
+    <view class='pink-box'>
+      <image src="{{imghost+'rz_ber.png'}}" class='center img-ber' mode="aspectFill"></image>
+      <view class='p-20'>
+        <view class='sjtq font-size-28'>商家特权</view>
+        <view class='flexcenter flexspbet p-x-30'>
+          <view class='tx '>
+            <image src='{{userInfo.avatarUrl}}' class='align' mode="aspectFill"></image>
+            <text class='font-size-36'>{{userInfo.nickName}}</text>
+          </view>
+          <view class='text-right'>
+            <view class='font-size-24'>
+              <text class='mp-r-btn p-x-10'>已入驻</text>
+            </view>
+            <view class='money'>{{sysinfo.qbusiness}}</view>
+          </view>
+        </view>
+        <view class='xqsj flexcenter'>
+          <image src='/images/xqsj.png' class='align' mode="aspectFill"></image>
+          <text class='font-size-30'>喜钱商家</text>
+        </view>
+        <view class='mp-bar box-pack-between'>
+          <view class='bar-item'>
+            <image src='/images/xqcb.png' class='img-30 align m-r-10' mode="aspectFill"></image>零成本经营</view>
+          <view class='bar-item'>
+            <image src='/images/xqll.png' class='img-30 align m-r-10' mode="aspectFill"></image>多流量导入</view>
+          <view class='bar-item'>
+            <image src='/images/xqqd.png' class='img-30 align m-r-10' mode="aspectFill"></image>全渠道营销</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='center p-y-20'>
+    <image src="{{imghost+'xqbut1.png'}}" class='img-but1' mode="aspectFill"></image>
+  </view>
+  <view class='font-size-24 zj-b'>超过88{{sysinfo.qbusiness}}家选择，即可入驻享受优惠</view>
+  <view class='fb font-size-30'>
+    <image src='/images/fab.png'></image>赚钱十二大法宝 业绩提升100%
+    <image src='/images/fab2.png'></image>
+  </view>
+  <view class='six-box'>
+    <image class='align imagesix' src="{{imghost+'rztq.png'}}" mode="widthFix"></image>
+  </view>
+  <view class='font-size-28 p-x-30 box-pack-center pt-50 flexcenter' bindtap='agree'>
+    <image src="/images/wzz.png" mode="aspectFill" class='img-30' wx:if='{{agree1}}'></image>
+    <image src="/images/yzz.png" mode="aspectFill" class='img-30' wx:if='{{agree2}}'></image>
+    <view class='font-size-28'>
+      <text class='txb'> 我已阅读并同意</text>
+      <text bindtap="toxy" class=' txc'>《喜钱入驻协议》</text>
+    </view>
+  </view>
+  <view bindtap='prepay' class='b-btn font-size-28 center m-x-30'>
+    <image src="{{imghost+'b_btn.png'}}" class='b-bg'></image>
+  </view>
+</view>

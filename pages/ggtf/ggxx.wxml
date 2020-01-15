@@ -1,0 +1,30 @@
+<view class=''>
+    <view class='p-x-20 font-size-30 bg-white'>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>广告标题</view>
+            <view class='w-75 color-666'>{{ggxq.qtitle}}</view>
+        </view>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>投放时间</view>
+            <view class='w-75 color-666'>{{ggxq.qtime}}</view>
+        </view>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>投放状态</view>
+            <view class='w-75 color-e51'>
+                {{ggxq.qstatus==1?'审核中':(ggxq.qstatus==2?'投放中':(ggxq.qstatus==3?'未通过':'已过期'))}}
+            </view>
+        </view>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>点击量</view>
+            <view class='w-75 color-666'>{{ggxq.qnum}}</view>
+        </view>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>广告内容</view>
+            <view class='w-75 color-666'>{{ggxq.qtext}}</view>
+        </view>
+        <view class='flexcenter border-b-sd p-y-15'>
+            <view class='w-25'>广告图片</view>
+            <image src='/images/cpt.png' class='b-img'></image>
+        </view>
+    </view>
+</view>

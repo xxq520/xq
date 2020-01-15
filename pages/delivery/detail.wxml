@@ -1,0 +1,91 @@
+<view class="container">
+    <form bindsubmit="handleSubmit">
+        <view class="weui-cells weui-cells_after-title margin-top margin-box">
+            <view class="weui-cell weui-cell_input all-bottom font-size-30">
+                <view class="weui-cell__hd v-i-a">
+                    <view class="weui-label">联系人:</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="delivery_name" class="weui-input" placeholder="请输入收货人姓名"
+                           placeholder-class='font-size-30 font-color-204' value="{{delivery_name}}"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input all-bottom font-size-30">
+                <radio-group class="radio-group-male" name="sex">
+                    <label class="radio" bindtap='checked' data-checkedId="1">
+                        <image src='{{checkedId==1?"/images/male-select.png":"/images/male-unselect.png"}}'
+                               class='radio-img'></image>
+                        <radio value='{{sex}}' checked='{{sex}}'/>先生
+                    </label>
+                    <label class="radio label" bindtap='checked' data-checkedId="2">
+                        <image src='{{checkedId==2?"/images/male-select.png":"/images/male-unselect.png"}}'
+                               class='radio-img'></image>
+                        <radio value="{{sex}}"/>女士
+                    </label>
+                </radio-group>
+            </view>
+            <view class="weui-cell weui-cell_input all-bottom font-size-30">
+                <view class="weui-cell__hd  v-i-a">
+                    <view class="weui-label">联系电话:</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input type='number' maxlength='11' name="delivery_phone" class="weui-input" placeholder="请输入手机号码"
+                           placeholder-class='font-size-30 font-color-204' value="{{delivery_phone}}"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select all-bottom font-size-30" bindtap="handlDialogOpen">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label  v-i-a">收货地址:</view>
+                </view>
+                <view class="weui-cell__bd xzdz-dz">
+                    <view>
+                        <input name="delivery_street" class="weui-input" placeholder="请填填写收货地址"
+                               placeholder-class='font-size-30 font-color-204' disabled='true'
+                               value='{{delivery_province}}{{delivery_city}}{{delivery_area}}'/>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input all-bottom font-size-30">
+                <view class="weui-cell__hd">
+                    <view class="weui-label  v-i-a">门牌号:</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="delivery_street" class="weui-input" placeholder="请填写详细地址"
+                           placeholder-class='font-size-30 font-color-204' value="{{delivery_street}}"/>
+                </view>
+            </view>
+        </view>
+        <view class="footer">
+            <button class="footer-add-2" formType="submit">
+                保存
+            </button>
+        </view>
+        <view class="dialog  {{ is_dialog ? 'dialog-mask-show' : '' }}">
+            <view class="dialog-mask" bindtap="handlDialogCancel"></view>
+            <view class="dialog-container">
+                <view class="dialog-button">
+                    <view bindtap="handlDialogCancel" class="dialog-button-cancel">取消</view>
+                    <view bindtap="handlDialogOK" class="dialog-button-ok">确定</view>
+                </view>
+                <picker-view indicator-style="height: 50px;" class="dialog-picker" value="{{province_city_area}}"
+                             bindchange="handPickerChange">
+                    <picker-view-column>
+                        <view wx:for="{{province_list}}" wx:key="item" style="line-height: 50px;padding-left:10px;">
+                            {{item}}
+                        </view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{city_list}}" wx:key="item" style="line-height: 50px;padding-left:10px;">
+                            {{item}}
+                        </view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{area_list}}" wx:key="item" style="line-height: 50px;padding-left:10px;">
+                            {{item}}
+                        </view>
+                    </picker-view-column>
+                </picker-view>
+            </view>
+        </view>
+    </form>
+</view>

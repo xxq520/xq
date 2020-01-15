@@ -1,0 +1,23 @@
+<view class="search_no" wx:if="{{!invest}}">
+  <view class="font_14">
+    <image class="scimg" src="/images/search_no.png"></image>
+  </view>
+  <text>暂时还没有广告/(ㄒoㄒ)/~~</text>
+</view>
+<view wx:for="{{invest}}" wx:key="{{item.id}}" bindtap='ggxq' data-ggxq='{{item}}'  hover-class='none' class='m-20'>
+  <view class=' p-20 bg-color wddd rounded'>
+    <view class='flexspbet'>
+      <view class='font-size-30 line-24'>{{item.qtitle}}</view>
+      <view class='font-size-30 color-e51 line-24'>{{item.qstatus==1?'审核中':(item.qstatus==2?'投放中':(item.qstatus==3?'未通过':'已过期'))}}</view>
+    </view>
+    <view class='flexspbet'>
+      <view class='font-size-24 color-999 line-24'>{{item.qtime}}</view>
+      <view class='font-size-24 color-999 line-24'>点击量:{{item.qnum}}</view>
+    </view>
+  </view>
+</view>
+
+<view style='height:50px;'></view>
+<navigator url='/pages/ggtf/ggtj' hover-class='none'>
+  <button class='footc'>添加广告</button>
+</navigator>

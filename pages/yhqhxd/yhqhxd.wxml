@@ -1,0 +1,128 @@
+<!--pages/user/shoucang.wxml-->
+
+
+
+<!-- 代金券 -->
+<view class='bg-color  p-20 container' data-id='{{item.id}}' data-shopid='{{item.storeId}}' wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{item.typeId==1}}" hover-class='none'>
+  <view class=''>
+    <view class='djq  font-size-30 color-999  b-djq-ysy p-x-30 p-y-10' hover-class='none'>
+      <view class='flexcenter flexspbet'>
+        <view class='djq_left_top-ysy djq-djq'></view>
+        <view class='djq_right_top-ysy djq-djq'></view>
+        <view class=''>
+          <view class='font-w-yhq line-56'>{{item.money}}元{{item.name}}代金券</view>
+          <view class='font-size-26 color-999 '>核销日期：{{item.qtime}}</view>
+          <view class='font-size-26 color-999 '>核销用户：{{item.qnick}}</view>
+          <view class='flex-0 flexcenter '>
+            <view class='color-999  m-r-10 font-size-40 font-w-yhq '>￥{{item.full}}</view>
+            <view class='color-999  text-br-ysy p-x-10   font-size-22 m-r-10 text-align'>{{item.reduce}}折</view>
+            <view class='text-sc font-size-24 color-999 m-r-10'>{{item.money-item.full}}</view>
+          </view>
+        </view>
+        <view data-id='{{item.userCouponId}}' data-full='{{item.full}}' data-money='{{item.money}}' data-typeid='{{item.typeId}}' class='yhjbg-ysy color-999 p-x-20 p-y-10 text-align rounded-md font-size-28'>已核销</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 优惠券 -->
+<view wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{luntan==2&&item.typeId==2&&struts==1&&item.qstatus==1}}" hover-class='none' class='flexcenter flexspbet p-20'>
+  <view class='yhq-je'>
+    <view class='cro h-100 bgcolor-f8 p-20 yhq-radius text-align '>
+      <view class='color-999 font-size-36 font-w-yhq  mt-20'>¥{{item.money}}</view>
+      <view class='font-size-22 color-999 line-20 color-eee'>满{{item.full}}减</view>
+    </view>
+  </view>
+  <view class='yhq'>
+    <view class='cro h-100 b-yhj-ysy p-20 yhq-radius'>
+      <view class='cro_right_bottom'></view>
+      <view class='cro_right_top'></view>
+      <view class='line-clamp-1 color-999   font-size-28 '>
+        {{item.name}}</view>
+      <view>
+        <text class='font-size-22 bgcolor-f8 color-999 p-x-20 m-r-30'>满减券</text> </view>
+      <view class='font-size-24 color-999 '>核销日期:2019-05-24</view>
+      <view class='font-size-24 color-999 line-clamp-1'>核销用户:长毛的秃子</view>
+    </view>
+  </view>
+  <view class='yhq-lq text-align'>
+    <view class='cro-lq h-100 b-yhjy-ysy p-20 yhq-radius-lq text-align'>
+      <view class='cro_left_bottom'></view>
+      <view class='cro_left_top'></view>
+      <view class='text-align '>
+        <view bindtap='ewm' data-id='{{item.userCouponId}}' data-full='{{item.full}}' data-money='{{item.money}}' data-typeid='{{item.typeId}}' class='font-size-28 color-999 text-align bgcolor-f8 p-x-15 p-y-10 text-align rounded-md mt-20'>已核销</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 优惠券已使用 -->
+<view wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{item.typeId==2&&item.qstatus==2}}" hover-class='none' class='flexcenter flexspbet p-20'>
+  <view class='yhq-je'>
+    <view class='cro h-100 bgcolor-f8 p-20 yhq-radius text-align '>
+      <view class='color-999 font-size-36 font-w-yhq mt-20'>¥{{item.money}}</view>
+      <view class='font-size-22 color-999 line-20 '>满{{item.full}}减</view>
+    </view>
+  </view>
+  <view class='yhq'>
+    <view class='cro h-100 b-yhj-ysy p-20 yhq-radius'>
+      <view class='cro_right_bottom'></view>
+      <view class='cro_right_top'></view>
+      <view class='line-clamp-1 color-999  font-size-28 '>
+        {{item.name}}</view>
+      <view>
+        <text class='font-size-22 bgcolor-f8 color-999 p-x-20 m-r-30'>满减券</text> </view>
+      <view class='font-size-24 color-999'>有限期:{{item.endTime}}</view>
+    </view>
+  </view>
+  <view class='yhq-lq text-align'>
+    <view class='cro-lq h-100 b-yhj-ysy p-20 yhq-radius-lq text-align'>
+      <view class='cro_left_bottom'></view>
+      <view class='cro_left_top'></view>
+      <view class='text-align '>
+        <view data-id='{{item.userCouponId}}' class='font-size-28  text-align bgcolor-f8 color-999 p-x-15 p-y-10 text-align rounded-md mt-20'>已核销</view>
+        <!-- <view wx:else class='font-size-28 color-fff text-align bgcolor-ccc p-x-15 p-y-10 text-align rounded-md'>已抢完</view> -->
+        <!-- <view wx:if="{{item.number>0}}" class='font-size-28 line-56 color-999'>剩10张</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{luntan==2&&item.typeId==2&&struts==3&&item.qstatus==3}}" hover-class='none' class='flexcenter flexspbet p-20'>
+  <view class='yhq-je'>
+    <view class='cro h-100 bgcolor-f8 p-20 yhq-radius text-align '>
+      <view class='color-999 font-size-36 font-w-yhq mt-20'>¥{{item.money}}</view>
+      <view class='font-size-22 color-999 line-20 '>满{{item.full}}减</view>
+    </view>
+  </view>
+  <view class='yhq'>
+    <view class='cro h-100 b-yhj-ysy p-20 yhq-radius'>
+      <view class='cro_right_bottom'></view>
+      <view class='cro_right_top'></view>
+      <view class='line-clamp-1 color-999  font-size-28 '>
+        {{item.name}}</view>
+      <view>
+        <text class='font-size-22 bgcolor-f8 color-999 p-x-20 m-r-30'>满减券</text> </view>
+      <view class='font-size-24 color-999'>有限期:{{item.endTime}}</view>
+    </view>
+  </view>
+  <view class='yhq-lq text-align'>
+    <view class='cro-lq h-100 b-yhj-ysy p-20 yhq-radius-lq text-align'>
+      <view class='cro_left_bottom'></view>
+      <view class='cro_left_top'></view>
+      <view class='text-align '>
+        <view data-id='{{item.userCouponId}}' class='font-size-28 color-999 text-align bgcolor-f8 p-x-15 p-y-10 text-align rounded-md mt-20'>已使用</view>
+        <!-- <view wx:else class='font-size-28 color-fff text-align bgcolor-ccc p-x-15 p-y-10 text-align rounded-md'>已抢完</view> -->
+        <!-- <view wx:if="{{item.number>0}}" class='font-size-28 line-56 color-999'>剩10张</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+<view class='font-size-28 color-999 text-align flexColCCen '> 没有更多了~~</view>
+<view class='modal flexColCCen ' wx:if="{{!qrcode==''}}" bindtap='gbewm'>
+  <view class='modal-content-x  footfixed center p-20-30'>
+    <image src='{{qrcode}}' class='modal-content-x'></image>
+  </view>
+</view>

@@ -1,0 +1,373 @@
+<!--内容开始-->
+<!--分享事件-->
+<view class="fxx" hidden="{{!fxx}}" catchtap="changefxx" catchtouchmove="preventTouchMove">
+    <view class="kp">
+        <canvas style="" class="canvasbox" canvas-id="mycanvas">
+        </canvas>
+    </view>
+    <!-- 生成canvas图片海报-->
+    <view class="bc" catchtap="saveimage" data-img="{{tym}}">
+        保存图片
+    </view>
+</view>
+<view>
+    <view wx:if="{{canIUse}}" class="alertBox">
+        <image src="/images/xiqian.png"/>
+        <button class='sqdl' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信快捷登录</button>
+        <view>(若您的微信手机号未注册，将为您直接注册)</view>
+    </view>
+    <scroll-view scroll-y="true" wx:else bindscroll="scrolltoupper"
+                 style="width:{{width}}px;height:{{height+statusBarHeight+46+46+statusBarHeight}}px; margin: 0 auto">
+        <view class="custom flex_center  flexColCCen {{floorstatus?'':'no-bg'}} bg-color"
+              style="padding-top:{{statusBarHeight}}px">
+            <view class='center'>
+                <image class='img-40 fhj-l' src='/images/x_left.png' bindtap='fanhui'></image>
+                <text class=' font-size-32'>商品详情</text>
+            </view>
+        </view>
+        <empty
+                bindemptyevent="emptyCallback"
+                imgLayouSrc="{{imgLayouSrc}}"
+                titleLayou="{{titleLayou}}"
+                emptyType="{{empty}}"
+                loadingTransparent="{{false}}">
+            <view wx:if="{{!isLoading}}">
+                <view class="cont">
+                    <view class="video-iframe" hidden="{{!videoIstrue}}">
+                        <!--商品的视频播放 -->
+                        <video
+                                src="{{imghost + procedure.video}}"
+                                custom-cache="{{false}}"
+                                class='video-in-carousel'
+                                controls
+                                id='video-in-carousel'
+                                bindtimeupdate="onVideoTimeUpdate"
+                                bindplay="onVideoPlay"
+                                bindpause="onVideoPause"
+                                bindended="onVideoEnded"
+                                bindprogress="onVideoProgress">
+                        </video>
+                        <view class="exit-video" bindtap="exitVideo">退出播放</view>
+                    </view>
+                    <swiper style="height:406px" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"
+                            interval="{{interval}}" duration="{{duration}}" class='bg-color' bindchange="bannerChange">
+                        <block>
+                            <swiper-item wx:if="{{ procedure.video}}">
+                                <block>
+                                    <view class='video-wrapper' catchtap="play">
+                                        <view class='slide-image'>
+                                            <image src="{{imghost+procedure.lbImgs[0]}}" class='slide-image'
+                                                   mode='aspectFill'/>
+                                            <image src='/images/play.png' mode='center'
+                                                   class='slide-image play-icon'></image>
+                                        </view>
+                                    </view>
+                                </block>
+                            </swiper-item>
+                            <swiper-item wx:for="{{procedure.lbImgs}}" wx:key="{{procedure.id}}">
+                                <block>
+                                    <image wx:if="{{item}}" src="{{imghost+item}}" class="slide-image "
+                                           mode="aspectFill"/>
+                                </block>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                    <view class='flexcenter flexspbet p-x-20 bg-color' style='height:50px;'>
+                        <view class="cpbt w-90 font-size-34 font-w">{{procedure.goodsName}}</view>
+                        <!-- 分享 -->
+                        <view class="w-10">
+                            <button bindtap="addFavorites" data-id='{{procedure.id}}' class='fx1 flexColCCen'
+                                    style="width:82rpx">
+                                <image class="img-30 p-5" src="{{itemData?'/images/shoca.png':'/images/shoc.png'}}"/>
+                                <view class='font-size-24 color-999 fx1-line'>{{itemData?'已收藏':'收藏'}}</view>
+                            </button>
+
+                        </view>
+                    </view>
+                    <view class="line-clamp-1 shocbox"
+                          style="padding-right: 150rpx;padding-left:20rpx;font-size:24rpx;font-family:PingFang SC;font-weight:400;color:rgba(142,141,141,1);font-size:30rpx;background-color: #fff;">
+                        {{procedure.goodsDetails}}
+                    </view>
+                    <view class="gmxx  flexspbet bg-color">
+                        <view class='font-size-28 jiage'>
+                            <text class='font-size-28 '>¥</text>{{procedure.goodsCost<=0?"面议":procedure.goodsCost||0}}
+                        </view>
+                        <view class='flexcenter'>
+                            <view class="c6 fl_r font_12 m-r-30" style='color:#999'>已售{{procedure.syNum||0}}</view>
+                            <view class="c6 fl_r font_12" style='color:#999'>剩余{{procedure.qkucun-procedure.syNum||0}}
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 优惠券 -->
+                    <view class='p-20 bg-color m-t-10' wx:if="{{yhqs.length!=0}}">
+                        <view class=' flexspbet flexcenter'>
+                            <view class='font-size-34 font-w p-t-20'>优惠</view>
+                            <i-icon type="enter" color='fl_r'/>
+                        </view>
+                        <view class='mb-10 rows text-br  p-y-15' bindtap="setModalStatus2" data-status="2">
+                            <view wx:for="{{yhqs}}" wx:key="index" class='font-size-24 m-r-20 mb-10'>
+                                <text class='logoyy-br p-x-5 logoyy-q'>领{{item.reduce}}元券</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <!--购买弹窗-->
+                <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+                <view animation="{{animationData}}" class="drawer_attr_box h-6" wx:if="{{showModalStatus}}">
+                    <image src="/images/newclose.png" class="close_icon1 flexColCCen" data-status="0"
+                           bindtap="setModalStatus"/>
+                    <view class="drawer_attr_content">
+                        <view class="text_center p-y-20 flexcenter">
+                            <image class="drawer_image" mode="aspectFill" wx:if="{{procedure.lbImgs[0]}}"
+                                   src="{{imghost+procedure.lbImgs[0]}}"></image>
+                            <view class="mingcheng">
+                                <view class='font-size-28 font-w' style="width:423rpx;line-height:33rpx">
+                                    {{procedure.goodsName}}
+                                </view>
+                                <view style="font-size:26rpx;color:#999">规格：{{yanse||'请选择'}} {{guige||'请选择'}}</view>
+                                <view style="font-size:28rpx;color:red" class="{{yj?'shanc':''}}">¥
+                                    <text class='font-size-34 font-w'>{{buynum==1?buycost:sum}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="buy-box">
+                            <view style=' padding-top: 20rpx;'>
+                                <view class="font-size-30 font-w guige-title">{{attrValueList[0].attrKey}}</view>
+                                <view class="p-y-15 rows hei  m-r-44">
+                                    <view class="font-size-26 attr_value {{attrIndex==firstIndex || attrValueList[0].attrValueStatus[valueIndex]?(value.qtypeName==attrValueList[0].selectedValue||attrValueList[0].attrValues.length<=1&&attrValueList[1].attrValues.length<=1?'attr_value_active':''):'attr_value_disabled'}}"
+                                          bindtap="selectAttrValue"
+                                          data-status="{{attrValueList[0].attrValueStatus[valueIndex]}}"
+                                          data-value="{{value}}" data-key="{{attrValueList[0].attrKey}}" data-index="0"
+                                          data-selectedvalue="{{attrValueList[0].selectedValue}}"
+                                          wx:for="{{attrValueList[0].attrValues}}" wx:for-item="value"
+                                          wx:for-index="valueIndex" wx:key="index">{{value.qtypeName}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view style=' padding-top: 20rpx;'>
+                                <view class="font-size-30 font-w guige-title">{{attrValueList[1].attrKey}}</view>
+                                <view class="p-y-15 rows hei m-r-44 ">
+                                    <view class="font-size-26 attr_value {{attrIndex==firstIndex || attrValueList[1].attrValueStatus[valueIndex]?(value.qtypeName==attrValueList[1].selectedValue||attrValueList[0].attrValues.length<=1&&attrValueList[1].attrValues.length<=1?'attr_value_active':''):'attr_value_disabled'}}"
+                                          bindtap="selectAttrValue1"
+                                          data-status="{{attrValueList[1].attrValueStatus[valueIndex]}}"
+                                          data-value="{{value}}" data-key="{{attrValueList[1].attrKey}}" data-index="1"
+                                          data-selectedvalue="{{attrValueList[1].selectedValue}}"
+                                          wx:for="{{attrValueList[1].attrValues}}" wx:for-item="value"
+                                          wx:for-index="valueIndex" wx:key="index">{{value.qtypeName}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="shu flexcenter flexspbet ">
+                            <text class="cun">购买数量</text>
+                            <view class="dian">
+                                <view class="stepper">
+                                    <view bindtap="changeNum" data-alpha-beta="1"
+                                          data-num='{{procedure.qkucun-procedure.syNum}}'>
+                                        <image class="normal" src="/images/sub.png"/>
+                                    </view>
+                                    <view class="nownum">{{buynum}}</view>
+                                    <view bindtap="changeNum" data-alpha-beta="2"
+                                          data-num='{{procedure.qkucun-procedure.syNum}}'>
+                                        <image class="{{minusStatuses[index]}}" src="/images/sup.png"/>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view class='footcs'>
+                            <view class="footc box">
+                                <view class='goCart' wx:if="{{cart}}" bindtap="goCart"
+                                      data-spname="{{procedure.goodsName}}" data-spid="{{procedure.id}}"
+                                      data-spimg="{{procedure.lbImgs[0]}}" data-spnum="{{buynum*buycost}}"
+                                      data-zongjia='{{procedure.goodsCost*buynum-jmnum}}'>确认
+                                </view>
+                                <view class='goBuy' wx:else bindtap="{{gwc?'addShopCart':'maimaimai'}}"
+                                      data-spname="{{procedure.goodsName}}" data-spid="{{procedure.id}}"
+                                      data-spimg="{{procedure.lbImgs[0]}}" data-spnum="{{buynum*buycost}}"
+                                      data-zongjia='{{procedure.goodsCost*buynum-jmnum}}'>{{gwc?'立即加入':'立即购买'}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <!--优惠券弹窗-->
+                <view class="drawer_screen" bindtap="setModalStatus2" data-status="0"
+                      wx:if="{{showModalStatus2}}"></view>
+                <view animation="{{animationData}}" class="drawer_attr_box h-6" wx:if="{{showModalStatus2}}">
+                    <view class="close_icon1 flexColCCen" bindtap="setModalStatus2" data-status="0">×
+                    </view>
+                    <view>
+                        <view class='font-size-28 color-666 center p-y-40-20'>选择店铺优惠券</view>
+                        <view class='font-size-30 color-333 font-w p-20'>可领取优惠券</view>
+                        <view class="scroll-box">
+                            <view wx:for="{{yhqs}}" wx:key="index" class='p-y-20'>
+                                <view class="drawer_attr_content flexspbet flexcenter">
+                                    <image class='fhj-yhq' src='/images/yhq-dpbg.png' mode="aspectFill"></image>
+                                    <view class='w-25 ' style="width:29%">
+                                        <view class='flexcenter kf_b'>
+                                            <view class='center kf_b'>
+                                                <view class='font-size-24 color-fff center p-y-20'>￥
+                                                    <text class='font-size-50' style="margin-left: -11rpx;font-size:43rpx">{{item.money}}</text>
+                                                </view>
+                                                <view class='font-size-22 color-fff center'>优惠券</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class='w-75 '>
+                                        <view class='m-x-10 flexspbet flexcenter m-y-20'>
+                                            <view class='w-70' style="width:69%">
+                                                <view class='font-size-30 color-333 p-y-10'>满{{item.full}}可用</view>
+                                                <view class='font-size-22 color-999 p-y-10'>有限期：{{item.endTime}}</view>
+                                            </view>
+                                            <button class='font-size-28 bg-color text-align but-lq' bindtap="qyhq"
+                                                    data-id="{{item.id}}">
+                                                <text class='color-b  p-x-15 p-y-10 rounded-md'>免费领取</text>
+                                            </button>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class='p-20 bg-color cont'>
+                    <view class=' flexspbet flexcenter'>
+                        <view class='font-size-34 font-w p-y-20-6'>商品评论</view>
+                        <i-icon type="enter" color='fl_r'/>
+                    </view>
+                    <view>
+                        <view class='p-y-20  xqbb' wx:for="{{comments}}" wx:key="index" wx:if="{{index<plgs}}">
+                            <view class='flex-0  p-y-20'>
+                                <view class='w-10 m-r-10'>
+                                    <image src='{{item.qicon}}' class='image-50 rounded-x' mode="aspectFill"></image>
+                                </view>
+                                <view class='w-90'>
+                                    <view class='flexcenter flexspbet'>
+                                        <view class='font-size-32 font-w line-clamp-good'>{{item.qname}}</view>
+                                        <view class='font-size-26 color-999 fl_r'>{{item.qdate}}</view>
+                                    </view>
+                                    <image wx:for="{{item.qnum}}" wx:key='index' src='/images/stars.png'
+                                           class='img-20 rounded-x m-r-10' mode="aspectFill"></image>
+                                    <image wx:for="{{5-item.qnum}}" wx:key='index' src='/images/starsed.png'
+                                           class='img-20 rounded-x m-r-10' mode="aspectFill"></image>
+                                    <view class='font-size-28 color-666'>{{item.qcontent}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view wx:if="{{comments.length}}" class='font-size-28 color-999 center p-y-40-20'
+                              bindtap='plgs'>{{plgs==1?'查看更多':'收起更多'}}
+                        </view>
+                        <view wx:else class='font-size-28 color-999 center p-y-40-20'>暂无评论</view>
+                    </view>
+                </view>
+                <!--图文详情头部-->
+                <view class='p-y-20 bg-color'>
+                    <view class=" on p-y-40-20 p-x-20 font-size-34 font-w" data-current="0" bindtap="swichNav">图文详情
+                    </view>
+                    <!---底部开始-->
+                    <view wx:if="{{(currentTab==0)}}" class='p-y-20'>
+
+                        <image wx:if="{{procedure.imgs}}" wx:for="{{procedure.imgs}}" wx:key="index"
+                               src="{{imghost+item}}" style="width:100%" mode="widthFix"/>
+                    </view>
+                </view>
+                <view style='height:50px;'></view>
+                <view class="footfixed tc flexcenter pt-15">
+                    <view class="fl_l w40 font_12 hui03 df flexcenter ">
+                        <view bindtap='godp' class="df_1 l_h15 pt5">
+                            <image src='/images/shopicon.png' class='icon_kf'></image>
+                            <view class="dbtext">店铺</view>
+                        </view>
+                        <view class="df_1 l_h15 pt5 bre center">
+
+                            <form bindsubmit="tochat" report-submit>
+                                <button wx:if="{{!phone}}" formType="submit" open-type="getPhoneNumber"
+                                        class='center ke l_h15'>
+                                    <image class="icon_kf p-5" src="/images/kef.png"></image>
+                                    <view class="dbtext">客服</view>
+                                </button>
+                                <button wx:else formType="submit" class='center ke l_h15'>
+                                    <image class="icon_kf p-5" src="/images/kef.png"></image>
+                                    <view class="dbtext">客服</view>
+                                </button>
+                            </form>
+                        </view>
+                        <view class="df_1 l_h15 pt5">
+                            <view bindtap="goCartnow" class="aftericon" data-id='{{procedure.id}}'>
+                                <image class="icon_kf aftericon" src="/images/cart.png"></image>
+                                <text>{{goodsNum}}</text>
+                                <view class="dbtext">购物车</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="fl_r flexcenter w60 ">
+                        <view class='w90 bg-sj rounded-0  l1_h15 wddd'>
+                            <view class=" white p-y-255 l1_h15 box" wx:if="{{!procedure.goodsCost<=0}}">
+                                <view class="addcart" wx:if="{{procedure}}" bindtap="setModalStatus" data-status="2"
+                                      data-type="2" wx:if="{{procedure.id}}">加入购物车
+                                </view>
+                                <view class="nowbuy" wx:if="{{procedure}}" bindtap="setModalStatus" data-status="2"
+                                      wx:if="{{procedure.id}}">立即购买
+                                </view>
+                            </view>
+                            <view class=" white p-y-25 l1_h15 " wx:if="{{procedure.goodsCost<=0}}" data-status="2">
+                                面议交易
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </empty>
+    </scroll-view>
+</view>
+        <!-- 内容未加载完成时显示遮罩层 -->
+<view class="initStatus {{isLoading?'':'initStatusShow'}}" wx:if="{{empty!=3&&isLoading}}">
+    <view class="spinner">
+        <view class="spinner-container container1">
+            <view class="circle1"></view>
+            <view class="circle2"></view>
+            <view class="circle3"></view>
+            <view class="circle4"></view>
+        </view>
+        <view class="spinner-container container2">
+            <view class="circle1"></view>
+            <view class="circle2"></view>
+            <view class="circle3"></view>
+            <view class="circle4"></view>
+        </view>
+        <view class="spinner-container container3">
+            <view class="circle1"></view>
+            <view class="circle2"></view>
+            <view class="circle3"></view>
+            <view class="circle4"></view>
+        </view>
+    </view>
+</view>
+<view class="fx-box">
+    <view data-id='{{procedure.id}}' bindtap="fenx" data-title='{{procedure.qname}}' class="share" hover-class='none'>
+        <image src="/images/fx.png"/>
+    </view>
+</view>
+<view class="fenx-box" wx:if="{{fxbox}}" catchtap="changefx">
+    <view class="fenx-boxsub">
+        <view class="fenx-boxsub-title">分享</view>
+        <view class="fenx-boxsub-box box box-pack-around">
+            <button open-type="share" class="wx-fx" data-id='{{procedure.id}}' data-title='{{procedure.qname}}'>
+                <view class="wx fx-con">
+                    <image src="/images/wxicon.png"/>
+                </view>
+                <view class="yy"></view>
+                <view class="fx-wz">微信</view>
+            </button>
+            <view catchtap="share">
+                <view class="hb fx-con">
+                    <image src="/images/pricture.png"/>
+                </view>
+                <view class="yy"></view>
+                <view class="fx-wz">生成海报</view>
+            </view>
+        </view>
+        <view catchtap="changefx" class="quxiao">取消</view>
+    </view>
+</view>

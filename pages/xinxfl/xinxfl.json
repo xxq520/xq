@@ -1,0 +1,9 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "分类信息",
+  "usingComponents": {
+    "i-load-more": "../../components/load-more/index",
+    "i-icon": "../../dist/icon/index",
+    "empty":"../../components/empty/empty"
+  }
+}

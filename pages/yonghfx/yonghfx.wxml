@@ -1,0 +1,133 @@
+<import src="/pages/im/chat-list/view/chat-item.wxml" />
+<import src="/pages/im/chat-list/view/chat-item-head.wxml" />
+<scroll-view class='scroller' style="width:{{width}}px;height:{{height-54}}px;" scroll-y="true" bindscrolltolower="{{noinfo?'':'onScroll'}}">
+  <view class='navbtns'>
+    <view class="flex-0 box-pack-around">
+      <view bindtap='tosel' data-sel='1' class="items {{sel==1 ? 'actives' : ''}}">雷达</view>
+      <view bindtap='tosel' data-sel='2' class="items {{sel==2 ? 'actives' : ''}}">聊天</view>
+      <!--    <view bindtap='tosel' data-sel='3' class="items {{sel==3 ? 'actives' : ''}}">通讯录</view> -->
+      <view bindtap='tosel' data-sel='4' class="items {{sel==4 ? 'actives' : ''}}">行为</view>
+    </view>
+  </view>
+  <view wx:if="{{(sel == 1)&&(records.length==0)}}" class="search_no">
+    <view class="font_14">
+      <image mode="aspectFill" class="scimg" src="/images/search_no.png"></image>
+    </view>
+    <!-- <text>当前没有数据/(ㄒoㄒ)/~~</text> -->
+  </view>
+  <view wx:if="{{sel == 1}}" wx:for="{{records}}" wx:key="{{item.id}}">
+    <view class='tc' wx:if="{{item.qshow}}">
+      <text class='c9  bg p-x-10 p-y-5 font-size-28'>{{item.qshowtime}}</text>
+    </view>
+    <navigator class='flexcenter m-20 bg-color p-20 rounded wddd' hover-class='none' url='/pages/yonghfx/yonghxq?userid={{item.quserid}}'>
+      <view class='w-15'>
+        <image src='{{item.qicon}}' class='img-98 rounded-x'></image>
+      </view>
+      <view class='font-size-28 w-85 l_h26 '>
+        <view class='flexcenter flexspbet c6 '>
+          <view>{{item.qnick}}
+            <text class='c3'>{{item.qmiaoshu}}</text> </view>
+          <view class='fa fa-angle-right c3'></view>
+        </view>
+        <view class='c9'>{{item.qtime}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view wx:if="{{sel == 2}}">
+    <view wx:if="{{conversations.length==0}}" class="search_no">
+      <view class="font_14">
+        <image class="scimg" src="/images/search_no.png"></image>
+      </view>
+      <!-- <text>暂时还没有聊天/(ㄒoㄒ)/~~</text> -->
+    </view>
+    <block wx:for="{{conversations}}" wx:key="conversationId">
+      <template is="chat-item" data="{{item:item}}" />
+    </block>
+  </view>
+  <view wx:if="{{sel == 3}}">
+    <block wx:for="{{friends}}" wx:key="friendId">
+      <view class="chat-item-style">
+        <template is="chat-item-head" data="{{headUrl:item.friendHeadUrl,unread:0}}" />
+        <view class="chat-item-content-super-style">
+          <view class="chat-item-name-style">{{item.friendName}}</view>
+        </view>
+      </view>
+      <view class="list-divide-line" style="width: 79.5%;margin-left: 20.5%" />
+    </block>
+  </view>
+  <!-- 行为 -->
+  <view wx:if="{{sel == 4}}">
+    <view class='bg-color'>
+      <view>
+        <!-- <canvas canvas-id="Canvas" style="width:100%;height:280px;"></canvas> -->
+
+
+        <view class='radarContainer' bindtap="reDraw">
+          <canvas class='radarCanvas' canvas-id='radarCanvas'></canvas>
+        </view>
+      </view>
+    </view>
+
+    <view class='bg-color p-20 mt-10'>
+      <view class='font-size-30 color-333 text-align p-y-20 '>客户与我互动</view>
+
+      <view wx:for="{{chanelArray1}}" class='flexcenter p-y-20 ' wx:key="index">
+        <view class='font-size-28 color-333 w-20'>{{item[0]}}</view>
+        <view class='progress w-85'>
+          <progress percent="{{item[1]}}" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#fcaf39" backgroundColor="#fff" />
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+
+  <!-- <canvas style="width: 200px; height: 200px;" canvas-id="firstCanvas"></canvas> -->
+
+
+
+
+  <view wx:if="{{load}}">
+    <i-load-more />
+  </view>
+  <view wx:if="{{noinfo}}">
+    <i-load-more tip="没有更多了" loading="{{ false }}" />
+  </view>
+</scroll-view>
+<!-- 底部导航 -->
+<!-- <view style='height:50px;'></view> -->
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+  <view class='sjdh full-width bg_hui row-b'>
+    <view bindtap='shouye' hover-class='none' class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/sj-home.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>首页</view>
+    </view>
+    <view class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/up1.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-e51'>商机分析</view>
+    </view>
+    <!-- <view class='sjies text-align' bindtap='saoma'>
+      <view>
+        <image src='/images/suo.png' mode="aspectFill" class='img-98'></image>
+      </view>
+    </view> -->
+    <view bindtap='xiaoxi' class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/sj-xx0.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>订单消息</view>
+    </view>
+    <view bindtap='wode' class='sjies text-align m-t10' url='/pages/pics/pics' hover-class='none'>
+      <view>
+        <image src='/images/male.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>我的</view>
+    </view>
+  </view>
+</view>

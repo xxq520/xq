@@ -1,0 +1,18 @@
+/* pages/tixian/tixiants.wxss */
+
+page {
+  background-color: #f8f8f8;
+}
+.img-167{height: 180rpx;width: 180rpx;}
+.p-30{padding: 60rpx;}
+.but-qb1 {
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-top: 59rpx;
+  /* border: #ff4639 solid 2rpx; */
+  background-color:rgb(255, 48, 30);
+  border-radius: 90rpx;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+}

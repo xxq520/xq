@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "我的钱包",
+    "navigationBarBackgroundColor": "#fff",
+    "usingComponents": {
+      "i-load-more": "../../components/load-more/index"
+    }
+}

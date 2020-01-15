@@ -1,0 +1,22 @@
+@import "../../modules/chat-page/word.wxss";
+@import "../../modules/chat-input/chat-input.wxss";
+@import "../../modules/chat-page/chat-page-status.wxss";
+page {
+    background-color: #EFEFEF;
+}
+.ltbt{
+  /* padding-top: 54rpx; */
+  background-color: #f4f4f4;
+position: fixed;
+z-index: 999;   
+}
+.ltbt-but{
+    background: no-repeat;
+    font-size: 32rpx;
+    /* width:100%; */
+    line-height: 74rpx;
+    margin-top: 15rpx;
+    border-radius: 0;
+    margin-bottom: 15rpx;}
+.ltbt-but::after{border: none;}
+.bbh{border-right: 1rpx solid #ccc;}

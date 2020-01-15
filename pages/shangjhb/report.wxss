@@ -1,0 +1,54 @@
+.report{
+  padding: 57rpx 40rpx 0;
+}
+.text-font{
+  font-weight: bold;
+}
+.box-flex{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 7rpx;
+}
+.box-item{
+  padding: 4rpx 12rpx;
+  margin-top: 28rpx;
+  letter-spacing:4rpx;
+  color:rgb(208, 208, 208);
+  border: 1rpx solid rgb(208, 208, 208);
+  border-radius: 45rpx;
+  margin-right: 13rpx;
+  font-size: 28rpx;
+}
+.box-item-visited{
+  color: rgb(247, 47, 26);
+  border: 1px solid rgb(247, 47, 26);
+}
+.m-t-50{
+  margin-top: 50rpx;
+}
+.m-b-35{
+  margin-bottom: 35rpx;
+}
+.text-box{
+  box-sizing: border-box;
+  width: 670rpx;
+  height: 268rpx;
+  border: 1rpx solid rgb(216,216,216);
+  border-radius: 10rpx;
+  padding: 20rpx 24rpx;
+}
+.textarea{
+  color: rgb(216,216,216);
+  font-size: 28rpx;
+}
+.confire{
+  width: 540rpx;
+  height: 76rpx;
+  background-color: rgb(247, 47, 26);
+  color: rgb(255, 255, 255);
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 76rpx;
+  margin: 90rpx auto 0;
+  border-radius: 60rpx;
+}

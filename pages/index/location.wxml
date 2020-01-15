@@ -1,0 +1,28 @@
+<view class='m-30 flexcenter'>
+  <view class='search'>
+    <icon type="search" color="#999999" size="18"></icon>
+    <input bindinput='search' value='{{inputValue}}' confirm-type='search' type="text" maxlength="100" placeholder="查找信息" placeholder-style="color:#999999" />
+  </view>
+</view>
+<view wx:if="{{!search_falg}}" class='p-15 bg-color flexcenter flexspbet'>
+  <view class='w-70 line-clamp-1'>{{address}}</view>
+  <view bindtap='dw' class=' color-333 p-5 rounded-md flexcenter'>
+    <image src='/images/map.png' class='img-30 m-r-10'></image>重新定位
+  </view>
+</view>
+<view class=' cs-border'>
+</view>
+<view wx:if="{{lishi.length!=0&&(!search_falg)}}" wx:key="{{index}}" class="report">
+  <view class='text-font font-size-30'>定位记录</view>
+  <view class='box-flex flexcenter flexspbet p-y-20' wx:for='{{lishi}}' wx:key="{{index}}">
+    <view class='box-item w-90' data-items="1" bindtap='lishi' data-index='{{index}}'>{{item.name}}</view>
+    <image src='/images/sctp.png' class='img-30' bindtap='deletels' data-deleteid="{{index}}"></image>
+  </view>
+</view>
+<navigator wx:if="{{search_falg}}" class="report" wx:for='{{business}}' wx:key="{{index}}" url='/pages/shangjzy/shangjzy?id={{item.id}}'>
+  <view class='box-flex flexcenter flexspbet p-y-20'>
+    <view class='box-item1' data-items="1" bindtap='changeColor' bindtap='lishi' data-index='{{index}}'>{{item.storeName}}</view>
+    <view>{{item.distance>1000?item.distance/1000+'km':item.distance+'m'}}</view>
+  </view>
+  <view class='font-size-26 color-999 w-90' data-items="1" bindtap='changeColor' bindtap='lishi' data-index='{{index}}'>{{item.address}}</view>
+</navigator>

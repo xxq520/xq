@@ -1,0 +1,56 @@
+<scroll-view class='dataContainer' bindscroll="scrolltoupper"  scroll-y bindscrolltolower="nextDataPage" style="height:{{height}}px">
+    <view wx:if="{{procedure}}">
+    <view class="page">
+      <view class='navbtns'>
+        <view class="flex-0 box-pack-around">
+          <view bindtap='luntan' data-luntan='1' class="items {{luntan==1?'actives':''}}">上架商品</view>
+          <view bindtap='luntan' data-luntan='2' class="items {{luntan==2?'actives':''}}">下架商品</view>
+        </view>
+      </view>
+      <view class="search_no" wx:if="{{!procedure}}">
+        <view class="font_14">
+          <image class="scimg" src="/images/search_no.png"></image>
+        </view>
+        <text>暂时还没有商品/(ㄒoㄒ)/~~</text>
+      </view>
+    </view>
+      <view wx:for="{{procedure}}" wx:key="{{item.id}}" wx:if="{{item.qstatus==1&&luntan==1&&item.state!=3}}" bindtap='spxq' data-procedure='{{item}}' hover-class='none' class='m-20 img'>
+        <view class=' p-20 bg-color wddd rounded'>
+          <view class='font-size-30 line-24'>{{item.goodsName}}【{{item.state==1?'待审核':'已通过'}}】</view>
+          <view class='font-size-30 color-e51 line-24'>￥{{item.goodsCost}}</view>
+          <view class='row-spgl'>
+            <image wx:for="{{item.lbImgs}}" wx:key="{{index}}" wx:for-item="items"  wx:for-index="indes"  wx:if="{{item.lbImgs.length&&indes<3}}" src="{{item.show?imghost+items:''}}" class='sp-wh' mode="aspectFill"></image>
+<!--            <image  wx:if="{{!item.lbImgs.length}}" src="{{item.show?imghost+item.lbImgs:''}}" class='sp-wh' mode="aspectFill"></image>-->
+          </view>
+          <view catchtap='del' data-id='{{item.id}}' data-index='{{index}}' class='font-size-28 color-999 line-24 text-right'>删除</view>
+        </view>
+      </view>
+      <view wx:for="{{procedure}}" wx:key="{{item.id}}" wx:if="{{item.qstatus==2&&luntan==2&&item.state!=3}}" bindtap='spxq' data-procedure='{{item}}' hover-class='none' class='m-20'>
+        <view class=' p-20 bg-color wddd rounded'>
+          <view class='font-size-30 line-24'>{{item.goodsName}}【{{item.state==1?'待审核':'已通过'}}】</view>
+          <view class='font-size-30 color-e51 line-24'>￥{{item.goodsCost}}</view>
+          <view class='row-spgl'>
+            <image wx:for="{{item.lbImgs}}" wx:key="{{index}}" wx:if="{{index<3}}" src='{{imghost+item}}' class='sp-wh' mode="aspectFill"></image>
+          </view>
+          <view catchtap='del' data-id='{{item.id}}' data-index='{{index}}' class='font-size-28 color-999 line-24 text-right'>删除</view>
+          <!-- <view class='font-size-28 color-999 line-24'>2019-04-06 19:00:00</view> -->
+        </view>
+      </view>
+    <view wx:if="{{load}}">
+      <i-load-more />
+    </view>
+    <view wx:if="{{!load}}">
+      <view class='font-size-28 color-999 text-align flexColCCen '> 没有更多了~~~</view>
+    </view>
+    <view style='height:50px;'></view>
+
+  </view>
+</scroll-view>
+<view class='footc-x flexcenter flexspbet'>
+  <view bindtap='sptpgl' data-procedureType='{{procedureType}}' hover-class='none' class='w-50'>
+    <view class='footc-1 '>类别管理</view>
+  </view>
+  <navigator url='/pages/shangpgl/shangpfb' hover-class='none' class='w-50'>
+    <view class='footc '>添加商品</view>
+  </navigator>
+</view>

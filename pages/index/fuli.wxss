@@ -1,0 +1,16 @@
+/* pages/index/fuli.wxss */
+page{background: #7c09ff;font-family: "苹方";}
+
+.fl-bg{
+  height: 726rpx;
+  width: 100%;
+  }
+  .fl-bg1{
+  height: 225rpx;
+  width: 225rpx;
+  }
+  .text-sc {
+  text-decoration: line-through;
+}
+
+.mb-20{margin-bottom: 20rpx;}

@@ -1,0 +1,25 @@
+<!--pages/xxfb/fbxz.wxml-->
+<view class='m-20'>
+  <view class='font-size-28 color-333 '>喜钱
+  </view>
+   <view class='font-size-28 color-333'>消费赚钱两不误的生活服务平台 
+  </view>
+   <view class='font-size-28 color-333 mt-10'> 1、拓展引流，全网触达
+  </view>
+  <view class='font-size-28 color-333'>为线下门店拓展流量，增加店铺流量和知名度，同时打造用户随身携带的消费增值平台，充分发挥店铺的高信任度优势。
+  </view>
+   <view class='font-size-28 color-333'>2、一键发布，方便快捷
+  </view>
+   <view class='font-size-28 color-333'>合作商家可一键发布商户信息，消费者可一键发布分享增值业务，让生意更容易，让消费更便捷，让用户更增值
+  </view>
+   <view class='font-size-28 color-333'>3、信息分类，用户更精准
+  </view>
+  <view class='font-size-28 color-333'>商户分类，信息更细分，用户更精准，方便线下门店进行精准营销。
+  </view>
+   <view class='font-size-28 color-333'>4、轻松赚钱，快乐消费
+  </view>
+  <view class='font-size-28 color-333'>在吃喝玩乐日常消费中，花原本要花的钱，赚回自己花的钱。
+  </view>
+</view>
+   <view style='height:100px;'></view>
+  <button class='footc'>确认</button>

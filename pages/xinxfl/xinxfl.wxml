@@ -1,0 +1,119 @@
+<empty
+  bindemptyevent="emptyCallback" 
+  imgLayouSrc="{{imgLayouSrc}}" 
+  titleLayou="{{titleLayou}}" 
+  emptyType="{{empty}}"
+  loadingTransparent="{{false}}" >
+  <button wx:if="{{showGetUser}}" open-type="getUserInfo" bindgetuserinfo="getUser" class="showGetUser"></button>
+<scroll-view class='scroller' style="width:{{width}}px;height:{{height}}px;" scroll-y="true" lower-threshold="800" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="{{noinfo?'':'onScroll'}}">
+  <swiper style='height:200rpx;' class='banners p-20 bg-color rounded' indicator-dots="true" autoplay="true" interval="4000" duration="1000" indicator-color="#ffffff9f" indicator-active-color="#fff">
+    <block wx:for="{{banner}}" wx:key="index">
+      <swiper-item>
+        <image src="{{host+item.logo}}" class="banner rounded" data-appid='{{item.appid}}' bindtap='{{item.appid=="" ? "" : "bannertz"}}' mode="aspectFill"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='navbtns '>
+    <view class=" flexcenter">
+      <view class=' box-pack-around flexcenter w-75'>
+        <view bindtap='luntan' data-luntan='1' class="items {{luntan==1?'actives':''}}">附近商家
+          <!-- <i-icon type="unfold" /> -->
+        </view>
+        <view bindtap='luntan' data-luntan='2' class="items {{luntan==2?'actives':''}}">信息红包</view>
+        <view bindtap='luntan' data-luntan='3' class="items {{luntan==3?'actives':''}}">商家红包</view>
+      </view>
+      <view class="  flexcenter w-15 rounded-rz">
+        <!-- <view class='ac'></view> -->
+        <view class='font-size-28 color-fff p-x-10 p-y-10 flexcenter'>
+          <text bindtap='ruzhu'>入驻</text>
+          <i-icon type="enter" size="15" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <navigator hidden="{{!(luntan!=3)}}" wx:for="{{information}}" wx:for-index="preantIndex" url='/pages/shangjhb/shangjhb?id={{item.id}}' wx:key="{{item.id}}" class='bg-color 1 p-x-20 cp-bom p-y-15' hover-class='none'>
+    <view class='flex-0 wh-0'>
+      <view class='rounded mt-5 w-10'>
+      <!--        <view class="showItemLogo" wx:if="{{!item.show&&preantIndex>1}}"></view>-->
+      <!-- 是否显示头像遮罩层 -->
+
+        <image  src="{{item.show||preantIndex<2?host+item.logo:''}}" class="image-72 rounded-x m-r-15" mode="aspectFill"></image>
+      </view>
+      <view class='m-l-30 w-90'>
+        <view class=' flexcenter'>
+          <view class='wh-0'>
+            <view class='flexcenter flexspbet'>
+              <view class='line-clamp-1 font-size-30 font-w color-333'>{{item.storeName}}</view>
+              <view class='font-size-24 color-999 flexcenter '>
+                <image src='/images/yuedu.png' class='img-30' />
+                <text class='m-l-5'>{{item.views}}</text>
+              </view>
+            </view>
+            <view class='color-999 font-size-24 p-y-5'>{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='font-size-28 line-20 color-666 line-clamp-02'>{{item.details}}</view>
+    <view class='imgs row-xx'>
+      <!-- 是否显示图片遮罩层 -->
+<!--        <view wx:if="{{!item.show&&preantIndex>2}}"  class="showItemImg" wx:for="{{item.img}}" wx:for-item="items" wx:key="index"></view>-->
+        <image wx:for="{{item.img}}"   wx:for-item="items" wx:key="index" mode="aspectFill" style="width: {{(window_width -50) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" class='rounded'
+        src="{{preantIndex<=2||item.show?host+items:''}}" />
+    </view>
+    <view wx:if="{{item.hbMoney != null}}" class='flexcenter flexspbet mt-10'>
+      <view class='flex-0 flexcenter'>
+        <image src='/images/hb.png' class='img-30'></image>
+        <view class='color-f36 font-size-28'>{{item.hbMoney}}</view>
+      </view>
+      <view class='color-999 font-size-28'>总共{{item.hbNum}}个</view>
+    </view>
+  </navigator>
+
+  <navigator hidden="{{!(luntan==3)}}" wx:for="{{business}}" url='/pages/shangjzy/shangjzy?id={{item.id}}' wx:key="{{item.id}}" class='bg-color p-x-20 cp-bom p-y-15' hover-class='none'>
+    <view class='flex-0 wh-0'>
+      <view class='rounded mt-5 w-10'>
+        <image src="{{host+item.logo}}" class="image-72 rounded-x m-r-15" mode="aspectFill"></image>
+      </view>
+      <view class='m-l-30 w-90'>
+        <view class=' flexcenter'>
+          <view class='wh-0'>
+            <view class='flexcenter flexspbet'>
+              <view class='line-clamp-1 font-size-30 font-w color-333'>{{item.storeName}}</view>
+              <view class='font-size-24 color-999 flexcenter '>
+                <image src='/images/yuedu.png' class='img-30' />
+                <text class='m-l-5'>{{item.views}}</text>
+              </view>
+            </view>
+            <view class='color-999 font-size-24 p-y-5'>{{item.time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='font-size-28 line-20 color-666 line-clamp-02'>{{item.details}}</view>
+    <!-- <view class='imgs row-xx'>
+          <image wx:for="{{item.img}}" wx:key="*this" mode="aspectFill" style="width: {{(window_width -50) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" class='rounded' src="{{host+item}}" />
+        </view> -->
+    <view wx:if="{{item.hb}}" class='flexcenter flexspbet mt-10'>
+      <view class='flex-0 flexcenter'>
+        <image src='/images/hb.png' class='img-30'></image>
+        <view class='color-f36 font-size-28'>{{item.hb}}</view>
+      </view>
+      <!-- <view class='color-999 font-size-28'>总共{{item.hbNum}}个</view> -->
+    </view>
+  </navigator>
+
+  <view wx:if="{{load}}">
+    <i-load-more />
+  </view>
+  <view wx:if="{{noinfo}}">
+    <i-load-more tip="没有更多了" loading="{{ false }}" />
+  </view>
+</scroll-view>
+<view class='dialog'>
+  <image src='../../images/zd.png' class='goTop'  catchtap="goTop"></image>
+</view>
+</empty>

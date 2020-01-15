@@ -1,0 +1,265 @@
+<!--pages/shangjhb/shangjhb.wxml-->
+
+<view class='m-30' hover-class='none'>
+  <view class='flex-0 xqbb' bindtap='sjxq' data-spid='{{information.storeId}}'>
+    <view class='rounded'>
+      <image src="{{host+information.logo}}" class="image-72 rounded-x m-r-15" mode="aspectFill"></image>
+    </view>
+    <view class='m-l-10 wh-0'>
+      <view class='flexcenter flexspbet'>
+        <view class='line-clamp-02 font-size-32 font-w'>{{information.storeName}}</view>
+        <view wx:if="{{information.hbMoney}}" class='flex-0 flexcenter'>
+          <image src='/images/hb.png' class='img-30'></image>
+          <view class='color-e51 font-size-30 font-w m-l-10'>{{information.hbMoney}}</view>
+        </view>
+      </view>
+      <view class='flexcenter flexspbet'>
+        <view class='color-999 radius font-size-28'>
+
+          <text class='color-999 font-size-24'>{{information.time}}</text>
+        </view>
+      </view>
+      <view class=' flex-0 p-5 self-align-start' bindtap='daohang'>
+        <image src='/images/position.png' class='img-25'></image>
+        <text class=' p-x-15 font-size-24 color-666'>{{information.address}} </text>
+      </view>
+    </view>
+  </view>
+
+  <view class='font-size-28 color-666 line-clamp-02a p-y-20'>{{information.details}}</view>
+  <view class='imgs row-xx mb-15'>
+    <image wx:for="{{information.img}}" data-src='{{item}}' data-srcs='{{information.img}}' bindtap='previewImg' wx:key="index" mode="aspectFill" style="width: {{(window_width -60) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" class='rounded'
+      src="{{host+item}}" />
+
+  </view>
+  <view class='flexcenter'>
+    <view class='flex-0 flexcenter m-r-30'>
+      <view class='color-999 font-size-26'>浏览量{{information.views}}</view>
+    </view>
+    <view bindtap='fx' class='flex-0 flexcenter m-r-30'>
+      <view class='color-999 font-size-26'>点赞{{information.givelike}}</view>
+    </view>
+    <view class='flex-0 flexcenter' bindtap='sc'>
+      <view class='color-999 font-size-26'>收藏</view>
+    </view>
+  </view>
+  <view class='flexcenter flexspbet xqbb p-y-20'>
+    <view class='color-999 w-10 text-l' bindtap='dz'>
+      <image src="{{dz?'/images/dzed.png':'/images/dz.png'}}" class='img-30 p-x-10'></image>
+      <view class='color-999 font-size-24'>点赞</view>
+    </view>
+    <view wx:if="{{collect}}" class='w-90'>
+      <view class='line-clamp-02a row-xx'>
+        <view wx:for="{{collect}}" wx:key="index" wx:if="{{index<6}}" class='p5-5'>
+          <image src="{{item.qicon}}" class="image-48 rounded-x" mode="aspectFill"></image>
+        </view>
+        <view wx:if="{{index>6}}" class='fenstx p5-5 '>
+          <image src="/images/dzsl.png" class="image-48 rounded-x" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='m-30 '>
+  <view class='flexcenter flexspbet xqbb'>
+    <view class='pb-30'>
+      <view class='font-size-30 color-333 font-w'>联系人：{{information.userName}}</view>
+      <view class='font-size-28 color-999'>联系我时，请说明是在喜钱上看到的,谢谢！</view>
+    </view>
+    <!-- <view class='iconfont iconicon-test3  font-size-82 color-666' bindtap='dianhua'></view> -->
+    <image bindtap='dianhua' src='/images/sfdhs.png' mode="aspectFill" class='image-40'></image>
+  </view>
+  <view class='flexcenter flexspbet p-y-20'>
+    <view class='font-size-28 color-666 '>如遇无效、诈骗、虚假信息请立即举报！</view>
+    <!-- <view class='iconfont iconicon-test12  font-size-82 color-666' bindtap='jubao'></view> -->
+    <!-- bindtap='jubao' -->
+    <view bindtap='jubao' data-information='{{information}}' hover-class='none'>
+      <image src='/images/xxaq.png' mode="aspectFill" class='image-40'></image>
+    </view>
+  </view>
+
+</view>
+<!-- <view class='bg-color  p-20 container' wx:if="{{hbzs!=0}}">
+  <view class='flexcenter flexspbet  pb-30 xqbb '>
+    <view class='font-size-32'>已抢{{hbyq}}/{{hbzs}}</view>
+    <view class=' color-999 flexcenter'>
+      <navigator class='font-size-28 color-999' hover-class='none' url='/pages/shangjhb/hongbaoxq?qtype=2&qid={{information.id}}&spid={{information.storeId}}'>看看大家的手气</navigator>
+      <image src='/images/arrow_left.png' mode="aspectFill" class='img-44'></image>
+    </view>
+  </view>
+  <view wx:for="{{hbdetails}}" wx:key="index" wx:if="{{index<10}}" class='flexcenter flexspbet  p-y-15   xqbb'>
+    <view class=' flexcenter'>
+      <view>
+        <image src='{{item.qicon}}' mode="aspectFill" class='img-68 m-r-20 rounded-x'></image>
+      </view>
+      <view class='font-size-28'>{{item.qnick==null?'未知用户':item.qnick}}</view>
+    </view>
+    <view class='font-size-30 color-e51'>{{item.money}}元</view>
+  </view>
+
+</view> -->
+
+<!-- 评论 -->
+<!-- <view class='bg-color  p-20 container '>
+  <view class='flexcenter flexspbet xqbb '>
+    <view class='font-size-32 mb-10 '>评论</view>
+    <view class=' color-999 flexcenter'>
+      <view class='font-size-30 color-999'>
+        <button bindtap='pinglun' class='bgqx rounded bgcolor-ff6 p-pl' hover-class='none'>我要评论</button>
+      </view>
+    </view>
+  </view>
+  <view class='p-y-15 xqbb' wx:for="{{comment}}" wx:key="{{item.id}}">
+    <view class='flex-0 wh-0'>
+      <view class='w-10'>
+        <image src='{{item.qicon}}' mode="aspectFill" class='img-68 m-r-20 rounded-x'></image>
+      </view>
+      <view class='w-90'>
+        <view class='flexcenter flexspbet'>
+          <view class='font-size-28'>{{item.qname}}</view>
+          <view class='font-size-24 color-999 fl_r'>{{item.qdate}}</view>
+        </view>
+        <view class='font-size-28 color-333'>{{item.qcontent}}</view>
+      </view>
+    </view>
+  </view>
+</view> -->
+<view class='bg-color m-x-30 container '>
+  <view class='m-b-60'>
+    <view class='font-size-32 mb-10'>共{{comment.length}}条评论</view>
+    <view class='flexcenter'>
+      <view class=' w-10'>
+        <image src="{{icon}}" mode="aspectFill" class='img-68 m-r-20 rounded-x'></image>
+      </view>
+      <view class='w-90 rounded bg-theme p-5'>
+        <input class=" font-size-28" placeholder="说点什么吧" confirm-type="send" value='{{qtitle}}' bindconfirm='modalConfirm' bindinput='qtitle'></input>
+      </view>
+      <!-- <view class=' color-999 flexcenter'>
+      <view class='font-size-30 color-999'>
+        <button bindtap='pinglun' class='bgqx rounded bgcolor-ff6 p-pl' hover-class='none'>我要评论</button>
+      </view>
+    </view> -->
+    </view>
+  </view>
+  <view class='pb-30' wx:for="{{comment}}" wx:key="{{item.id}}">
+    <view class='flex-0 wh-0'>
+      <view class='w-10'>
+        <image src='{{item.qicon}}' mode="aspectFill" class='img-68 m-r-20 rounded-x'></image>
+      </view>
+      <view class='w-90'>
+        <view class='font-size-32 font-w'>{{item.qname}}</view>
+        <view class='font-size-24 color-999 p-pl'>{{item.qdate}}</view>
+        <view class='font-size-28 color-666 p-pl'>{{item.qcontent}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:100px;'></view>
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+  <!-- <button wx:if="{{hb}}" bindtap='qhb' class='bgqx no-rounded bgcolor-ff6  p-y-20' hover-class='none'>立即抢红包</button> -->
+  <view wx:if="{{(!qhb)&&(hbzs!=0)}}" class=' font-size-28 color-f36 bg-theme2 text-align'>已领取~~</view>
+  <view class='sjdh full-width bg-color row-xx flexcenter'>
+    <view class='w-15 text-align' bindtap='shouye'>
+      <!-- <view class='icon-home p-5'> -->
+      <image src='/images/shoo.png' mode="aspectFill" class='img-44'></image>
+      <!-- </view> -->
+      <view class='font-size-24 color-666'>首页</view>
+    </view>
+    <navigator url="/pages/fenxhb/fenxhb?posterImg={{host+information.img[0]}}&qtitle={{information.storeName}}&qmsprice={{procedure.qmsprice}}&qopenid={{procedure.qopenid}}&id={{information.storeId}}&start_time={{information.start_time}}&end_time={{information.end_time}}"
+      class='w-15 text-align button-1' bindtap='fx1'>
+      <!-- <view class='icon-share p-5'> -->
+      <image src='/images/fex.png' mode="aspectFill" class='img-44'></image>
+      <!-- </view> -->
+      <view class='font-size-24 color-666'>分享</view>
+    </navigator>
+    <view class='w-15 text-align' bindtap='addwx'>
+      <!-- <view class='fa fa-weixin p-5'> -->
+      <image src='/images/add.png' mode="aspectFill" class='img-44'></image>
+      <!-- </view> -->
+      <view class='font-size-24 color-666'>微信</view>
+    </view>
+    <view class='w-55 text-align bgcolor-ff3'>
+      <view bindtap='lxsj' class='font-size-30 color-fff text-align p-y-15'>联系商家</view>
+    </view>
+  </view>
+</view>
+<view class='container'>
+  <modal title="添加评论" confirmText="确定" cancelText="取消" hidden="{{modalHidden}}" bindconfirm="modalConfirm" bindcancel="modalCandel">
+    <input bindinput="hxm" type='text' value='{{hxm}}' placeholder="请输入评论信息" />
+  </modal>
+</view>
+
+<!-- 弹窗 -->
+<!-- <view class='modal flexColCCen ' wx:if="{{fenxiang}}" bindtap='gb'>
+  <view class='modal-content-x  footfixed center p-20-30'>
+    <image src='/images/fenxiang.png' class='modal-content-x mod'></image>
+    <view class='center btn-lg'>
+      <scroll-view scroll-y class='full-height text-justify'>
+        <image src='/images/info.png' class='img-68'></image>
+        <view class='mb-20 text-center color-purple font-bold '>订单分享给好友得佣金</view>
+        <view class='mb-20 text-center color-purple font-bold mb-15'>好友得优惠！</view>
+        <button open-type="share" class='rounded-0 mb-15 font-size-28 color-ff6 p-y-20 m-x-80 '>分享好友</button>
+        <navigator url="/pages/fenxhb/fenxhb?posterImg={{host+information.logo}}&qtitle={{information.storeName}}&qmsprice={{information.startTime}}&qopenid={{procedure.qopenid}}&id={{information.endTime}}&startTime={{information.startTime}}&endTime={{information.endTime}}"
+          hover-class='none'>
+          <button class='rounded-0  font-size-28 color-ff6 p-y-20 m-x-80 bgcolor-fxhb'>生成分享海报</button>
+        </navigator>
+
+      </scroll-view>
+    </view>
+  </view>
+</view> -->
+
+<view class='hbtc' wx:if="{{(!qhb)&&hbzs!=0}}">
+  <navigator url='/pages/shangjhb/hongbaoxq?qtype=2&qid={{information.id}}&shopname={{information.storeName}}&logo={{information.logo}}'>
+    <image class='hbtc-img' src='/images/xfhb.gif'></image>
+  </navigator>
+</view>
+
+<!-- 红包弹窗 -->
+<view class='modal flexColCCen' wx:if="{{qhb&&dataNow>1578997800000}}">
+  <view class=' mod'>
+    <image src="{{host+'chb.png'}}" class='modal-content-xx' bindtap='chb'></image>
+  </view>
+  <view class='modal-content-xx  footfixed center p-20-30'>
+    <view class=' btn-lg1 fl_r'>
+      <i-icon catchtap='gutc' type="close" color='#fff' size='17' />
+    </view>
+    <!-- <image src="{{host+'chb.png'}}" class='modal-content-xx mod' bindtap='chb'></image> -->
+    <view class='center btn-lg'>
+      <!-- <scroll-view scroll-y class='full-height text-justify'>
+          <button bindtap='chb' class='rounded-x font-size-52 color-fff p-y-30  bgcolor-chb mx-60  px-60'>拆</button>
+        </scroll-view> -->
+    </view>
+  </view>
+</view>
+
+<!-- 红包弹窗 -->
+<!-- <view class='modal  ' wx:if="{{qhb}}" catchtap='gutc'>
+  <view class='modal-content-xx  footfixed center p-20-30'>
+    <image src="{{host+'chb.png'}}" class='modal-content-xx' mode="aspectFill"></image>
+    <view class=' btn-lg1 fl_r'>
+      <i-icon catchtap='gutc' type="close" color='#fff' size='17' />
+    </view>
+    <view class='kai-but  flexColCCen'>
+      <button wx:if="{{!phone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class='none' class='b-butt'>
+      </button>
+      <button wx:if="{{phone}}" class='b-butt' bindtap='chb' hover-class='none'>
+      </button>
+    </view>
+  </view>
+</view> -->
+<!-- 红包弹窗 -->
+<view class='modal  ' wx:if="{{qhb}}" catchtap='gutc'>
+  <view class='modal-content-xx  footfixed center p-20-30'>
+    <image src="{{host+'chb.png'}}" class='modal-content-xx' mode="aspectFill"></image>
+    <view class=' btn-lg1 fl_r'>
+      <i-icon catchtap='gb' type="close" color='#fff' size='17' />
+    </view>
+    <view class='kai-but  flexColCCen'>
+<!--      <button wx:if="{{!phone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class='none' class='b-butt'>-->
+<!--      </button>-->
+      <button  class='b-butt' bindtap='chb' hover-class='none'>
+      </button>
+    </view>
+  </view>
+</view>

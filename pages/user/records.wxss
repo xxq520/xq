@@ -1,0 +1,33 @@
+.records{
+  border-top:10rpx solid #f8f8f8;
+  font-family: "苹方";
+}
+.info{
+  display: flex;
+  padding: 30rpx 30rpx 35rpx;
+  border-bottom: 1rpx solid rgb(235,225,218);
+}
+.info-l,.info-l image{
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 10rpx;
+}
+.info-l{
+  padding-right: 28rpx;
+}
+.info-r-t{
+  font-weight: bold;
+  /* padding-bottom: 20rpx; */
+}
+.info-r-c{
+  /* padding-bottom: 15rpx; */
+}
+.red{
+  color: red;
+}
+.hs{
+  color:rgb(153, 153, 153);
+}
+.m-l-28{
+  margin-left: 28rpx;
+}

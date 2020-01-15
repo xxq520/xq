@@ -1,0 +1,6 @@
+/* view/fenxhb/fenxhb.wxss */
+.banner-1{
+    width: 100%;
+    height: 420rpx;
+}
+.border-hb{border-bottom: 1rpx #ccc dashed;}

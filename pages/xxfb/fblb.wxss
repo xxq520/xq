@@ -1,0 +1,22 @@
+.image-72{width: 72rpx;height: 72rpx;}
+.cp-bom{border-bottom: #eee solid 1rpx;}
+.wddd {
+  position: relative;
+  box-shadow: 0 0 30rpx 0 #e6e6e6;
+}
+.footc {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgb(255, 67, 67);
+  z-index: 9;
+  width: 100%;
+  font-size: 14px;
+  /* border-top: 1px solid #eee; */
+  line-height: 50px;
+  /* font-weight: 700; */
+  color: snow;
+  text-align: center;
+  border-radius: 0;
+}

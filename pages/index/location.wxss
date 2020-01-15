@@ -1,0 +1,120 @@
+/* pages/index/location.wxss */
+
+page {
+  background-color: #fff;
+  font-family: '苹方';
+  font-size: 28rpx;
+}
+.search {
+  background-color: #f6f6f6;
+  margin-top: 10rpx;
+  /* margin-right: 20rpx; */
+  /* margin-bottom: 20rpx; */
+  border-radius: 12rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 30rpx;
+  vertical-align: middle;
+  align-items: center;
+  width: 100%;
+}
+.search icon {
+  margin-right: 10rpx;
+  height: 18px;
+}
+
+.search input {
+  flex: 1;
+  vertical-align: middle;
+  height: 70rpx;
+  display: inline-block;
+  font-size: 26rpx;
+}
+
+.wzhi-text {
+  font-weight: bold;
+}
+
+.wzhi {
+  width: 10rpx;
+  height: 40rpx;
+  border-radius: 90rpx;
+}
+
+.bg-sj {
+  background: -webkit-linear-gradient(top, #ff6c6c, #fa4242);
+}
+
+.cs-border {
+  border-bottom: 1rpx #eee solid;
+  border-top: 1rpx #eee solid;
+}
+
+.cs-border-2 {
+  border-bottom: 1rpx #eee solid;
+}
+
+.cs-but::after {
+  border: none;
+}
+.report{
+  padding: 57rpx 40rpx 0;
+}
+.text-font{
+  font-weight: bold;
+  padding-bottom: 40rpx;
+}
+.box-flex{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 7rpx;
+}
+.box-item{
+  /* letter-spacing:4rpx; */
+  color:#333;
+  margin-right: 13rpx;
+  font-size: 32rpx;
+}
+.box-item1{
+  letter-spacing:4rpx;
+  color:#000;
+  margin-right: 13rpx;
+  font-size: 32rpx;
+}
+
+.box-item-visited{
+  color: rgb(247, 47, 26);
+  border: 1px solid rgb(247, 47, 26);
+}
+.m-t-50{
+  margin-top: 50rpx;
+}
+.m-b-35{
+  margin-bottom: 35rpx;
+}
+.text-box{
+  box-sizing: border-box;
+  width: 670rpx;
+  height: 268rpx;
+  border: 1rpx solid rgb(216,216,216);
+  border-radius: 10rpx;
+  padding: 20rpx 24rpx;
+}
+.textarea{
+  color: rgb(216,216,216);
+  font-size: 28rpx;
+}
+.confire{
+  width: 540rpx;
+  height: 76rpx;
+  background-color: rgb(247, 47, 26);
+  color: rgb(255, 255, 255);
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 76rpx;
+  margin: 90rpx auto 0;
+  border-radius: 60rpx;
+}
+.sc-but{width: 44rpx;height: 44rpx;background: #eee;border-radius: 90rpx;}

@@ -1,0 +1,240 @@
+<view class="page">
+    <view wx:if='{{qshopid==0}}' class='navbtns navbtns-top'>
+        <view class='p-lr-157 flex-0 box-pack-between yhq-font-color'>
+            <view class="font-size-32 {{luntan==1?'actives':''}} yhq-pr" bindtap='luntan' data-luntan='1'>代金券
+                <text class="yhq-bottom {{luntan==1?'yhq-bottom-show':''}} "></text>
+            </view>
+            <view class="font-size-32 {{luntan==2?'actives':''}} yhq-pr " bindtap='luntan' data-luntan='2'>优惠券
+                <text class="yhq-bottom {{luntan==2?'yhq-bottom-show':''}}"></text>
+            </view>
+        </view>
+    </view>
+    <view class='navbtns m-x-40 navbtns-top'>
+        <view class="flex-0 box-pack-between p-lr-91 yhq-font-color">
+            <view bindtap='struts' data-struts='1' class="font-size-30 {{struts==1?'actives2':''}}">未使用
+            </view>
+            <view bindtap='struts' data-struts='2' class="font-size-30 {{struts==2?'actives2':''}}">已使用
+            </view>
+            <view bindtap='struts' data-struts='3' class="font-size-30 {{struts==3?'actives2':''}}">已过期
+            </view>
+        </view>
+    </view>
+</view>
+<view class=" m-20" bindtap='xq' data-id='{{item.id}}' data-shopid='{{item.storeId}}' wx:for="{{productData}}"
+      wx:key="{{item.id}}" wx:if="{{luntan==1&&item.typeId==1&&struts==1&&item.qstatus==1}}" hover-class='none'>
+    <view class='bg-color  p-20 container  rounded'>
+        <view class=''>
+            <view class='djq  font-size-30 color-333 b-djq' hover-class='none'>
+                <view class='flex-0'>
+                    <image mode="aspectFill" class="scimg mr-15" src='{{imghost+item.logo}}'></image>
+                    <view class='w-80'>
+                        <view class='flexspbet'>
+                            <view class='font-w-yhq1 w-95'>[{{item.storeName}}]{{item.money}}元抵{{item.full}}代金券</view>
+                            <view class='color-999 font-size-24'>X1</view>
+                        </view>
+                        <view class='font-size-26 color-999'>{{item.time}}至{{item.endTime}}</view>
+                        <view data-id='{{item.userCouponId}}' data-full='{{item.full}}' data-logo='{{item.logo}}'
+                              data-money='{{item.money}}' data-typeid='{{item.typeId}}' class='fl_r'>
+                            <text catchtap='dpxq' data-id='{{item.storeId}}'
+                                  class='bg_red-b p-x-20 p-y-5 text-align rounded-0 font-size-28'>到店使用
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="m-20" bindtap='xq' data-id='{{item.id}}' data-shopid='{{item.storeId}}' wx:for="{{productData}}"
+      wx:key="{{item.id}}" wx:if="{{luntan==1&&item.typeId==1&&struts==2&&item.qstatus==2}}" hover-class='none'>
+    <view class='bg-color  p-20 container  rounded'>
+        <view class='djq  font-size-30 color-999 b-djq-ysy ' hover-class='none'>
+            <view class='flex-0'>
+                <view class='mr-15'>
+                    <image mode="aspectFill" class="scimg " src='{{imghost+item.logo}}'></image>
+                </view>
+                <view class='color-999 w-80'>
+                    <view class='flexspbet'>
+                        <view class='font-w-yhq1 color-999 w-95'>[{{item.storeName}}]{{item.money}}元抵{{item.full}}代金券
+                        </view>
+                        <view class='color-999 font-size-24'>X1</view>
+                    </view>
+                    <view class='font-size-26 color-999 '>{{item.time}}至{{item.endTime}}</view>
+                </view>
+                <image src='/images/ysy.png' class='background1'></image>
+            </view>
+        </view>
+    </view>
+</view>
+        <!-- 代金券已过期 -->
+<view class=" rounded m-20 bg-color" bindtap='xq' data-id='{{item.id}}' data-shopid='{{item.storeId}}'
+      wx:for="{{productData}}" wx:key="{{item.id}}" wx:if="{{luntan==1&&item.typeId==1&&struts==3&&item.qstatus==3}}"
+      hover-class='none'>
+    <view class='bg-color  p-20 container  rounded'>
+        <view class=''>
+            <view class='djq  font-size-30 color-999 b-djq-ysy ' hover-class='none'>
+                <view class='flex-0'>
+                    <image mode="aspectFill" class="scimg mr-15" src='{{imghost+item.logo}}'></image>
+                    <view class=' w-80'>
+                        <view class='flexspbet'>
+                            <view class='font-w-yhq1 color-999 w-95'>
+                                [{{item.storeName}}]{{item.money}}元抵{{item.full}}代金券
+                            </view>
+                            <view class='color-999 font-size-24'>X1</view>
+                        </view>
+                        <view class='font-size-26 color-999 '>{{item.time}}至{{item.endTime}}</view>
+                        <view data-id='{{item.userCouponId}}' class='fl_r'>
+                            <text class=' font-size-28 color-999'>已过期</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 优惠券 -->
+<view class=" rounded  m-20 bg-color p-x-20 p-y-15" wx:for="{{productData}}" wx:key="{{item.id}}"
+      wx:if="{{luntan==2&&item.typeId==2&&struts==1&&item.qstatus==1}}" hover-class='none' bindtap='dpxq'
+      data-id='{{item.storeId}}'>
+    <view class='font-size-28 color-333 pb flexcenter '>
+        <image mode="aspectFill" class="img-50 rounded-x mr-5 " src='{{imghost+item.logo}}'></image>
+        <text class='font-size-30 p-l-21'>{{item.storeName}}
+            <text class='fa fa-angle-right p-l-19'></text>
+        </text>
+    </view>
+    <view class='flexcenter flexspbet '>
+        <view class='yhq-je fw-25 '>
+            <view class='cro_right_bottom'></view>
+            <view class='cro_right_top'></view>
+            <view class='cro h-100  p-20 yhq-radius text-align bgc-white wddd' style="padding:20rpx 0">
+                <view class='color-fff  font-w-yhq  mt-20 font-size-28 font-red'>¥
+                    <text class='font-size-62 ' style="font-size:53rpx">{{item.money}}</text>
+                </view>
+                <view class='font-size-22 color-fff color-eee font-black yhq-mt-15'>满{{item.full}}减</view>
+                <view class='yhq-je-mjq'>满减券</view>
+            </view>
+        </view>
+        <view class='yhq bgc-white fw-60'>
+            <view class='cro h-100 b-yhj p-20 yhq-radius  wddd'>
+                <view class='cro_left_bottom'></view>
+                <view class='cro_left_top'></view>
+                <view class='line-clamp-1 color-333  font-size-34 p-t-25'>满{{item.full}}减{{item.money}}</view>
+                <view class='font-size-24 color-999 p-t-28'>有限期:{{item.endTime}}</view>
+                <!--引入背景-->
+            </view>
+        </view>
+        <view class='yhq-lq text-align fw-15'>
+            <view class='cro-lq h-100 b-yhjy p-20 yhq-radius-lq text-align  wddd'>
+                <view class='text-align '>
+                    <view catchtap="{{qshopid != 0?'ewm':''}}" data-id='{{item.userCouponId}}' data-full='{{item.full}}'
+                          data-money='{{item.money}}' data-logo='{{item.logo}}' data-typeid='{{item.typeId}}'
+                          class='font-size-26 color-fff text-align bgcolor-ff6 p-x-15 p-y-10 text-align rounded-md fg-mt '>
+                        立即使用
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+        <!-- 优惠券已使用 -->
+<view class=" rounded  m-20 bg-color p-x-20 p-y-15" wx:for="{{productData}}" wx:key="{{item.id}}"
+      wx:if="{{luntan==2&&item.typeId==2&&struts==2&&item.qstatus==2}}" hover-class='none'>
+    <view class='font-size-28 color-333 p-y-10 flexcenter '>
+        <image mode="aspectFill" class="img-50 rounded-x mr-5 " src='{{imghost+item.logo}}'></image>
+        <text class='font-size-30 p-l-21'>{{item.storeName}}
+            <text class='fa fa-angle-right p-l-19'></text>
+        </text>
+    </view>
+    <!-- 第二版 -->
+    <view class='flexcenter flexspbet'>
+        <view class='yhq-je fw-25'>
+            <view class='cro_right_bottom'></view>
+            <view class='cro_right_top'></view>
+            <view class='cro h-100  p-20 yhq-radius text-align bgc-white  wddd' style="padding:20rpx 0">
+                <view class='color-fff  font-w-yhq  mt-20 font-size-28 font-red yhq-ysy-font'>¥
+                    <text class='font-size-62 yhq-ysy-font' style="font-size:48rpx">{{item.money}}</text>
+                </view>
+                <view class='font-size-22 color-fff color-eee font-black yhq-mt-15 yhq-ysy-font'>满{{item.full}}减</view>
+                <view class='yhq-je-mjq yhq-ysy-bgc'>满减券</view>
+            </view>
+        </view>
+        <view class='yhq bgc-white fw-60'>
+            <view class='cro h-100 b-yhj p-20 yhq-radius  wddd'>
+                <view class='cro_left_bottom'></view>
+                <view class='cro_left_top'></view>
+                <view class='line-clamp-1 color-333  font-size-30 p-t-25 yhq-ysy-font'>
+                    {{item.name}}
+                </view>
+                <view class='font-size-24 color-999 p-t-28'>有限期:{{item.endTime}}</view>
+                <!--引入背景-->
+                <image src='/images/ysy.png' class='background'></image>
+            </view>
+        </view>
+        <view class='yhq-lq text-align fw-15'>
+            <view class='cro-lq h-100 b-yhjy p-20 yhq-radius-lq text-align  wddd'>
+                <view class='text-align '>
+                    <view data-id='{{item.userCouponId}}'
+                          class='font-size-26 color-fff text-align bgcolor-ff6 p-x-15 p-y-10 text-align rounded-md fg-mt yhq-ysy-font three-center'>
+                        已使用
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 已过期 -->
+<view class=" rounded  m-20 bg-color p-x-20 p-y-15" wx:for="{{productData}}" wx:key="{{item.id}}"
+      wx:if="{{luntan==2&&item.typeId==2&&struts==3&&item.qstatus==3}}" hover-class='none'>
+    <view class='font-size-28 color-333 pb flexcenter'>
+        <image mode="aspectFill" class="img-50 rounded-x mr-5 " src='{{imghost+item.logo}}'></image>
+        <text class='font-size-30 p-l-21'>{{item.storeName}}
+            <text class='fa fa-angle-right p-l-19'></text>
+        </text>
+    </view>
+<!-- 新版 -->
+    <view class='flexcenter flexspbet wddd'>
+        <view class='yhq-je fw-25'>
+            <!--  -->
+            <view class='cro_right_bottom'></view>
+            <view class='cro_right_top'></view>
+            <!--  -->
+            <view class='cro h-100  p-20 yhq-radius text-align bgc-white' style="padding:20rpx 0s">
+                <view class='color-fff  font-w-yhq  mt-20 font-size-28 font-red yhq-ysy-font'>¥
+                    <text class='font-size-62 yhq-ysy-font' style='line-height:1' style="font-size:48rpx">
+                        {{item.money}}
+                    </text>
+                </view>
+                <view class='font-size-22 color-fff color-eee font-black yhq-mt-15 yhq-ysy-font'>满{{item.full}}减</view>
+                <view class='yhq-je-mjq yhq-ysy-bgc'>满减券</view>
+            </view>
+        </view>
+        <view class='yhq bgc-white fw-60'>
+            <view class='cro h-100 b-yhj p-20 yhq-radius height-167'>
+                <view class='cro_left_bottom'></view>
+                <view class='cro_left_top'></view>
+                <view class='line-clamp-1 color-333  font-size-30 p-t-25 yhq-ysy-font'>
+                    {{item.name}}
+                </view>
+                <view class='font-size-24 color-999 p-t-28'>有限期:{{item.endTime}}</view>
+                <!--引入背景-->
+                <image src='/images/ysy.png' class='background'></image>
+            </view>
+        </view>
+        <view class='yhq-lq text-align fw-15'>
+            <view class='cro-lq h-100 b-yhjy p-20 yhq-radius-lq text-align height-167'>
+                <view class='text-align '>
+                    <view data-id='{{item.userCouponId}}'
+                          class='font-size-26 color-fff text-align bgcolor-ff6 p-x-15 p-y-10 text-align rounded-md fg-mt yhq-ysy-font three-center'>
+                        已过期
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='font-size-28 color-999 text-align flexColCCen '>没有更多了~~</view>
+<view class='modal  ' wx:if="{{!qrcode==''}}" bindtap='gbewm'>
+    <view class='modal-content-x  footfixed center p-20-30'>
+        <image src='{{qrcode}}' class='modal-content-x'></image>
+    </view>
+</view>

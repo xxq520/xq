@@ -1,0 +1,123 @@
+<view class="page" wx:if="{{!isTrue}}">
+    <view class="userinfo m-20 rounded wddd">
+        <view class="font-size-32 p-15 jryy">今日营业额</view>
+        <view class='flexcenter flexspbet p-15'>
+            <view class="font-size-40 color-e51 ">
+                <text class='font-size-28'>￥</text>{{shop.money==null ? 0 : shop.money}}
+                <text class='font-size-24 color-fff'>店铺资金</text>
+            </view>
+            <navigator class='font-size-30 color-fff' hover-class='none' url='/pages/chongzhi/chongzhi'>充值</navigator>
+        </view>
+        <view class='flexcenter m-20'>
+            <navigator hover-class="none" class='text-align dd-txet' url="/pages/shangjiadd/shangjiadd?tp=1">
+                <view class='font-size-28'>今日订单</view>
+                <view class='font-size-28'>{{order}}</view>
+                <view class='font-size-24'>累计:{{orders}}</view>
+            </navigator>
+            <view class='fege'></view>
+            <view class='text-align dd-txet'>
+                <view class='font-size-28 '>今日访问数</view>
+                <view class='font-size-28 '>{{shop.tView}}</view>
+                <view class='font-size-24 '>累计:{{shop.views}}</view>
+            </view>
+            <view class='fege'></view>
+            <navigator class='text-align dd-txet' url='/pages/storelists/storelist' hover-class='none'>
+                <view class='font-size-28 '>今日推荐</view>
+                <view class='font-size-28 '>{{fenxiao}}</view>
+                <view class='font-size-24 '>分销:{{fenxiaos}}</view>
+            </navigator>
+        </view>
+    </view>
+    <view class='p-20 '>
+        <view class='rounded  mb-15 '>
+            <view class="qbdd mt110  p-y-20">
+                <view class="font-size-30 color-000">订单管理</view>
+            </view>
+            <view class="row-text">
+                <navigator hover-class="none" url="/pages/shangjiadd/shangjiadd" class='p-y-20 text-align dd-w'>
+                    <image src='/images/sj-zd.png' class='wd-image'></image>
+                    <view class="font_14 c3">全部订单</view>
+                </navigator>
+                <navigator hover-class="none" url="/pages/shouhou/shouhou" class='p-y-20 text-align dd-w'>
+                    <image src='/images/sj-sh.png' class='wd-image'></image>
+                    <view class="font_14 c3">退款-售后</view>
+                </navigator>
+                <navigator hover-class="none" url='/pages/user/records?shopid={{shop.id}}'
+                           class='p-y-20 text-align dd-w'>
+                    <image src='/images/sj-yhq.png' class='wd-image'></image>
+                    <view class="font_14 c3">到店买单记录</view>
+                </navigator>
+            </view>
+            <view class="row-text1 sp color-fff ">
+                <view hover-class="none" bindtap='spgl' data-procedure='{{procedure}}' data-shopid='{{shop.id}}'
+                      data-procedureType='{{procedureType}}' class=' w-50 '>
+                    <image src='/images/nextt.png' class='wdd-image' mode="aspectFill"></image>
+                    <view class="font_14 spx">商品管理</view>
+                    <view class="font_14 spx">总计:{{procedureNum}}</view>
+                </view>
+                <navigator hover-class="none" url="/pages/yhfb/yhlb" class=' w-50'>
+                    <image src='/images/next.png' class='wdd-image' mode="aspectFill"></image>
+                    <view class="font_14 spx">优惠券管理</view>
+                    <view class="font_14 spx">累计:{{couponsNum}}</view>
+                </navigator>
+            </view>
+
+        </view>
+        <view class='rounded  bg-color mb-15 '>
+            <view class="qbdd mt110  p-y-20">
+                <view class="font-size-30 color-000">营销工具</view>
+            </view>
+            <view class=" row-text">
+                <navigator hover-class="none" url="/pages/xxfb/fblb" class='p-y-20 text-align w-25'>
+                    <image src='/images/sj-fb.png' class='wd-image2'></image>
+                    <view class="font_14 c3">信息管理</view>
+                </navigator>
+                <navigator hover-class="none" url="/pages/fahb/fahb" class='p-y-20 text-align w-25'>
+                    <image src='/images/hb1.png' class='wd-image2'></image>
+                    <view class="font_14 c3">店铺红包</view>
+                </navigator>
+                <navigator url="/pages/im/chat-list/chat-list?shop=true" hover-class="none"
+                           class='p-y-20 text-align w-25'>
+                    <image src='/images/sj-qf.png' class='wd-image2'></image>
+                    <view class="font_14 c3">信息列表</view>
+                </navigator>
+                <navigator url="/pages/boosdrz/boosdrz" hover-class="none" class='p-y-20 text-align w-25'>
+                    <image src='/images/sj-qf.png' class='wd-image2'></image>
+                    <view class="font_14 c3">待入账</view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view style='height:50px;'></view>
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+    <view class='sjdh full-width bg_hui row-b'>
+        <view class='sjies text-align m-t10'>
+            <view>
+                <image src='/images/sj-home1.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-e51'>首页</view>
+        </view>
+        <view bindtap='yonghfx' class='sjies text-align m-t10'>
+            <view>
+                <image src='/images/up.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>商机分析</view>
+        </view>
+        <view bindtap='xiaoxi' class='sjies text-align m-t10' hover-class="none">
+            <view>
+                <image src='/images/sj-xx0.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>订单消息</view>
+        </view>
+        <view bindtap='wode' class='sjies text-align m-t10' hover-class='none'>
+            <view>
+                <image src='/images/male.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>我的</view>
+        </view>
+    </view>
+</view>
+<view class="zzc-box" style="visibility:{{isTrue?'visible':'hidden'}}">
+    <view class="" style="width:{{bfb}}%"></view>
+</view>

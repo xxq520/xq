@@ -1,0 +1,23 @@
+<view class='m-20'>
+  <view class=' font-size-30 '>
+    <view class='flexcenter border-b-sd p-15 m-y-40'>
+      <view class='w-25'>红包总金额</view>
+      <input class="text-right w-70 m-x-20" type='number' value="{{money}}" maxlength='4' placeholder="0.00" bindinput='money'></input>
+      <view class=''>元</view>
+    </view>
+    <view class='flexcenter border-b-sd p-15 m-y-40'>
+      <view class='w-25'>红包个数</view>
+      <input class="text-right w-70 m-x-20" type='number' maxlength='5' placeholder="0" value='{{num}}' bindinput='num'></input>
+      <view class=''>个</view>
+    </view>
+  </view>
+  <view class='text-align'>
+    <view class='font-size-52 font-w  m-y-40'>￥{{money==''?'0.00':money}}</view>
+    <button bindtap='fahb' class=" footc m-y-40 {{fhb?'bgcolor-ff6':' bgcolor-ccc'}}">塞钱进红包</button>
+  </view>
+  <view class='text-align p-y-30'>
+    <navigator class='font-size-30 color-hb color-hbjl m-x-80' hover-class='none' url='/pages/fahb/hbjl'>
+      红包记录</navigator>
+  </view>
+  <view class='footc1'>注意:删除未领取红包平台概不退款。</view>
+</view>

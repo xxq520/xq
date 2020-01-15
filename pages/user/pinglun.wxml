@@ -1,0 +1,46 @@
+<view class="w100">
+  <!-- 评分 -->
+  <view class='text-align' style="left:100rpx">
+    <view wx:for="{{stars}}" wx:key="index">
+      <image class="star-image img-30" style="left: {{item*45}}rpx" src="{{key > item ?(key-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+        <view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="selectLeft"></view>
+        <view class="item" style="left:22.5rpx" data-key="{{item+1}}" bindtap="selectRight"></view>
+      </image>
+    </view>
+    <view class='text-align m-30'>
+      评分：{{key}}分
+    </view>
+  </view>
+  <view class="p_all">请客观的对该订单进行评论</view>
+  <view class="p_all01 mt10 bg">
+    <view class=" mt10">
+      <textarea class="min_60 inputStyle" auto-height name="remark" placeholder="评论详情" bindinput="remarkInput" value="{{remark}}" />
+    </view>
+  </view>
+  <view class='flex-row flex-wrap'>
+    <view class='blockItem flexColCCen' wx:for='{{images}}' wx:key=''>
+      <view class='item-1 flexColCCen'>
+        <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg'>
+          <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del'>
+            <image src='/images/sctp.png' class='image-30 '></image>
+          </view>
+        </image>
+      </view>
+    </view>
+    <!-- 视频 -->
+    <view class='mb-10 full-width' wx:if='{{video}}'>
+      <video src='{{video}}' poster='' class='full-width'></video>
+    </view>
+    <view class='blockItem flexColCCen' data-type='image' bindtap='upload'>
+      <view class='item-1 border-dashed flexColCCen'>
+        <view class='icon-plus font-size-20 color-aaa'>+</view>
+        <view class='color-999 mt-5 font-size-12'>上传图片</view>
+      </view>
+    </view>
+  </view>
+  <view class="p_all02 mtt0">
+    <view class="btnGreen">
+      <button type="primary" id="btnPay" formType="submit" bindtap="submitReturnData">确定</button>
+    </view>
+  </view>
+</view>

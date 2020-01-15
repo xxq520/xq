@@ -1,0 +1,68 @@
+<view class='cp-db wh-0 '>
+    <view class='search' wx:if="{{sousuo}}">
+        <icon type="search" color="#666" size="18"></icon>
+        <input value='{{inputValue}}' bindblur='search' confirm-type='search' type="text" maxlength="100"
+               placeholder="查找你需要的店铺" placeholder-style="color:#666666"/>
+    </view>
+    <view class='navbtns bg-color' wx:if="{{!sousuo}}">
+        <view class="flex-0 box-pack-around ">
+            <view bindtap='luntan' data-luntan='1' class="items {{luntan==1?'actives':''}}">附近商家
+                <image class='img-30' src="/images/{{luntan==1?'arrow_up':'arrow_down1'}}.png"></image>
+            </view>
+            <picker class="items {{luntan==2?'actives':''}}" bindchange="bindPickerChange" data-luntan='2'
+                    value="{{index}}" range="{{array}}">
+                <view class="item {{luntan==2?'actives':''}}">商家分类
+                    <image class='img-30' src="/images/{{luntan==2?'arrow_up':'arrow_down1'}}.png"></image>
+                </view>
+            </picker>
+            <picker class="items {{luntan==3?'actives':''}}" bindchange="bindPickerChange" data-luntan='3'
+                    value="{{index}}" range="{{paixu}}">
+                <view class="item {{luntan==3?'actives':''}}">综合排序
+                    <image class='img-30' src="/images/{{luntan==3?'arrow_up':'arrow_down1'}}.png"></image>
+                </view>
+            </picker>
+        </view>
+    </view>
+</view>
+<navigator wx:for="{{business}}" wx:key="index" class=' m-20 bg-color font-w-200' hover-class='none'
+           url='/pages/shangjzy/shangjzy?id={{item.id}}'>
+    <view class='flex-0 '>
+        <view class='rounded w-22 cp m-r-30'>
+            <image src="{{host+item.logo}}" class="cp  br-b " mode="aspectFill"></image>
+        </view>
+        <view class='w-78 text-nb cp-bom '>
+            <view class=' flexspbet flexcenter'>
+                <view class='line-clamp-1 font-size-30 wh-300 color-333 font-w w-70'>{{item.storeName}}</view>
+                <view class=' font-size-22'>
+                    <text class="{{(item.distance==0||item.distance==1)?'bgcolor-ff6':'color-333'}}">
+                        {{(item.distance==0||item.distance==1)?'平台推荐':(item.distance>1000?item.distance/1000+'km':item.distance+'m')}}
+                    </text>
+                </view>
+            </view>
+            <view class='font-size-24 color-666 text-l '>
+                <image wx:for="{{item.score}}" wx:key="index" src='/images/stars.png' mode="aspectFill"
+                       class='img-20'></image>
+                <image wx:for="{{5-item.score}}" wx:key="index" src='/images/starsed.png' mode="aspectFill"
+                       class='img-20'></image>
+                <text class=''>{{item.score}}.0</text>
+                <text class='p-l-20'>{{item.num}}喜欢</text>
+                <text class='p-l-20'>{{item.views}}浏览</text>
+            </view>
+            <view class='flexcenter flexspbet'>
+                <view class='line-clamp-1 color-999 radius font-size-24 '>{{item.address}}</view>
+            </view>
+            <view class='flexspbet'>
+                <view class='mb-10 w-90 rows '>
+                    <text class='logoyy-br p-x-5 font-size-24 mx-5 logoyy-q' wx:if="{{item.djq != null}}">代金券</text>
+                    <text class='logoyy-br p-x-5 font-size-24 mx-5 logoyy-q' wx:if="{{item.yhq != null}}">优惠劵</text>
+                </view>
+                <i-icon type="unfold"/>
+            </view>
+            <view class='font-size-24 color-666 mb-10' wx:if="{{item.hb != null}}">
+                <text class='logoyy-br p-x-5 font-size-24 mx-5 logoyy-h color-fff'>红包</text>
+                <text>{{item.hb}}</text>
+            </view>
+        </view>
+    </view>
+</navigator>
+<view class='color-999 p-5 font-size-26 text-align'>没有更多了~~</view>

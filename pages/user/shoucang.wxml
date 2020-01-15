@@ -1,0 +1,46 @@
+<view class="flex-0 flexcenter box-pack-around cp-bom  bg-color scbr-b sc-pb">
+    <view bndtap='djq' data-djq='1' class="items {{scty==1?'actives':''}} ">店铺</view>
+    <view bindtap='djq' data-djq='2' class="items {{scty==2?'actives':''}}">商品</view>
+    <view bindtap='djq' data-djq='3' class="items {{scty==3?'actives':''}}">动态</view>
+</view>
+        <!-- 店铺收藏 -->
+<view wx:if="{{scty==1&&item.qtype==1&&item.business!=null}}" wx:for="{{collectData}}" wx:key="{{item.id}}"
+      class='bg-color flex-0 alignment flexspbet p-15       scbr-b tb p41'>
+    <view class='alignment' bindtap='dpxq' data-id='{{item.id}}' data-shopid='{{item.business.id}}'>
+        <image mode="aspectFill" src='{{host+item.business.logo}}' class='image-sc rounded-x m-r-20'></image>
+        <view class='font-size-30'>{{item.business.storeName}}</view>
+    </view>
+    <view>
+        <text class='text-ts color-fff font-size-24' data-qscid='{{item.id}}' data-qtype='1' bindtap='removeFavorites'>已关注</text>
+    </view>
+</view>
+        <!-- 商品收藏 -->
+<view wx:if="{{scty==2&&item.qtype==3&&item.procedure!=null}}" wx:for="{{collectData}}" wx:key="{{item.id}}"
+      class='bg-color flex-0 flexcenter flexspbet p-15 scbr-b'>
+    <view class='flexcenter w-80' bindtap='spxq' data-id='{{item.qscid}}' data-storeId="{{item.procedure.storeId}}">
+        <image mode="aspectFill" src='{{host+item.procedure.lbImgs}}' class='dt-img1 m-r-20  w-30'></image>
+        <view class='w-70'>
+            <view class='font-size-30  line-clamp-2 control-width'>{{item.procedure.goodsName}}</view>
+            <view class='font-size-30 color-e51'>￥{{item.procedure.goodsCost}}</view>
+        </view>
+    </view>
+    <view class=''>
+        <text class='text-ts color-fff font-size-24 ' data-qscid='{{item.id}}' data-qtype='2' bindtap='removeFavorites'>取消收藏</text>
+    </view>
+</view>
+        <!-- 收藏文章 -->
+<view wx:if="{{scty==3&&item.qtype==2&&item.information!=null}}" wx:for="{{collectData}}" wx:key="{{item.id}}"
+      class='bg-color  p-15 scbr-b dt'>
+    <!-- 修改 -->
+    <view class='w-30'>
+        <image mode="aspectFill" src='{{host+item.information.logo}}' class='dt-img'></image>
+    </view>
+    <view class='dt-content'>
+        <view class='dt-cont-store'>{{item.information.storeName}}</view>
+        <view class='dt-content-detail'>{{item.information.details}}</view>
+    </view>
+    <view class='dt-collect'>
+        <text class='text-ts color-fff font-size-24' data-qscid='{{item.id}}' data-qtype='3' bindtap='removeFavorites'>已关注</text>
+    </view>
+    <!-- 改完 -->
+</view>

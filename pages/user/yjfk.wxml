@@ -1,0 +1,13 @@
+<!--pages/user/yjfk.wxml-->
+<!-- <text>pages/user/yjfk.wxml</text> -->
+<view class='m-20'>
+  <view class='p-20 font-size-30 bg-white'>
+    <textarea bindinput='yijian' placeholder="请输入您要反馈的内容" class='wh-0'></textarea>
+    <!-- <view class='font-size-28 color-666 text-right'>0/100</view> -->
+  </view>
+  <view class=' mt-10 font-size-28 bg-white p-20'>
+    <input bindinput='phone' type='number' maxlength='11' placeholder="请输入您的联系方式" class='wh-0'></input>
+  </view>
+  <view style='height:100px;'></view>
+  <button bindtap='tijiao' class='footc'>提交</button>
+</view>

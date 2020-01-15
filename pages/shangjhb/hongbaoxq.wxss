@@ -1,0 +1,34 @@
+
+page{ background: #FF4A50;}
+.hb {
+  height: 110rpx;
+   /* width: 100%; */
+  margin-top:-3rpx;
+  top: -240;
+  background: #FF4A50;
+   border: 3rpx solid #FF4A50;
+}
+.hb-1 {
+  width: 100%;
+  height: 220rpx;
+  background: #FF4A50;
+    position: absolute;
+  z-index: -1
+  }
+  .wddd {
+  /* position: relative; */
+  box-shadow: 0 0 30rpx firebrick;
+}
+.image-100{width:120rpx;height: 120rpx;}
+.hb-b{border: #fff solid 3rpx;}
+.line-48 {
+  height: 58rpx;
+}
+.m-t-60{margin-top: 80rpx;}
+.img-68 {
+  width: 58rpx;
+  height: 58rpx;
+}
+.xqbb {
+  border-bottom: 1rpx solid #f2f2f2;
+}

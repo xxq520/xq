@@ -1,0 +1,311 @@
+<view class='m-20'>
+  <!-- 步骤1 -->
+  <view class='container text-xx '>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>店铺名称</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input type='text' placeholder='请输入店铺名称' disabled class='full-width' bindinput='storeName' value='{{shop.storeName}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>店主姓名</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input type='text' placeholder='请输入店主姓名' class='full-width' bindinput='userName' value='{{shop.userName}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>门店电话</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input type='number' placeholder='请输入门店电话(登录账号)' class='full-width' maxlength='11' bindinput='tel' value='{{shop.tel}}'></input>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>登录密码</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input password='true' placeholder='请输入登录密码' class='full-width' bindinput='pwd' value='{{pwd}}' ></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>确认密码</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input disabled='{{qrpwd}}' password='true' placeholder='请输入登录密码' class='full-width' bindinput='qrpwd' value='{{qrpwdd}}' ></input>
+        </view>
+      </view>
+    </view> -->
+    <view class='row-text align-items-center bg-white rounded m-10 '>
+      <view class='col-3 '>商家名称</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <!-- <input type='text' placeholder='请输入商家名称' class='full-width' bindinput='storeName' value='{{shop.storeName}}'></input>-->
+          <input type='text' placeholder='请输入商家名称' class='full-width' disabled value='{{shop.storeName}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>行业分类</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{functions}}" range-key="{{'typeName'}}">
+            <input type='text' placeholder='请选择行业' disabled='true' class='full-width' value='{{storetype}}'></input>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>详细地址</view>
+      <view class='col-9'>
+        <view class='content border-bottom flex-0'>
+          <input type='text' placeholder='请选择详细地址' disabled='true' class='full-width' bindtap='map' value='{{address||shop.address}}'></input>
+          <view class='flexcenter'>
+            <image src='/images/position.png' class='image-30'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>门牌号</view>
+      <view class='col-9'>
+        <view class='content border-bottom flex-0'>
+          <input type='text' placeholder='输入门牌号' class='full-width' bindinput='detailAdd' value='{{detailsAddress||shop.detailsAddress}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>营业时间</view>
+      <view class='col-9'>
+        <view class='content border-bottom flexcenter center '>
+          <picker class='full-width center ' mode="time" value="{{stime}}" start="05:00" end="23:59" bindchange="start">
+            <view class="picker">
+              {{stime||shop.startTime}}
+            </view>
+          </picker>
+          <text>—</text>
+          <picker class='full-width center ' mode="time" value="{{etime}}" start="05:00" end="23:59" bindchange="end">
+            <view class="picker">
+              {{etime||shop.endTime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>商家公告</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input type='text' placeholder='请输入公告内容' class='full-width' bindinput='announcement' value='{{shop.announcement}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>人均消费</view>
+      <view class='col-9'>
+        <view class='content border-bottom'>
+          <input type='digit' placeholder='请输入人均消费' class='full-width' bindinput='cpi' value='{{shop.cpi}}'></input>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>门店logo</view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images}}' wx:key=''>
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image'>
+              </view>
+            </image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>轮播图片(750px*400px)</view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images2}}' wx:key=''>
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg2'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del2'>
+               
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen' data-type='image' bindtap='upload2'>
+          <view class='item border-dashed flexColCCen'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>营业执照</view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images3}}' wx:key=''>
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg3'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del3'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen' wx:if="{{images3.length<1}}" data-type='image' bindtap='upload3'>
+          <view class='item border-dashed flexColCCen'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>身份证(正反面)</view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images4}}' wx:key=''>
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg4'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del4'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen' data-type='image' bindtap='upload4' wx:if="{{images4.length<2}}">
+          <view class='item border-dashed flexColCCen'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='col-3 '>门店图片</view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images5}}' wx:key='' >
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg5'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del5'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen' wx:if="{{images5.length<9}}" data-type='image' bindtap='upload5'>
+          <view class='item border-dashed flexColCCen'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤2 -->
+  <view class='container text-xx '>
+    <view class='row align-items-center bg-white rounded m-10'>
+      <view class='wh-0'>
+        <view class='content'>
+
+          <checkbox-group class="checkbox-group " >
+            <label class="checkbox p-r-30" data-type="skzf" bindtap="dxk1">
+              <checkbox value="skzf"  checked="{{shop.skzf==1}}" />刷卡支付
+            </label>
+            <label class="checkbox p-r-30" data-type="wifi"  bindtap="dxk1">
+              <checkbox value="wifi"  checked="{{shop.wifi==1}}"/>免费WiFi
+            </label>
+            <label class="checkbox p-r-30"  data-type="mftc" bindtap="dxk1">
+              <checkbox value="mftc" checked="{{shop.mftc==1}}"  />免费停车
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+    <view class='row align-items-center bg-white rounded m-10'>
+      <view class='wh-0'>
+        <view class='content'>
+          <checkbox-group class="checkbox-group " >
+            <label class="checkbox p-r-30" data-type="jzxy" bindtap="dxk1">
+              <checkbox value="jzxy"  checked="{{shop.jzxy==1}}" />禁止吸烟
+            </label>
+            <label class="checkbox p-r-30"  data-type="tgbj" bindtap="dxk1">
+              <checkbox value="tgbj" checked="{{shop.tgbj==1}}" />提供包间
+            </label>
+            <label class="checkbox p-r-30" data-type="sfxx" bindtap="dxk1">
+              <checkbox value="sfxx"  checked="{{shop.sfxx==1}}" />休闲沙发
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+    <view class='row align-items-center bg-white rounded m-10'>
+      <view class='wh-0'>
+        <view class='content'>
+          <checkbox-group class="checkbox-group " >
+            <label class="checkbox p-r-30" bindtap="dxk1" data-type="zcfp">
+              <checkbox value="zcfp"  checked="{{shop.zcfp==1}}" />支持发票
+            </label>
+            <label class="checkbox p-r-30"  bindtap="dxk1" data-type="ktkf">
+              <checkbox value="ktkf" checked="{{shop.ktkf==1}}" />空调开放
+            </label>
+            <label class="checkbox p-r-30" bindtap="dxk1" data-type="sjcd">
+              <checkbox value="sjcd"  checked="{{shop.sjcd==1}}" />手机充电
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+    <view class='row align-items-center bg-white rounded m-10'>
+      <view class='wh-0'>
+        <view class='content'>
+
+          <checkbox-group class="checkbox-group " >
+            <label class="checkbox p-r-30"  bindtap="dxk1" data-type="shdj">
+              <checkbox value="shdj" checked="{{shop.shdj==1}}" />送货到家
+            </label>
+            <label class="checkbox p-r-30" bindtap="dxk1" data-type="zcth">
+              <checkbox value="zcth"  checked="{{shop.zcth==1}}" />支持退货
+            </label>
+            <label class="checkbox p-r-30" bindtap="dxk1" data-type="shwy" >
+              <checkbox value="shwy" checked="{{shop.shwy==1}}" />售后无忧
+            </label>
+          </checkbox-group>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤3 -->
+  <view class='container text-xx '>
+    <view class='bg-text mb-50'>
+      <textarea type='text' placeholder='店铺描述' class='full-width p-20' bindinput='details' value='{{shop.details}}'></textarea>
+    </view>
+    <!-- <view class='flex-row flex-wrap'>
+      <view class='blockItem flexColCCen' wx:for='{{images}}' wx:key=''>
+        <view class='item flexColCCen'>
+          <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg'>
+            <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del'>
+              <image src='/images/sctp.png' class='image-30 '></image>
+            </view>
+          </image>
+        </view>
+      </view>
+      <view class='blockItem flexColCCen' data-type='image' bindtap='upload'>
+        <view class='item border-dashed flexColCCen'>
+          <view class='icon-plus font-size-20 color-aaa'></view>
+          <view class='color-999 mt-5 font-size-12'>上传图片</view>
+        </view>
+      </view>
+    </view> -->
+  </view>
+
+  <view style='height:100px;'></view>
+  <button bindtap='updateshop' class='btn-lg bg-theme posit-fix bottom-0 left-0 z-index full-width no-rounded font-size-15' hover-class='none' form-type='submit'>保存</button>
+</view>

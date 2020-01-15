@@ -1,0 +1,90 @@
+<form bindsubmit="{{tijiao?'formSubmit':''}}">
+  <view class='mb-10'>
+    <view class='p-x-20 font-size-30 bg-white'>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>优惠类型</view>
+        <view class='w-70'>
+          <picker bindchange="lx" value="{{index}}" range="{{array}}">
+            {{array[index]}}
+          </picker>
+        </view>
+        <view class=" weui-cell__ft_in-access"></view>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>{{index==0?'优惠卷':'代金劵'}}名称</view>
+        <input class="" placeholder="请输入{{index==0?'优惠卷':'代金劵'}}名称" name='name'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>{{index==0?'优惠条件':'代金券面值'}}</view>
+        <input type='number' maxlength='8' class="w-70" placeholder="" name='full'></input>
+        <view class=''>元</view>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15' wx:if="{{index==0}}">
+        <view class='w-25'>优惠金额</view>
+        <input type='number' maxlength='8' class="w-70" placeholder="请输入优惠金额" name='reduce'></input>
+        <view class=''>元</view>
+      </view>
+
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>发放数量</view>
+        <input type='number' maxlength='5' class="w-70" placeholder="请输入数量" name='number'></input>
+        <view class=''>张</view>
+      </view>
+      <view class='flexcenter p-y-15'>
+        <view class='w-25'>有效日期</view>
+        <view class='w-70'>
+          <picker mode="date" value="{{index==0?date:DateAddnow}}" name="endTimeStr" start="{{index==0?date:DateAdd}}" end="2099-01-01" bindchange="yxq">
+            {{index==0?date:DateAddnow}}
+          </picker>
+        </view>
+        <view class=" weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+  </view>
+  <view class='mb-10' wx:if="{{index==1}}">
+    <view class='p-x-20 font-size-30 bg-white'>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>购买金额</view>
+        <!-- <view class='w-70'>促销活动</view>
+      <view class=" weui-cell__ft_in-access"></view> -->
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25 font-size-52 color-230 fa fa-money'></view>
+        <input class="w-75" placeholder="请输入用户购买该代金劵金额" name="money"></input>
+        <!-- <view class=" weui-cell__ft_in-access"></view> -->
+      </view>
+    </view>
+  </view>
+  <view class='mb-10' wx:if="{{index==1}}">
+    <view class='p-x-20 font-size-30 bg-white'>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>配图图片</view>
+      </view>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen' wx:for='{{images2}}' wx:key=''>
+          <view class='item flexColCCen'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg2'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-28  flexcenter' data-index='{{index}}' data-type='image' catchtap='del2'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen' data-type='image' bindtap='upload2'>
+          <view class='item border-dashed flexColCCen'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='p-x-20 font-size-30 mb-10'>使用须知</view>
+  <view class='p-20 font-size-30 bg-white'>
+    <input placeholder="优惠说明" name="details" class='wh-0'></input>
+    <!-- <view class='font-size-28 color-666 text-right'>0/100</view> -->
+  </view>
+  <view style='height:100px;'></view>
+  <button class='footc' form-type="submit" data-tp='{{index}}'>确认发布</button>
+</form>

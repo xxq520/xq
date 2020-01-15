@@ -1,0 +1,37 @@
+<view class=' m-20 '>
+  <navigator wx:for="{{dphongbao}}" wx:key="{{item.id}}" url='/pages/shangjhb/hongbaoxq?qtype=1&qid={{item.id}}' class='mb-15 flexcenter flexspbet'>
+    <view hover-class="none" class='text-align flexcenter flexspbet  w-85 rounded p-x-20 p-y-10  bg-color '>
+      <view class='flexcenter'>
+        <image src='/images/hb1.png' class='img-30 p-5'></image>
+        <view class='text-l'>
+          <view class="font-size-28 color-333">店铺红包</view>
+          <view class="font-size-24 color-999">￥{{item.qsum}}</view>
+        </view>
+      </view>
+      <view class="font-size-28 color-333">{{item.qstatus}}/{{item.qnum}}
+        <text class='fa fa-angle-right p-5'></text>
+      </view>
+    </view>
+    <view class='w-15'>
+      <view class='but-hbsc text-align' catchtap='del' data-index='{{index}}' data-id='{{item.id}}' data-synum='{{item.qnum-item.qstatus}}'>删除</view>
+    </view>
+  </navigator>
+  <navigator wx:for="{{xxhongbao}}" wx:key="{{item.id}}" url='/pages/shangjhb/hongbaoxq?qtype=2&qid={{item.id}}&spid={{item.storeId}}' class='mb-15 flexcenter flexspbet'>
+    <view hover-class="none" class='text-align flexcenter w-85 rounded p-x-20 p-y-10  bg-color flexspbet'>
+      <view class='flexcenter'>
+        <image src='/images/hb1.png' class='img-30 p-5'></image>
+        <view class='text-l'>
+          <view class="font-size-28 color-333">信息红包</view>
+          <view class="font-size-24 color-999">￥{{item.hbMoney}}</view>
+        </view>
+      </view>
+      <view class="font-size-28 color-333">{{item.qstatus}}/{{item.hbNum}}
+        <text class='fa fa-angle-right p-5'></text>
+      </view>
+    </view>
+    <view class='w-15'>
+      <view class='but-hbsc text-align' catchtap='dele' data-index='{{index}}' data-id='{{item.id}}' data-synum='{{item.hbNum-item.qstatus}}'>删除</view>
+    </view>
+  </navigator>
+   <i-load-more tip="没有更多了" loading="{{ false }}" />
+</view>

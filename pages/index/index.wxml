@@ -1,0 +1,208 @@
+<!-- bindemptyevent点击重新加载按钮时的回调函数
+    imgLayouSrc请求失败时展示的提示图片url地址
+    titleLayou请求失败时展示的提示文字
+    hideBtn请求失败的时候是否显示重新加载按钮 true为不显示加载按钮
+-->
+  <view wx:if="{{showGetUser}}" class="alertBox">
+    <image src="/images/xiqian.png" />
+    <button class='sqdl'  open-type="getUserInfo" bindgetuserinfo="getUser">微信快捷登录</button>
+    <view>(若您的微信手机号未注册，将为您直接注册)</view>
+  </view>
+<view class="skeleton">
+<!-- 展示加载中的动画 wx:else-->
+  <view  class='scroller' style="width:{{width}};height:{{height}};" scroll-y="true" bindscrolltolower="{{noinfo?'':''}}" upper-threshold="1" bindscrolltoupper="shuax" scroll-top='{{topNum}}' bindscroll="scrolltoupper">
+    <view class=' bg-top p-x-20 p-y-18'>
+      <view class=' flexcenter flexspbet'>
+        <view class='w-90'>
+            <navigator class='flexcenter  wh-300 skeleton-rect' url="/pages/index/location" hover-class='none'>
+              <image src='/images/position.png' class='img-30 '></image>
+              <view class='font-size-32 color-333 line-clamp-1  p-x-10 max'>{{district==''?'未知':district}}</view>
+              <i-icon type="enter" />
+            </navigator>
+        </view>
+          <navigator  class='skeleton-radius w-10 center' url="/pages/im/chat-list/chat-list">
+            <image src='/images/xxin.png' class='image-20 ' mode="aspectFill">
+              <view class='image-12 rounded-0 bgcolor-ff6 dbtt'></view>
+            </image>
+          </navigator>
+      </view>
+      <view class='search skeleton-rect'>
+        <icon type="search" color="#999999" size="18"></icon>
+        
+        <input bindtap='sousuo' disabled='true' value='{{inputValue}}' confirm-type='search' type="text" maxlength="100" placeholder="查找店铺信息{{empty.loading}}" placeholder-style="color:#999999" />
+      </view>
+    </view>
+    <swiper style='height:290rpx;' class='p-x-20 rounded  skeleton-rect' indicator-dots="true" circular="true" autoplay="true" interval="4000" duration="1000" indicator-color="#ffffff9f" indicator-active-color="#fff">
+      <block wx:for="{{banner}}" wx:key="index">
+        <swiper-item>
+          <image src="{{host+item.logo}}" class="banner rounded" data-appid='{{item.appid}}' bindtap='{{item.appid=="" ? "" : "bannertz"}}' mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="headLine box box-lr flexcenter skeleton-rect">
+      <image class="headLineImg" src="/images/shangjtt.png"></image>
+      <swiper class="headLineSwiper" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <swiper-item wx:for="{{headLineList2}}" wx:key="index" class="box skeleton-radius box-lr box-align-center " data-id="{{item.id}}" data-type='{{item.qtype}}'>
+          <view>
+            {{item.title}}
+          </view>
+        </swiper-item>
+      </swiper>
+      <view bindtap='ruzhu' class=' font-size-28 color-fff  '>
+        <text class="color-fff bgcolor-ff6  p-x-5 p-y-10 rounded-rz">我要入驻</text>
+      </view>
+    </view>
+    <navigator class='p-x-20 ' url='/pages/index/fuli' hover-class='none'>
+      <image src="{{host+'shouygg.gif'}}" mode='aspectFill' class='Img-310-280 skeleton-radius'></image>
+    </navigator>
+    <view class='p-x-20 flexcenter p-y-20'>
+      <navigator class='sy-yh  w-50 p-20 m-r-4 skeleton-rect' url="/pages/index/rushbuy" hover-class='none'>
+        <view class=' color-333 font-w font-size-38'>附近抢券</view>
+        <view class='font-size-28 color-999'>附近商家优惠券免费拿</view>
+        <view class='flexcenter flexspbet'>
+          <view class='font-size-22 color-e51'>立即领取
+            <text class='fa fa-angle-right'></text> </view>
+          <image src="{{host+'gg-qq.png'}}" class='img-gg' mode='aspectFill'></image>
+        </view>
+      </navigator>
+      <navigator   class='sy-yh w-50 p-20 m-l-4 skeleton-rect' url="/pages/index/fenxyl"  hover-class='none'>
+        <view class=' color-333 font-w font-size-38'>共享优惠</view>
+        <view class='font-size-28 color-999'>一起享受商家优惠福利</view>
+        <view class='flexcenter flexspbet'>
+          <view class='font-size-22 color-e51'>查看详情
+            <text class='fa fa-angle-right'></text> </view>
+          <image src="{{host+'gg-fx.png'}}" class='img-gg' mode='aspectFill'></image>
+        </view>
+      </navigator>
+    </view>
+      <!--骨架屏的时候隐藏下面的内容  -->
+    <view wx:if='{{!showSkeleton}}'>
+    <swiper circular="true" autoplay="true" indicator-dots="true" interval="4000" duration="1000" indicator-color="#fff" indicator-active-color="#fa4242" class='p-20 bg-color ' style='height:200rpx;'>
+      <block wx:for="{{yhq}}" wx:key="index">
+        <swiper-item>
+          <image src="{{host+item.logo}}" mode='aspectFill' class='Img-310-280' bindtap="toyhq"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class=''>
+      <view class='p-x-20 pt-20'>
+        <view class='font-size-36 font-w color-333 mb-10'>附近商家</view>
+        <view class=' flexcenter'>
+          <view class="{{pxid==99?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-0 font-size-26 center " bindtap='shuju' data-tp='3'>综合排序</view>
+          <view class="{{pxid==2?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-0 font-size-26 center " bindtap='bindPickerChange' data-tp='2'>新店</view>
+          <view class="{{pxid==1?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-0 font-size-26 center " bindtap='bindPickerChange' data-tp='1'>红包</view>
+          <view class="{{pxid==0?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-0 font-size-26 center " bindtap='bindPickerChange' data-tp='0'>人气</view>
+          <view class='font-size-26 color-666 w-25 center' bindtap='shaixuan'>筛选
+            <image src='/images/a.png' class='img25 p-x-5 '></image>
+          </view>
+        </view>
+      </view>
+      <navigator wx:for="{{business}}" id="marTop{{index}}" wx:key="index" class='img m-20 bg-color font-w-200' hover-class='none' url='/pages/shangjzy/shangjzy?id={{item.id}}'>
+        <view class='flex-0 '>
+
+          <view class='rounded w-22 cp m-r-30'>
+            <image src="{{lazyImg[index]?host+item.logo:''}}" class=" cp  br-b sy-br wddd " mode="aspectFill"></image>
+          </view>
+          <view class='w-78 text-nb cp-bom p-b-10'>
+            <view class=' flexspbet '>
+              <view class='line-clamp-1 font-size-30 wh-300 color-333 font-w w-70'>{{item.storeName}}</view>
+              <view class=' font-size-22'>
+                <text class="p6 {{(item.distance==-1||item.distance==-2)?'bgcolor-ff6':'color-333'}}">{{(item.distance==-1||item.distance==-2)?'平台推荐':(item.distance>1000?item.distance/1000+'km':item.distance+'m')}}</text>
+              </view>
+            </view>
+            <view class='font-size-24 color-666 text-l p-y-10'>
+              <image wx:for="{{item.score}}" wx:key="index" src='/images/stars.png' mode="aspectFill" class='img-20'></image>
+              <image wx:for="{{5-item.score}}" wx:key="index" src='/images/starsed.png' mode="aspectFill" class='img-20'></image>
+              <text class=''>{{item.score}}.0</text>
+              <text class='p-l-20'>{{item.num}}喜欢</text>
+              <text class='p-l-20'>{{item.views}}浏览</text>
+            </view>
+            <view class='flexcenter flexspbet'>
+              <view class='line-clamp-1 color-999 radius font-size-24 '>{{item.address}}</view>
+            </view>
+            <view class='flexspbet'>
+              <view class='w-90 '>
+                <view class='mb-5 rows '>
+                  <view class='logoyy-br p-x-5 font-size-20 mx-5 logoyy-q' wx:for="{{item.yhqstr}}" wx:key="index" wx:if="{{index<2}}">{{item}}</view>
+                </view>
+                <view wx:if="{{zsyhj&&zsyhjid==item.id}}">
+                  <view class='mb-5 w-90 rows '>
+                    <text class='logoyy-br p-x-5 font-size-20 mx-5 logoyy-q' wx:for="{{item.yhqstr}}" wx:key="index" wx:if="{{index>1}}">{{item}}</text>
+                  </view>
+                </view>
+              </view>
+              <i-icon wx:if="{{(!(zsyhj&&zsyhjid==item.id))&&(item.yhqstr.length>2)}}" catchtap='zsyhj' data-zsyhjid='{{item.id}}' type="unfold" />
+              <i-icon wx:if="{{(zsyhj&&zsyhjid==item.id)}}" catchtap='zsyhj' data-zsyhjid='{{item.id}}' type="packup" />
+            </view>
+            <view class='color-999  font-size-24 mb-q-5 flex-0 line-clamp-1' wx:if="{{item.djqstr.length!=0}}" style="flex-wrap:wrap">
+              <view class='font-size-24 color-fff m-r-20 '>
+                <text class='bg-q  p-x-10 br-bq '>抵扣</text>
+              </view>
+              <view style="margin-right:20rpx" wx:for="{{item.djqstr}}" wx:key="index">{{item}}</view>
+            </view>
+            <view class='font-size-24 color-999 mb-5 ' wx:if="{{(item.hb != null)&&(item.hb != '')}}">
+              <text class='logoyy-br p-x-5 font-size-24 m-r-20 logoyy-h color-fff'>红包</text>
+              <text>{{item.hb}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if="{{load}}">
+      <i-load-more />
+    </view>
+    <view wx:if="{{noinfo}}">
+      <i-load-more tip="没有更多了" loading="{{ false }}" />
+    </view>
+  </view>
+  <view class='dialog'>
+    <image src='../../images/zd.png' class='goTop' hidden='{{!floorstatus}}' catchtap="goTop"></image>
+  </view>
+  <button open-type="contact" class='dialog'>
+    <image src='../../images/kefu1.png' class='goKf'></image>
+  </button>
+  <!-- 弹窗  -->
+  <view wx:if="{{modalHidden}}">
+    <view class='drawer_attr_box'>
+      <view class=' font-size-28 drawer_attr_content' style=''>
+        <view class=' flexcenter p-20'>
+          <view class='font-size-28 color-333 w-20 center' bindtap='shuju' data-tp='3'>综合排序</view>
+          <view class='font-size-28 color-666 w-20 center' bindtap='bindPickerChange' data-tp='2'>新店</view>
+          <view class='font-size-28 color-666 w-20 center' bindtap='bindPickerChange' data-tp='1'>红包</view>
+          <view class='font-size-28 color-666 w-20 center' bindtap='bindPickerChange' data-tp='0'>人气</view>
+          <view class='font-size-28 color-666 w-20 center' bindtap='gbtc'>筛选
+            <image src='/images/a.png' class='img25 p-x-10 '></image>
+          </view>
+        </view>
+        <view class='font-size-28 color-999 p-20'>
+          <view class='p-y-10'>商家特色</view>
+          <view class='rows flexcenter'>
+            <view bindtap='pxid' data-id='2' class="{{pxid==2?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-sm center ">最新入驻</view>
+            <view bindtap='pxid' data-id='1' class="{{pxid==1?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-sm center ">店铺红包</view>
+            <view bindtap='pxid' data-id='0' class="{{pxid==0?'zuanz':'wxuanz'}} xuanx p-y-10 rounded-sm center ">人气最多</view>
+          </view>
+          <view class='p-y-10'>门店类型</view>
+          <view class='rows flexcenter'>
+            <view wx:for="{{functions}}" wx:key="index" class="{{tpid==item.id?'zuanz':'wxuanz'}} xuanx2 p-y-10 rounded-sm center " data-tpid='{{item.id}}' bindtap='sptype'>{{item.typeName}}</view>
+          </view>
+        </view>
+        <view class='flexcenter  redPackage'>
+          <view class='w-50 center wxuanz p-y-20' bindtap='chongzhi'>重置</view>
+          <view class='w-50 center bgcolor-ff6 color-fff p-y-20' bindtap='shuju'>确定</view>
+        </view>
+      </view>
+    </view>
+    <view class='drawer_screen' bindtap='gbtc'></view>
+  </view>
+</view>
+<!-- 骨架屏组件
+selector定义class根元素
+bgcolor骨架背景颜色
+showSkeleton是否显示骨架屏
+ -->
+ </view>
+<skeleton selector="skeleton"
+          bgcolor="#FFF"
+          class='showSkeleton {{showSkeleton?"":"showSkeletonShow"}} {{skeletonisTrue?"":"dis-none"}}'
+          wx:if="true"
+></skeleton>

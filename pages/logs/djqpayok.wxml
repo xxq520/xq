@@ -1,0 +1,38 @@
+<view>
+  <view class=' bg pay-header'>
+    <image src='/images/Checked.png'></image>
+    <text>支付成功</text>
+  </view>
+
+  <view class='pay-xq bg'>
+    <view class='pay-xq-item font-size-30'>
+      <view>购买金额</view>
+      <view class='hs'>￥199</view>
+    </view>
+    <view class='pay-xq-item font-size-30'>
+      <view>消费金额</view>
+      <view class='hs'>-￥199</view>
+    </view>
+    <view class='pay-xq-item font-size-30'>
+      <view style='letter-spacing:30px;'>数量</view>
+      <view class='hs'>x1</view>
+    </view>
+  </view>
+
+  <view class='pay-md bg pr'>
+    <view class='ps'>复制</view>
+    <view class='pay-md-item font-size-30'>
+      <view>付款时间</view>
+      <view class='md-hs'>2018.11.05</view>
+    </view>
+    <view class='pay-md-item font-size-30'>
+      <view class='w-60'>订单号</view>
+      <view class='md-hs'>265562160</view>
+    </view>
+  </view>
+
+  <view class='pay-dp-r-b bg'>
+    <view class='pay-dp-btn font-size-28'>联系商家</view>
+    <view class='pay-dp-btn font-size-28 btn-bg'>去买单</view>
+  </view>
+</view>

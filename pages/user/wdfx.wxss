@@ -1,0 +1,107 @@
+/* pages/user/wdfx.wxss */
+page{
+  font-family: "苹方"
+}
+
+.footc {
+  /* display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0; */
+  background: rgb(255, 88, 94);
+  /* z-index: 100; */
+  width: 100%;
+  font-size: 14px;
+  /* border-top: 1px solid #eee; */
+  line-height: 50px;
+  /* font-weight: 700; */
+  color: snow;
+  text-align: center;
+  border-radius: 0;
+}
+
+.footc::after {
+  border: none;
+}
+
+swiper {
+  padding-top: 30px;
+}
+.le-img {
+  width: 100%;
+  display: block;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  border-radius: 22.5px;
+}
+.le-img.le-active {
+  transform: scale(1);
+}
+
+
+.idx-content {
+  overflow: hidden;
+  padding: 0 40rpx;
+}
+.idx-content .idx-swiper {
+  position: relative;
+  margin: 40rpx 0;
+  padding-bottom: 100%;
+}
+.idx-content .idx-swiper .idx-cswp {
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  border-radius: 6px;
+}
+.idx-content .idx-swiper .idx-cswp image {
+  width: 100%;
+  max-height: 600rpx;
+}
+.idx-content .idx-swiper .idx-cswp .swp-title .swp-btime {
+  text-align: center;
+  font-size: 28rpx;
+}
+.idx-content .idx-swiper .idx-cswp .swp-title .swp-bname {
+  text-align: center;
+  font-size: 24rpx;
+}
+.swp-left {/*左边样式*/
+  transition: all .3s ease;
+  transform: scale(0.8);
+  left: -55%;
+}
+.swp-center {/*中间样式*/
+  left: 15%;
+  transition: all .3s ease;
+  transform: scale(1);
+}
+.swp-right {/*右边样式*/
+  transition: all .3s ease;
+  transform: scale(0.8);
+  left: 85%;
+}
+.swp-rightNo {/*最右边样式*/
+  transition: all .3s ease;
+  left: 150%;
+}
+.swp-leftNo {/*最左边样式*/
+  transition: all .3s ease;
+  left: -150%;
+}
+
+.font-w{font-weight: bold;}
+.but-fxhb{
+  padding-left: 0;
+  padding-right: 0;
+}
+.but-fxhb::after{border: none;}
+.but-fxhb1{background-color: #ffae0c;}
+.fxhb1-s {
+  box-shadow: 0rpx 6rpx 13.72rpx 0.28rpx #ffe8b9;
+}
+.but-fxhb2{background-color: #ff601d;}
+.fxhb2-s {
+  box-shadow: 0rpx 6rpx 13.72rpx 0.28rpx #fdd8cf;
+}

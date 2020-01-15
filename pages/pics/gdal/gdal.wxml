@@ -1,0 +1,162 @@
+<!-- 代金券 -->
+<wxs module="filters" src="../../../utils/filters.wxs"></wxs>
+
+<view wx:if="{{!fx}}">
+  <view class='bg-color font-size-28 p-y-20 p-x-30 mb-10'>
+    <view class='font-size-26 color-666 mb-15'>{{business}}</view>
+    <view class='p-x-30 text-xx bg-white  rounded-3d  mb-15 border-zf flexcenter flexspbet'>
+      <view class=' color-000 font-size-30 content'>消费总额</view>
+      <input class='font-size-28 text-right ' focus="{{!buyouhui}}" type='digit' bindinput='money' maxlength='7' value='{{money}}' placeholder='请与服务员确认'></input>
+    </view>
+    <!-- <view class='font-size-26 color-666 flexcenter mb-15 '>
+      <image src="{{buyouhui?'/images/khmded.png':'/images/khmd.png'}}" class='img-36 m-r-20' bindtap='buyouhui'>
+      </image>输入不参与优惠金额
+    </view>
+    <view wx:if="{{buyouhui}}" class='p-x-30 text-xx bg-white  rounded-3d  mb-15 border-zf flexcenter flexspbet'>
+      <view class=' color-000 font-size-30 content'>输入不参与优惠金额(元)
+      </view>
+      <input class='font-size-28 text-right w-40' focus="{{buyouhui}}" type='digit' bindinput='bujianmian' maxlength='7' placeholder='请与服务员确认' value='{{bujianmian}}'>
+      </input>
+    </view> -->
+  </view>
+
+  <!-- <view wx:for="{{coupon}}" wx:key="index" class='bg-color  p-y-15 p-x-30 mb-10 ' wx:if="{{coupon.length!=0}}">
+    <view class=' fr_l mod11'>
+      <text class='p-y-5 p-x-20 m-r-20 color-fff dd-bg rounded-0 font-size-24'>{{item.typeId==1?'代金券':'优惠券'}}</text>
+    </view>
+    <view class='font-size-30 m-l-150 ' wx:key="index" bindtap='xuanze' data-id='{{item.id}}' data-index='{{index}}' data-jmsum='{{item.typeId==1?(item.full*item.num):(item.money)}}' data-tp='{{item.typeId}}' data-man='{{item.full}}' data-num='{{item.num}}'>
+      <view class='flexcenter p-y-10'>
+        <image src="{{item.id==usercouponid?'/images/maidaned.png':'/images/maidan.png'}}" class='img-30 m-r-20 '></image>
+        <text class="{{item.id==usercouponid?'':'color-999'}}">{{item.typeId==1?(item.full+'代金券'):('满'+item.full+'减'+item.money+'券')}}{{'' + item.num}}张</text>
+      </view>
+    </view>
+  </view> -->
+
+<!--  <view class='bg-color  p-y-15 p-x-30 mb-10' wx:if="{{coupons.length!=0&&coupon.length==0}}">-->
+<!--    <view class=' fl_l mod11'>-->
+<!--      <text class='p-y-5 p-x-20 m-r-20 color-fff dd-bg rounded-0 font-size-24'>减满</text>-->
+<!--    </view>-->
+<!--    <view class='font-size-30 m-l-150 border-bottom' wx:key="index" bindtap='xuanze' data-id='{{item.userCouponId}}' data-index='{{index}}' data-jmsum='{{item.typeId==1?(item.full*item.num):(item.money)}}' data-tp='{{item.typeId}}' data-man='{{item.full}}'-->
+<!--                   wx:for="{{coupons}}" wx:key="index">-->
+<!--    <view class='flexcenter p-y-20' wx:if="{{item.typeId==2}}">-->
+<!--      <image src="{{item.userCouponId==usercouponid?'/images/maidaned.png':'/images/maidan.png'}}" class='img-30 m-r-20 '></image>-->
+<!--      <text class="{{item.userCouponId==usercouponid?'':'color-999'}}">{{item.typeId==1?(item.full+'元代金券'):('满'+item.full+'减'+item.money+'券')}}</text>-->
+<!--    </view>-->
+<!--  </view>-->
+<!--  </view>-->
+
+  <view class='bg-color  p-y-15 p-x-30 mb-10 ' wx:if="{{coupon.length!=0}}">
+    <view class=''>
+      <text class='p-y-5 color-333 font-size-30'>代金券</text>
+    </view>
+    <view class='font-size-30' wx:key="index" bindtap='xuanze' data-id='{{item.userCouponId}}' data-index='{{index}}' data-jmsum='{{item.typeId==1?(item.full):(item.money)}}' data-tp='{{item.typeId}}' data-man='{{item.full}}' data-num='1'
+      wx:for="{{coupon}}" wx:key="index">
+      <view class='flexcenter p-y-20 flexspbet border-bottom' wx:if="{{item.typeId==1}}">
+        <view>
+          <text class="{{item.userCouponId==usercouponid?'':'color-999'}}">{{item.typeId==1?(item.full+'元代金券'):('满'+item.full+'减'+item.money+'券')}}1张</text>
+        </view>
+        <view class='flexcenter'>
+          <!-- <text class='dd-zf '>100抵120</text> -->
+          <image src="{{item.userCouponId==usercouponid?'/images/maidaned.png':'/images/maidan.png'}}" class='img-30 m-l-10 '></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+<view class='bg-color  p-y-15 p-x-30 mb-10 ' wx:if="{{coupons.length!=0}}">
+    <view class=' fr_l mod11'>
+      <text class='p-y-5 p-x-20 m-r-20 color-fff dd-bg rounded-0 font-size-24'>优惠券</text>
+    </view>
+    <view class='font-size-30 m-l-150' wx:for="{{coupons}}" data-num="1" wx:key="index"  bindtap='xuanze'   data-id='{{item.userCouponId}}' data-index='{{index}}' data-jmsum='{{item.typeId==1?(item.full*item.num):(item.money)}}' data-tp='{{item.typeId}}' data-man='{{item.full}}'
+          >
+      <view class='flexcenter p-y-10'>
+        <image src="{{item.userCouponId==usercouponid?'/images/maidaned.png':'/images/maidan.png'}}" class='img-30 m-r-20 '></image>
+        <text class="{{item.userCouponId==usercouponid?'':'color-999'}}">{{item.typeId==1?(item.full+'代金券'):('满'+item.full+'减'+item.money+'券')}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='bg-color font-size-28 p-y-15 p-x-30 mb-10 flexcenter flexspbet'>
+    <view class='font-size-30 color-666'>实付金额</view>
+    <view class='dd-zf font-size-38 font-w'>{{filters.toFix(money-jmsum)}}元</view>
+  </view>
+
+  <view class=' m-y-30 text-align m-x-30'>
+    <!-- <navigator url='/pages/pics/gdal/paysuccess' hover-class='none'> -->
+    <button class='dd-bg rounded-0 color-fff butt ' bindtap='prepay'>确认支付</button>
+    <!-- </navigator> -->
+  </view>
+</view>
+<view wx:if="{{fx}}">
+  <view class=' bg pay-header'>
+    <image src='/images/Checked.png'></image>
+    <text>支付成功</text>
+  </view>
+  <view class='pay-xq bg'>
+    <view class='pay-xq-item font-size-30'>
+      <view>消费金额</view>
+      <view class='hs'>￥{{money}}</view>
+    </view>
+    <view class='pay-xq-item font-size-30' wx:if="{{jmsum>0}}">
+      <view>优惠减免</view>
+      <view class='hs'>-￥{{jmsum}}</view>
+    </view>
+    <view class='pay-xq-item font-size-30'>
+      <view>实际支付</view>
+      <view class='hs'>￥{{filters.toFix(money-jmsum)}}</view>
+    </view>
+  </view>
+
+  <view class='pay-md bg'>
+    <view class='pay-xq-item font-size-30'>
+      <view>门店名称</view>
+      <view class='hs'>{{business}}</view>
+    </view>
+    <view class='pay-xq-item font-size-30'>
+      <view>支付时间</view>
+      <view class='hs'>{{nowDate}}</view>
+    </view>
+  </view>
+  <view class='pay-dp bg'>
+    <view class='pay-dp-l'>
+      <image src="{{host+logo}}"></image>
+    </view>
+    <view class='pay-dp-r'>
+      <view class='pay-dp-r-t font-size-36rpx'>{{business}}</view>
+      <view class='pay-dp-r-b'>
+
+        <form bindsubmit="tochat" report-submit>
+          <button wx:if="{{!phone}}" formType="submit" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class='none' class='flexColCCen w-icon p-x-15 bg-color button'>
+            <view class='pay-dp-btn font-size-28'>
+              联系商家
+            </view>
+          </button>
+          <button wx:else formType="submit" hover-class='none' class='flexColCCen w-icon p-x-15 bg-color  button '>
+            <view class='pay-dp-btn font-size-28'>
+              联系商家
+            </view>
+          </button>
+        </form>
+        <view class='pay-dp-btn font-size-28  m-l-30' bindtap='fanhui'>商家首页</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- </view> -->
+
+<!-- 支付成功，分享弹窗 -->
+<!-- <view class='modal flexColCCen ' wx:if="{{fx}}" bindtap='gbfx'>
+  <view class='modal-content-x  footfixed center p-20-30'>
+    <image src='/images/fenxiang.png' class='modal-content-x mod'></image>
+    <view class='center btn-lg'>
+      <scroll-view scroll-y class='full-height text-justify'>
+        <image src='/images/info.png' class='img-68'></image>
+        <view class='mb-20 text-center color-purple font-size-20 font-bold '>订单分享给好友得佣金5</view>
+        <view class='mb-20 text-center color-purple font-size-20 font-bold mb-15'>好友得6元！</view>
+        <button open-type="share" class='rounded-0 mb-15 font-size-28 color-ff6 p-y-20 m-x-80 butt1 '>分享好友</button>
+        <button class='rounded-0  font-size-28 color-ff6 p-y-20 m-x-80 bgcolor-fxhb butt2'>生成分享海报</button>
+      </scroll-view>
+    </view>
+  </view>
+</view> -->

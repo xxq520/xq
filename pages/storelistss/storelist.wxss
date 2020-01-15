@@ -1,0 +1,122 @@
+@import '../../components/good/good.wxss';
+page{
+   /* background-color: #f8f8f8; */
+   box-sizing:border-box;
+   font-family: "苹方";
+}
+.search{
+   /* background: #ff4d47; */
+   /* height:280rpx; */
+   height: 297rpx;
+   color:#333333;
+    /* gai */
+   margin:30rpx;  
+   border-radius:15rpx;
+} 
+
+.p-y-60{
+  padding-top: 40rpx;
+  padding-bottom: 60rpx;
+}
+.p-x-60{
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+.img-68 {
+  width: 44rpx;
+  height: 44rpx;
+}
+/* .xqbb {
+  border-bottom: 6rpx solid #ff4d47;
+} */
+.bgcolor-m{background-color: #ffd000;border: #ffa600 solid 2rpx;}
+.color-f36{color:rgb(0, 162, 236);}
+.f-w{font-weight: bold;}
+
+.footc {
+  display: block;
+  position: fixed;
+  /* bottom: 0; */
+  bottom: 30rpx;
+  /* left: 0; */
+  left: 30rpx;
+  /* background: rgb(255, 67, 67); */
+  background-color: rgb(255, 48, 30);
+  z-index: 9;
+  /* width: 100%; */
+  width: 92%;
+  font-size: 14px;
+  /* border-top: 1px solid #eee; */
+  /* line-height: 50px; */
+  line-height: 78rpx;
+  height: 78rpx;
+  /* font-weight: 700; */
+  color: snow;
+  text-align: center;
+  /* border-radius: 0; */
+  border-radius: 38rpx;
+}
+
+.footc::after {
+  border: none;
+}
+/* /gai/ */
+.b-line{
+  border-bottom:1rpx solid rgb(215,215,215);
+}
+.font-c{
+  color: rgb(151, 151, 151);
+}
+.b-circle{
+  /* position: absolute;
+  bottom: 0;
+  left:0; */
+  display:block;
+  height: 6rpx;
+  width: 30rpx;
+  border-radius: 3rpx;
+  background-color: rgb(247, 47, 26);
+  visibility: hidden;
+  margin: 30rpx auto 0;
+}
+.show{
+  visibility: visible;
+}
+.font-size-28{
+  font-size: 28rpx;
+}
+.font-size-72{
+  font-size: 72rpx;
+}
+.font-size-36{
+  font-size: 36rpx;
+}
+.search-padding-100{
+padding-top:100rpx;
+
+}
+.get{
+  border-bottom: 0.5rpx solid rgb(215,215,215);
+}
+.img-80{
+  width: 66rpx;
+  height: 66rpx;
+}
+.b-p-l{
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  width: 90%;
+}
+.p-b-10{
+  /* padding-bottom: 15rpx; */
+}
+.bgimg{
+position:absolute;
+left:30rpx;
+top:37rpx;
+width:690rpx;
+height:297rpx;
+background-size:100% 100%;
+z-index:-999;
+border-radius:15rpx;
+}

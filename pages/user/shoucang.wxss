@@ -1,0 +1,138 @@
+page {
+  background-color: #f8f8f8;
+  font-family:"苹方";
+  line-height: 100%;
+}
+
+.items {
+  display: block;
+  /* float: left; *//* width: 33.3%; */
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 30rpx;
+  /* color: #333; */
+  color: rgb(153, 153, 153);
+}
+
+.items.actives {
+  border-bottom: #dd2a2a solid 4rpx;
+  /* color: #dd2a2a; */
+  color: rgb(51, 51, 51);
+}
+
+.image-sc {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+p
+.items.actives {
+  border-bottom: #dd2a2a solid 4rpx;
+  /* color: #dd2a2a; */
+  color: rgb(51, 51, 51);
+}
+
+.scbr-b {
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.image-sc {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.image-scwz {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.text-ts {
+  /* background-color: #ff9800; */
+  /* padding: 10rpx 10rpx; */
+  padding: 5rpx 10rpx;
+  border-radius: 6rpx;
+  line-height: 40rpx;
+  color: rgb(153, 153, 153);
+  border: 0.5rpx solid rgb(153, 153, 153);
+}
+
+.line-clamp-sc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 40rpx;
+  /* width: 250rpx; */
+}
+
+/* gai */
+/* .sc-pb{
+  margin-bottom: 20rpx;
+} */
+.alignment{
+  position:relative;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-box-align:center;
+  align-items: flex-start;
+  -webkit-align-items:flex-start;
+}
+.tb{
+  margin-top:1px;
+}
+.p41{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+/* 动态 */
+.dt{
+  display: flex;
+  padding: 20rpx 20rpx;
+  margin-top:20rpx;
+}
+.dt-img{
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx;
+  border-radius:8rpx;
+}
+.dt-img1{
+  /* width: 100%; */
+  height: 150rpx;
+  line-height: 150rpx;
+  border-radius:8rpx;
+}
+.dt-content{
+  width: 55%;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+.dt-content-store{
+  width: 40rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.dt-content-detail{
+  width: 90%;
+  height: 40rpx;
+  font-size: 26rpx;
+  color: rgb(153, 153, 153);
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis; 
+  overflow: hidden;
+  white-space:nowrap;
+  margin-top: 30rpx;
+}
+.dt-collect{
+  width: 15%;
+}
+/* 收藏商品控制，防止错位 */
+.control-width{
+  /* width:300rpx; */
+  height: 80rpx;
+  white-space:nowarp;
+}

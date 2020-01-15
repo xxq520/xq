@@ -1,0 +1,22 @@
+<!--pages/list/list.wxml-->
+<import src="../../modules/chat-page/chat-item.wxml" />
+<import src="../../modules/chat-input/chat-input.wxml" />
+<import src="../../modules/chat-page/chat-page-status.wxml" />
+<view class='ltbt flexcenter wh-0'>
+<view class='w-50'>
+<button bindtap="tocall" class='ltbt-but center bbh' hover-class='none'>
+<image src='/images/lt-sj.png' class='img-30 m-r-20'></image><text class='font-size-28'>拨打电话</text>
+</button>
+</view>
+<view class='w-50'>
+<button bindtap="toindex" class='ltbt-but center' hover-class='none'>
+<image src='/images/lt-zy.png' class='img-30 m-r-20'></image><text class='font-size-28'>{{showurl}}</text>
+</button>
+</view>
+</view>
+<scroll-view   bindscrolltoupper="addChat" style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;" scroll-y="true" scroll-top="{{scrollTopVal}}" bindtap="resetInputStatus">
+  <block wx:for="{{chatItems}}" wx:key="{{index}}">
+    <template is="chat-item" data="{{length:chatItems.length,index:index,item:item}}" />
+  </block>
+</scroll-view>
+<template is="chat-input" data="{{inputObj,textMessage,showVoicePart:false}}" />

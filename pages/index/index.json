@@ -1,0 +1,13 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "喜钱",
+  "backgroundColor": "#ffffff",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-load-more": "../../components/load-more/index",
+    "i-icon": "../../dist/icon/index",
+    "skeleton": "../../components/skeleton/skeleton",
+    "empty":"../../components/empty/empty"
+  }
+}

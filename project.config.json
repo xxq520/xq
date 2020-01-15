@@ -1,0 +1,133 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"bundle": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.4",
+	"appid": "wx1658b6e7b50a4d60",
+	"projectname": "xq06",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": 1,
+					"name": "商铺转发授权",
+					"pathName": "pages/shangjzy/shangjzy",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品转发授权",
+					"pathName": "pages/goods/goods",
+					"query": "id=24&qshopid=952",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "聊天跳转",
+					"pathName": "pages/im/chat/chat",
+					"query": "friend={\"friendId\":\"ohRa55eyJgojlbR0eQzamaKFvWq4\",\"friendHeadUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/ZBAFYNOLbJeJ1iaIWrGZicI8fBZbJLvIs5erpFicIpVrkP9q8yH2s5m3ibkQKWtEdZvY16Ribvjf27ujzibD1jiczdtcw/132\",\"friendName\":\"Null\",\"conversationId\":-1,\"msgUserId\":\"5\",\"timeStr\":\"19:06\",\"timestamp\":1533294362000,\"type\":\"text\",\"ismb\":\"1\"}",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "海报分享",
+					"pathName": "pages/index/index",
+					"query": "sjid=32",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单带参数",
+					"pathName": "pages/order/check",
+					"query": "id=377",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "店铺后台",
+					"pathName": "pages/booszy/booszy",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/tixian/tixiants",
+					"query": "tp=1"
+				},
+				{
+					"id": -1,
+					"name": "商家续费",
+					"pathName": "pages/user/shangjrz",
+					"query": "id=124"
+				},
+				{
+					"id": -1,
+					"name": "商铺转发授权",
+					"pathName": "pages/user/ddpl",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "评论",
+					"pathName": "pages/user/ddpl",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "带参数",
+					"pathName": "pages/index/index",
+					"query": "id=97",
+					"scene": null
+				}
+			]
+		}
+	}
+}

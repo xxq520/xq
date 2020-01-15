@@ -1,0 +1,94 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class='m-30 '>
+  <!-- 商家发货 -->
+  <view wx:for="{{orders}}" wx:key="{{item[0].id}}" class='rounded  bg-color mb-15 p-15 '>
+    <view class='flexcenter flexspbet bom-bor p-y-10'>
+      <view class='flex-0'>
+        <image src='{{item[0].qsubmitterIcon}}' class='img-60 rounded-x m-r-20' mode="aspectFill"></image>
+        <view>
+          <view>{{item[0].qsubmitterName}}</view>
+          <view class='color-999 font-size-24'>下单时间：{{item[0].qcreateTime}}</view>
+          <view class='color-999 font-size-24'>订单编号：{{item[0].qgroupid}}</view>
+        </view>
+      </view>
+      <view>
+        <!-- <image src='/images/kefu.png' class='img-44 m-r-20' bindtap='weixin'></image> -->
+        <image src='/images/phone_orange.png' class='img-44' bindtap='phone' data-phone='{{item.qphone}}'></image>
+      </view>
+    </view>
+    <view class='flexcenter flexspbet bom-bor p-y-10' wx:for="{{item}}" wx:for-item="items">
+      <view class='flex-0 flexcenter  wh-0'>
+        <image src='{{imghost+items.qprocedureImg}}' class='img-160 m-r-20' mode="aspectFill"></image>
+        <view class='w-78 line-22'>
+          <view class='font-size-30'>{{items.qprocedureName}}</view>
+          <view class='color-999'>{{items.orderstr}}</view>
+          <view class='flexspbet  wh-0'>
+            <view class='color-e51'>￥{{filters.toFix(items.cost||items.qsum/items.qtotal)}}</view>
+            <view class='fl_r'>X{{items.qtotal}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{item[0].qcode==1}}" class='flexcenter flexspbet bom-bor p-y-10'>
+      <view class=''>{{item[0].qusername}}，{{item[0].qphone}}，{{item[0].qaddress}}</view>
+
+    </view>
+    <view class="board line-clamp-02"  wx:if="{{item[0].qnote}}">{{item[0].qnote}}</view>
+    <view class='flexcenter flexspbet p-y-10 m-y-10'>
+      <view class="{{item[0].qcode==1?'flexspbet  wh-0':'flexspbet  wh-0 flexcenter'}}">
+        <view wx:if="{{item[0].qcode==1}}" class='color-e51'>已支付</view>
+        <view wx:else class='flex-0 flexcenter'>
+          <view class='rounded-x color-fff yh img-60 flexcenter'>
+            <text class='m-l-15'>取</text>
+          </view>
+          <view class='yh-c m-l-15'>到店自取</view>
+        </view>
+        <view class='fl_r'>
+          <text class='color-e51 m-r-20'><text wx:if="{{item[0].reducityMoney}}" style="padding-right:16rpx">优惠￥{{item[0].reducityMoney}}</text>合计：￥{{filters.toFix(item[0].hj)}}</text>
+
+          <text wx:if="{{item[0].qstatus==5}}"  bindtap='ty' data-qcode="{{item}}" data-id="{{item.id}}" data-index='{{index}}' class='p-y-10 p-x-20 yhjbg color-fff'>同意退换</text>
+        </view>
+      </view>
+    </view>
+    <view style="overflow: hidden">
+      <text wx:if="{{item[0].qstatus==2}}" bindtap='fahuo' data-id='{{item.id}}' data-qcode="{{item}}"  class='p-y-10 p-x-20 yhjbg color-fff fl_r'>{{item[0].qcode==1?'确认发货':'确认取货'}}</text>
+    </view>
+  </view>
+  <view class='font-size-28 color-999 text-align flexColCCen '> 没有更多了~~~</view>
+</view>
+
+<!-- 底部导航 -->
+<view style='height:50px;'></view>
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+  <view class='sjdh full-width bg_hui row-b'>
+    <view bindtap='shouye' hover-class='none' class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/sj-home.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>首页</view>
+    </view>
+    <view bindtap='yonghfx' class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/up.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>用户分析</view>
+    </view>
+    <!-- <view class='sjies text-align' bindtap='saoma'>
+      <view>
+        <image src='/images/suo.png' mode="aspectFill" class='img-98'></image>
+      </view>
+    </view> -->
+    <view class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/sj-xx.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-e51'>订单消息</view>
+    </view>
+    <view bindtap='wode' class='sjies text-align m-t10' url='/pages/pics/pics' hover-class='none'>
+      <view>
+        <image src='/images/male.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>我的</view>
+    </view>
+  </view>
+</view>

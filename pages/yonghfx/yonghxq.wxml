@@ -1,0 +1,218 @@
+<view class="page">
+  <view class="userinfo bg_red  p-y-50 ">
+    <view class='flexcenter'>
+      <image class="userinfo-avatar" src="{{user.qicon}}" background-size="cover"></image>
+      <view class='w-80'>
+        <view class='flexcenter'>
+          <view class="w-70">
+            <view class="font-size-28">{{user.qnick}}</view>
+            <view wx:if="{{user.qphone}}" class="font-size-28">{{user.qphone}}
+            </view>
+          </view>
+          <view bindtap="tochat" class="img-68x rounded-x bg_white flexColCCen ">
+          <i-icon type="message" color='#0099ff' size='23'/>
+            <!-- <text class='font-size-40 fa fa-comment-o  white'></text> -->
+          </view>
+          <view bindtap="dianhua" class="img-68x rounded-x bg_white flexColCCen m-l-10">
+          <i-icon type="mobilephone" color='#0099ff' size='23'/>
+            <!-- <text class='font-size-40 fa fa-phone  white'></text> -->
+          </view>
+        </view>
+        <!-- </view> -->
+        <!--
+        <view class='font-size-24'>
+          <text class='bg_cheng mr4'>类型：客户</text>
+          <text class='bg_cheng mr4'>级别：重要客户</text>
+        </view>
+        -->
+      </view>
+    </view>
+
+  </view>
+
+
+  <view class='foot bg-color color-333 p-x-30 p-y-20 '>
+    <view class='font-size-28 bbe'>
+      <view class='font-size-28'>客户来源
+        <!--  <text class='color-666'>2018-12-31</text> -->
+      </view>
+    </view>
+    <view class='flexcenter box-pack-around p-y-20'>
+      <view class='tc'>
+        <view class='color-333 font-size-28'>{{qtype1}}次</view>
+        <view class='color-666 font-size-28'>来自店铺首页</view>
+      </view>
+      <view class='bre'></view>
+      <view class='tc'>
+        <view class='color-333 font-size-28'>{{qtype2}}次</view>
+        <view class='color-666 font-size-28'>查看商品页</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='wdzy m-x-20 ' wx:for="{{records}}" wx:key="{{item.qshow}}">
+
+
+
+    <!-- 互动 -->
+
+    <view wx:if="{{item.qshow}}" class='p-l-30 p-y-20'>{{item.qshowtime}}
+      <text class='font-size-28'></text>
+    </view>
+    <view class=' flexcenter mb-16'>
+      <view class='w-20 tc '></view>
+      <view class='rounded  bg-color m-y-40 w-80  p-x-30 p-y-10'>
+        <view hover-class="none" >
+          <view class="font_14 c3">{{item.qmiaoshu}}</view>
+          <view class="font_14 c9">{{item.qtime}}</view>
+        </view>
+      </view>
+    </view>
+ 
+
+
+
+      <!-- AI分析 -->
+      <!--
+
+    <view class='bg-color'>
+      <view class=' djq-djq '>
+        <view class=' djq '>
+          <view class='flexcenter'>
+            <view class='b-c5b'></view>
+            <view class='color-333 font-size-28'>60.93%</view>
+          </view>
+        </view>
+        <view class=' djq'>
+          <view class='flexcenter'>
+            <view class='b-cec'></view>
+            <view class='color-333 font-size-28'>11.71%</view>
+          </view>
+        </view>
+        <view class='  djq'>
+          <view class='flexcenter'>
+            <view class='b-c66'></view>
+            <view class='color-333 font-size-28'>27.34%</view>
+          </view>
+        </view>
+      </view>
+      <view>
+        <canvas canvas-id="Canvas" style="width:100%;height:280px;"></canvas>
+      </view>
+      <view class='font-size-28 color-333 flexcenter box-pack-center pb-5'>
+        <view class='flexcenter p-5'>
+          <view class='wh-20 bg-c5b rounded-0'></view>
+          <view>对我感兴趣</view>
+        </view>
+        <view class='flexcenter p-5'>
+          <view class='wh-20 bg-c66 rounded-0'></view>
+          <view>对产品感兴趣</view>
+        </view>
+        <view class='flexcenter p-5'>
+          <view class='wh-20 bg-cec rounded-0'></view>
+          <view>对管网感兴趣</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='bg-color p-20 mt-10'>
+      <view class='font-size-30 color-333 text-align p-y-20 '>客户与我互动</view>
+
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>查看名片</view>
+        <view class='progress w-80'>
+          <progress percent="65" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#fcaf39" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>查看产品</view>
+        <view class='progress w-80'>
+          <progress percent="50" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#dea9fe" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>查看官网</view>
+        <view class='progress w-80'>
+          <progress percent="78" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#9fabff" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>查看动态</view>
+        <view class='progress w-80'>
+          <progress percent="85" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#41c6fe" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>咨询产品</view>
+        <view class='progress w-80'>
+          <progress percent="90" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#ffcc66" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>保存微信</view>
+        <view class='progress w-80'>
+          <progress percent="80" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#00ff99" backgroundColor="#fff" />
+        </view>
+      </view>
+       <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>名片点赞</view>
+        <view class='progress w-80'>
+          <progress percent="50" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#dea9fe" backgroundColor="#fff" />
+        </view>
+      </view>
+      <view class='flexcenter p-y-20 '>
+        <view class='font-size-28 color-333 w-20'>拨打电话</view>
+        <view class='progress w-80'>
+          <progress percent="78" border-radius='0' show-info="true" color="red" stroke-width="10" activeColor="#9fabff" backgroundColor="#fff" />
+        </view>
+      </view>
+    </view>
+-->
+
+    </view>
+    </view>
+
+
+
+
+
+    <!-- 底部 -->
+
+    <!--
+<view style='height:50px;'></view>
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+  <view class='sjdh full-width bg_hui row-b'>
+    <view bindtap='shouye' hover-class='none' class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/sj-home.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>首页</view>
+    </view>
+    <view class='sjies text-align m-t10'>
+      <view>
+        <image src='/images/up.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>用户分析</view>
+    </view>
+    <view class='sjies text-align' bindtap='saoma'>
+      <view>
+        <image src='/images/suo.png' mode="aspectFill" class='img-98'></image>
+      </view>
+    </view>
+    <view bindtap='xiaoxi' class='sjies text-align m-t10' hover-class='none'>
+      <view>
+        <image src='/images/sj-xx0.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>消息</view>
+    </view>
+    <view class='sjies text-align m-t10' hover-class='none'>
+      <view>
+        <image src='/images/male1.png' mode="aspectFill" class='img-68'></image>
+      </view>
+      <view class='font-size-24 color-666'>我的</view>
+    </view>
+  </view>
+</view>
+
+-->

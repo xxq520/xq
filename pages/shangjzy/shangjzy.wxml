@@ -1,0 +1,445 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+    <view >
+     <view class="custom flex_center  flexColCCen {{floorstatus?'':'no-bg'}} bg-color" style="padding-top:{{statusBarHeight}}px">
+          <view class='center'>
+            <image class='img-40 fhj-l' src='/images/x_left.png' bindtap='fanhui' wx:if="{{!qhb}}"></image>
+            <text class=' font-size-32'>商家信息</text>
+          </view>
+        </view>
+    <view wx:if="{{canIUse}}" class="alertBox">
+      <image src="/images/xiqian.png" />
+      <button class='sqdl'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信快捷登录</button>
+      <view>(若您的微信手机号未注册，将为您直接注册)</view>
+    </view>
+    <view wx:else bindscroll="scrolltoupper"
+     style="width:{{width}}px;height:{{height+statusBarHeight+46+46+statusBarHeight}}px; margin: 0 auto" 
+     scroll-y="true" class="scroller">
+        <view class="empty_custom" style="padding-top:{{statusBarHeight}}px"></view>
+        <!-- 页面进来的时候默认显示遮罩层，当数据请求成功的时候隐藏遮罩层显示内容 -->
+        <empty 
+          bindemptyevent="emptyCallback" 
+          imgLayouSrc="{{imgLayouSrc}}" 
+          titleLayou="{{titleLayou}}" 
+          emptyType="{{empty}}"
+          loadingTransparent="{{false}}" >
+        <view wx:if="{{!isLoading}}">
+        <view style='' class='sjzy-bg'>
+          <view class='dp-bgimg1'></view>
+          <view class='bg-sjzy'>
+            <image wx:if="{{business.logo}}" src="{{host+business.logo}}" class="dp-bgimg" mode="aspectFill"></image>
+          </view>
+        </view>
+        <!-- 商家公告 -->
+        <view class='flexend m-30'>
+          <view class="w-icon rounded-x flexColCCen m-l-10">
+            <button open-type="share" hover-class='none' class='flexColCCen w-icon p-x-15 rounded-x '>
+              <image src='/images/sjfen.png' class=' w-icon'></image>
+            </button>
+          </view>
+          <view class="w-icon rounded-x flexColCCen m-l-10" bindtap='dianhuatc'>
+            <image src='/images/sjdhh.png' class=' w-icon'></image>
+          </view>
+          <view class=" w-icon rounded-x flexColCCen m-l-10">
+            <button bindtap="shoucang" data-qscid="{{business.id}}" data-tp="1" class='flexColCCen w-icon p-x-15 rounded-x '>
+              <image src="{{!sc?'/images/sjdh.png':'/images/sjdhed.png'}}" class=' w-icon'></image>
+            </button>
+          </view>
+
+          <view class='modal1' wx:if="{{dianhua}}" bindtouchstart='dianhuatc'>
+            <view class='w-25 fhj-logo1 ' style="padding-top:{{statusBarHeight +100}}px">
+              <view class='p-ff b-wdd m-x-60'></view>
+              <view class='center p-20 p-rr'>
+                <view class='font-26  p-20  color-fff'>
+                    <view>
+                        <button   bindtap="tochat" hover-class='none' class='b-but'>
+                          发消息
+                        </button>
+                    </view>
+                </view>
+                <view class='font-size-28 p-20 color-fff' bindtouchstart='dianhua'>打电话</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='bg-color  container logo-bg'>
+
+          <view class='w-20 fhj-logo p-x-20'>
+            <image wx:if="{{business.logo}}" src="{{host+business.logo}}" class="image-72 logo-br m-r-15" mode="aspectFill"></image>
+          </view>
+          <view class='flex-0 flexcenter  p-x-20'>
+            <view class='w-20 '></view>
+            <view class='w-80 p-t-23 m-l-10'>
+              <view class='flexcenter'>
+                <text class='line-clamp-2yhj font-size-32 font-w color-333 m-r-20'>{{business.storeName}}</text>
+                <text class="{{business.orderstr?'logoyy-br bg-sj font-size-24 color-fff p-x-5':'logoyy-br djq font-size-24 color-fff p-x-5'}}">{{business.orderstr?'正在营业':'正在休息'}}</text>
+              </view>
+              <view class='flexcenter flexspbet'>
+                <view class='w-90'>
+                  <view class='flexcenter '>
+                    <image wx:for="{{business.score}}" wx:key="index" src='/images/stars.png' mode="aspectFill" class='img-20'></image>
+                    <image wx:for="{{5-business.score}}" wx:key="index" src='/images/starsed.png' mode="aspectFill" class='img-20'></image>
+                    <view class='color-999  font-size-24 line-20'>
+                      <text class='m-r-10'>{{business.num}}喜欢</text>
+                      <text class='m-r-10'>{{business.views}}浏览</text>
+                    </view>
+                  </view>
+                  <view class='font-size-24  self-align-start flex-0 '>
+                    <view>
+                      <image src='/images/position.png' class='img-20'></image>
+                    </view>
+                    <view class='w-95'>
+                      <text class='color-999 line-clamp-02 '>{{business.address}}</text>
+                    </view>
+                  </view>
+                  <view class='font-size-24 flexcenter color-999 m-l-10'>
+                    <text class='Recommend'> {{business.distance==0?'平台推荐':(business.distance>1000?'距您'+business.distance/1000+'km':'距您'+business.distance+'m')}}</text>
+                  </view>
+                </view>
+                <view class=''>
+                  <image bindtap='daohang' src='/images/daohang.png' mode="aspectFill" class='img-66'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='font-size-24  cp-bom p-y-20  p-x-20 flex-0'>
+            <view class='mr-10 w-10'>
+              <text class='tayb  color-fff rounded-0 p-y-5 p-x-10 '>公告</text>
+            </view>
+            <view class='w-90 line-clamp-1'>{{business.announcement}}</view>
+          </view>
+          <view class='flexcenter flexspbet  p-y-40 cp-bom  p-x-20'>
+            <view class='font-size-32 font-w color-333'>买单立减</view>
+            <view bindtap='daodianmaidan' data-business='{{business.storeName}}' data-logo='{{business.logo}}' data-id='{{business.id}}' hover-class='none'>
+              <text class='font-size-28 bgcolor-ff3 color-fff rounded-0 p-x-50 p-y-10'>买单</text>
+            </view>
+          </view>
+          <view class='flexcenter flexspbet p-y-10  p-x-20'>
+            <view class='font-size-28 flexcenter w-90 line-clamp-02  row' wx:if="{{collects.length!=0}}">
+              <image wx:for="{{collects}}" wx:key="index" src='{{item.qicon}}' wx:if="{{index<6}}" mode="aspectFill" class='img-56 rounded-x m-5'></image>
+              <text wx:if="{{collects.length!=0}}" class='p-x-15 img-56'> …</text>
+            </view>
+            <view wx:else>成为第一个为Ta点赞的人吧!</view>
+            <view bindtap="{{kaopu?'':'shoucang'}}" data-qscid="{{business.id}}" data-tp="2" class='font-size-36 color-999 text-align '>
+              <image src="{{kaopu?'/images/dzed.png':'/images/dz.png'}}" class='img-44'>
+              </image>
+              <view class='font-size-24 color-999'>{{collectsNum||0}}</view>
+            </view>
+          </view>
+        </view>
+        <view style='height: 6px; background:#f4f4f4;'></view>
+        <!-- 商家功能分类 -->
+        <view class='bg-color  p-20 container'>
+          <view class='flex-0 font-size-30 p-t-23'>
+            <view bindtap='luntan' data-luntan='1' class='w-25 center'>
+              <view class="text-align pb-30 {{luntan==1?'font-size-32 font-w':''}}">VIP专区</view>
+              <view class="{{luntan==1?'b-w color-e51':''}}"></view>
+            </view>
+            <view bindtap='luntan' data-luntan='2' class=' w-25 center'>
+              <view class="text-align pb-30 {{luntan==2?'font-size-32 font-w':''}}">商品分类</view>
+              <view class="{{luntan==2?'b-w color-e51':''}}"></view>
+            </view>
+            <view bindtap='luntan' data-luntan='3' class='w-25 center'>
+              <view class="text-align pb-30 {{luntan==3?'font-size-32 font-w':''}}">商家信息</view>
+              <view class="{{luntan==3?'b-w color-e51':''}}"></view>
+            </view>
+            <view bindtap='luntan' data-luntan='4' class='w-25 center '>
+              <view class="text-align pb-30 {{luntan==4?'font-size-32 font-w':''}}">动态信息</view>
+              <view class="{{luntan==4?'b-w color-e51':''}}"></view>
+            </view>
+          </view>
+        </view>
+        <!-- 首页 -->
+        <view wx:if="{{luntan==1}}" class='bg-color'>
+
+          <!-- 优惠券 -->
+          <view class='scroll_box m-x-20 p-y-10' wx:if="{{yhqs[0]}}">
+            <scroll-view class="scroll-view_x" scroll-x='true' enable-flex="{{true}}" style=" white-space: nowrap;   ">
+              <view class="item_list" wx:for="{{yhqs}}" wx:key="index">
+                <image src='/images/yhq-bg.png' class='bg-yhq-img fhj-yhq'></image>
+                <view class='bg-yhq-img flexcenter'>
+                  <view class='w-60 flexColCCen'>
+                    <view class='color-f36 font-size-31'>
+                      <text class='font-w font-size-62' style="font-size:44rpx"><text style="font-weight:normal;font-size:30rpx">￥</text>{{item.reduce}}</text>优惠券</view>
+                    <view class='font-size-28 color-666 p-y-20'>满{{item.full}}减{{item.reduce}}元</view>
+                  </view>
+                  <view class=' flexColCCen-1 center w-40 '>
+                    <view class='m-x-30'>
+                      <progress percent="{{item.percent}}" active='true' border-radius='90' color="red" stroke-width="6" activeColor="#ffffff" backgroundColor="#fffff23" />
+                      <view class='font-size-24 p-y-10 color-fff'>剩余{{filters.toFix(item.percent==null?100:item.percent)}}%</view>
+                      <button wx:if="{{!phone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="qyhq" data-id="{{item.id}}" class='font-size-28 color-f36 text-align bg-color p-x-15 p-y-10 text-align rounded-0'>立即抢</button>
+                      <button wx:else bindtap="qyhq" data-id="{{item.id}}" class='font-size-28 color-f36 text-align bg-color p-x-15 p-y-10 text-align rounded-0'>立即抢</button>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+          </view>
+          <!-- 代金券 -->
+          <view wx:if="{{djqs[0]}}" class='bg-color container p-x-20'>
+            <view class=' font-size-32 font-w color-333 p-y-15'>代金券</view>
+            <view class='flexcenter p-y-10' wx:for="{{djqs}}" wx:key="index">
+              <!-- <image src="{{host+item.qimg}}" class='djq-img rounded-md mr-10' mode="aspectFill"></image> -->
+              <image src="{{host+business.logo}}" class='djq-img rounded-md mr-10' mode="aspectFill"></image>
+              <view class='w-46 mr-7'>
+                <view class='font-size-32 color-333 font-w'>{{item.full}}代金券</view>
+                <view class='font-size-24  m-y-10'>
+                  <text class='text-yh text-br  p-x-20 '>{{item.reduce}}折</text>
+                </view>
+                <view class='font-size-32 color-f36 font-w'>
+                  <text class='font-size-18'>￥</text>{{item.money}}</view>
+              </view>
+              <view class=' flexColCCen'>
+                <view catchtap='gmdjq' data-id='{{item.id}}' data-qshopid='{{item.storeId}}' data-business='{{business.storeName}}' data-logo='{{business.logo}}' class='font-size-28 bgcolor-ff3 color-fff rounded-0 p-x-50 p-y-10'>购买</view>
+                <view class='font-size-26 color-999 p-y-10'>已售{{item.surplus-item.number}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- 掌柜推荐 -->
+          <view class='bg-color  p-20 container'>
+            <view class='font-size-32 pt-0 font-w color-333 '>掌柜推荐</view>
+            <view wx:if="{{load}}">
+              <i-load-more />
+            </view>
+            <view class='imgs row-s'>
+              <navigator url="../goods/goods?id={{item.id}}&qshopid={{business.id}}" wx:for="{{procedure}}" wx:key="index"  class='  wddd bg-color rounded' hover-class='none'>
+                <image wx:if="{{item.lbImgs}}" class="lbImgs img" mode="aspectFill"  src="{{item.show||index<2?imghost+item.lbImgs[0]:''}}" />
+                <view class="goods-list-con">
+                    <view class='font-size-28 line-clamp-02  line-48 goods-titles'>{{item.goodsName}}</view>
+                    <view class='font-size-28 line-clamp-1 goods-details'>{{item.goodsDetails}}</view>
+                    <view class='box box-pack-between goods-pricebox'>
+                      <view class="box">
+                          <view class='font-size-36  color-e51'>
+                              <text class='font-size-24 '>￥</text>{{item.goodsCost<=0?'面议':item.goodsCost}}</view>
+                          <view class='font-size-24  color-999' style="padding-left:6rpx">{{item.sales}}人付款</view>
+                      </view>
+                        <view class="carticon" catchtap="icongoCart" data-p="{{item}}">
+                          <image src="/images/carticon.png"/>
+                        </view>
+                    </view>
+                  </view>
+              </navigator>
+            </view>
+          </view>
+
+        </view>
+        <!-- 商品 -->
+        <view wx:if="{{luntan==2}}" class='bg-color'>
+          <scroll-view class="scroll-view_x flexcenter bg-color font-size-28  m-l-10 " scroll-x='true' style=" white-space: nowrap;">
+            <view wx:for="{{procedureType}}" wx:key="index" class="{{indexL==index?'item_list  center color-333 font-size-32':'item_list center color-999'}}" bindtap='leix' data-id='{{item.id}}' data-index='{{index}}'>{{item.qcaption}}</view>
+          </scroll-view>
+
+          <view class='bg-color  p-x-20 container'>
+            <view class='imgs row-s'>
+              <navigator url="../goods/goods?id={{item.id}}&qshopid={{business.id}}" wx:for="{{procedures}}" wx:key="index"  class='  wddd bg-color rounded' hover-class='none'>
+                <image class="lbImgs img" wx:if="{{item.lbImgs}}" mode="aspectFill" src="{{item.show||index<2?imghost+item.lbImgs[0]:''}}" />
+              <view class="goods-list-con">
+                <view class='font-size-28 line-clamp-02  line-48 goods-titles'>{{item.goodsName}}</view>
+                  <view class='font-size-28 line-clamp-1 goods-details'>{{item.goodsDetails}}</view>
+                <view class='box box-pack-between goods-pricebox'>
+                    <view class="box">
+                        <view class='font-size-36  color-e51'>
+                            <text class='font-size-24 '>￥</text>{{item.goodsCost<=0?'面议':item.goodsCost}}</view>
+                        <view class='font-size-24  color-999' style="padding-left:6rpx">{{item.sales}}人付款</view>
+                    </view>
+                    <view class="carticon" catchtap="icongoCart" data-p="{{item}}">
+                        <image src="/images/carticon.png"/>
+                    </view>
+                </view>
+              </view>
+              </navigator>
+            </view>
+          </view>
+
+        </view>
+        <!-- 商家信息 -->
+        <view wx:if="{{luntan==3}}">
+          <view class='bg-color  p-x-20 container'>
+            <view class=''>
+              <view class='font-size-26 flexcenter color-333 p-y-10'>
+                <view class='w-10'>
+                  <image src='/images/pf.png' class='img-30'></image>
+                </view>
+                <text class='w-20'>评价{{business.score}}分</text>
+                <text class='w-20'>分享{{business.fxNum}}次</text>
+                <text class='w-25'>浏览{{business.views}}次</text>
+                <text class='w-20'>人均￥{{business.cpi?business.cpi:0}}</text>
+              </view>
+              <view class='font-size-26 flexcenter color-333 p-y-10'>
+                <view class='w-10'>
+                  <image src='/images/yysj.png' class='img-30'></image>
+                </view>
+                <text class='w-25'>{{business.startTime}}-{{business.endTime}}</text>
+              </view>
+              <view class='font-size-26 flexcenter color-333 p-y-10'>
+                <view class='w-10'>
+                  <image src='/images/sfdh.png' class='img-30'></image>
+                </view>
+                <text class='w-30'>{{business.tel}}</text>
+              </view>
+              <view class='font-size-26 flexcenter color-333 p-y-10'>
+                <view class='w-10'>
+                  <image src='/images/wuliu.png' class='img-30'></image>
+                </view>
+                <text class=''>线下取货 线上配送</text>
+              </view>
+            </view>
+            <view class='font-size-32 font-w color-333 p-y-15'>商家公告</view>
+            <view class='font-size-28 color-666 p-y-10'>{{business.details}}</view>
+            <view class='font-size-32 font-w color-333 p-y-15'>商家服务</view>
+            <view class='row-s'>
+              <view wx:if="{{business.skzf==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/shuak.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>刷卡支付</view>
+              </view>
+              <view wx:if="{{business.wifi==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/wifi.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>免费WIFI</view>
+              </view>
+              <view wx:if="{{business.mftc==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/mftc.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>免费停车</view>
+              </view>
+              <view wx:if="{{business.jzxy==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/jzxy.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>禁止吸烟</view>
+              </view>
+              <view wx:if="{{business.tgbj==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/tgbj.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>提供包间</view>
+              </view>
+              <view wx:if="{{business.sfxx==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/xxsf.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>沙发休闲</view>
+              </view>
+              <view wx:if="{{business.zcfp==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/zcfp.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>支持发票</view>
+              </view>
+              <view wx:if="{{business.ktkf==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/ktkf.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>空调开放</view>
+              </view>
+              <view wx:if="{{business.sjcd==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/sjcd.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>手机充电</view>
+              </view>
+              <view wx:if="{{business.shdj==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/shdj.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>送货到家</view>
+              </view>
+              <view wx:if="{{business.scth==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/scth.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>支持退货</view>
+              </view>
+              <view wx:if="{{business.shwy==1}}" class='font-size-26 color-333 p-y-20 center sjies'>
+                <image src='/images/shwy.png' mode="aspectFill" class='img-68 p-5'></image>
+                <view class=''>售后无忧</view>
+              </view>
+            </view>
+            <view class='font-size-32 font-w color-333 p-y-15'>商家资质</view>
+            <view class='font-size-26 flexcenter color-333'>
+              <image src='/images/sjzp.png' class='img-30 m-r-20'></image>
+              <text class=''>商家照片</text>
+            </view>
+            <scroll-view class="scroll-view_x p-y-20" scroll-x='true' enable-flex="{{true}}" style=" white-space: nowrap; ">
+              <view class="item_list" wx:if="{{business.img}}" wx:for="{{business.img}}" wx:key="index" bindtap='previewImg' data-src='{{imghost+item}}' data-srcs='{{business.img}}'>
+                <image src="{{imghost+item}}" class='bg-yhq-img1 rounded' mode="aspectFill"></image>
+              </view>
+            </scroll-view>
+            <view class='font-size-26 flexcenter color-333'>
+              <image src='/images/sjzz.png' class='img-30 m-r-20'></image>
+              <text class=''>商家资质</text>
+            </view>
+            <scroll-view class="scroll-view_x p-y-20" scroll-x='true' enable-flex="{{true}}" style=" white-space: nowrap;   ">
+              <!-- wx:for="{{business.ad}}"  wx:key="{{index}}" -->
+              <view class="item_list">
+                <image wx:if="{{business.yyzzImg}}" wx:for="{{business.yyzzImg}}" wx:key="index" bindtap='previewImg' data-src='{{imghost+item}}' data-srcs='{{business.yyzzImg}}' src="{{imghost+item}}" class='bg-yhq-img1 rounded' mode="aspectFill"></image>
+              </view>
+            </scroll-view>
+            <!-- <view class='p-5 font-size-30'>{{business.details}}</view> -->
+            <!-- <image wx:if="{{business.img}}" wx:for="{{business.img}}" wx:key="{{index}}" src="{{imghost+item}}" style="width:100%" mode="widthFix" /> -->
+          </view>
+
+        </view>
+        <!-- 商家动态 -->
+        <view wx:if="{{luntan==4}}">
+          <view class='bg-color  p-x-20 container'>
+            <navigator hover-class='none' wx:for="{{information}}" wx:key="index" url='/pages/shangjhb/shangjhb?id={{item.id}}' class='mb-15'>
+              <view class=' p-y-20 flexcenter'>
+                <view class='rounded'>
+                  <image wx:if="{{business.logo}}" src="{{host+business.logo}}" class="img-56 rounded-x m-r-15" mode="aspectFill"></image>
+                </view>
+                <view class='m-l-10 w-90'>
+                  <view class='flexcenter flexspbet'>
+                    <view class='line-clamp-1 font-size-30 w-80'>{{business.storeName}}</view>
+                    <view class='font-size-24 color-666 flexcenter  '>
+                      <!-- <image src='/images/huohuo.png' mode="aspectFill" class='img-30'></image> -->
+                      <text class='iconfont iconicon-test16  font-size-62 m--15'></text>
+                      <text>{{item.views}}</text>
+                    </view>
+                  </view>
+                  <view class='color-999 font-size-24 p-y-5'>{{item.time}}</view>
+                </view>
+              </view>
+              <view class='font-size-28 color-666'>{{item.details}}</view>
+              <view class='imgs row-s'>
+                <image wx:for="{{item.img}}" wx:key="index" mode="aspectFill" style="width: {{(window_width -60) / 3}}px; height: {{(window_width -120) / 3}}px; margin: 5px;" src="{{host+item}}" class='rounded' />
+              </view>
+              <view class='flexcenter flexspbet' wx:if="{{item.hbMoney != null}}">
+                <view class='flex-0 flexcenter'>
+                  <image src='/images/hb.png' class='img-30'></image>
+                  <view class='color-333 font-size-30'>{{item.hbMoney}}</view>
+                </view>
+                <view class='color-e51 font-size-28'>总共{{item.hbNum}}个</view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+        <view class='p-y-30 color-999 center font-size-26'>轻松购物 快乐生活</view>
+      </view>
+      </empty>
+    </view>
+    <view class='hbtc' wx:if="{{(!qhb)&&(hbid!=0)&&business.hb!=null}}">
+      <navigator url='/pages/shangjhb/hongbaoxq?qtype=1&qid={{hbid}}&shopname={{business.storeName}}&logo={{business.logo}}'>
+        <image class='hbtc-img' src='/images/xfhb.gif'></image>
+      </navigator>
+    </view>
+  </view>
+  <!-- 红包弹窗 -->
+  <view class='modal  ' wx:if="{{qhb&&dataNow>1578997800000}}">
+    <view class='modal-content-xx  footfixed center p-20-30'>
+      <image catchtap='gutc' src="{{host+'chb.png'}}" class='modal-content-xx' mode="aspectFill"></image>
+      <view class=' btn-lg1 fl_r'>
+        <i-icon catchtap='gutc' type="close" color='#fff' size='17' />
+      </view>
+      <view class='kai-but  flexColCCen'>
+        <button  class='b-butt' bindtap='chb' hover-class='none'>
+        </button>
+      </view>
+    </view>
+  </view>
+  <view class="initStatus" wx:if="{{empty!=3&&isLoading}}">
+    <view class="spinner">
+    <view class="spinner-container container1">
+      <view class="circle1"></view>
+      <view class="circle2"></view>
+      <view class="circle3"></view>
+      <view class="circle4"></view>
+    </view>
+    <view class="spinner-container container2">
+      <view class="circle1"></view>
+      <view class="circle2"></view>
+      <view class="circle3"></view>
+      <view class="circle4"></view>
+    </view>
+    <view class="spinner-container container3">
+      <view class="circle1"></view>
+      <view class="circle2"></view>
+      <view class="circle3"></view>
+      <view class="circle4"></view>
+    </view>
+  </view>
+  </view>
+<image src="/images/sjcart.png" class="addcart"  bindtap="gocart"/>
+
+

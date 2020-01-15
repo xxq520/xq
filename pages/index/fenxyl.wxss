@@ -1,0 +1,34 @@
+/* pages/index/fenxyl.wxss */
+page{background: #ff5545;font-family: "苹方";}
+.fenxyl-bg{width: 100%;}
+.pb-20{padding-bottom: 20rpx;}
+.btn{
+position:none;
+padding-left:0;
+padding-right:0;
+line-height:1;
+border-radius:0;
+-webkit-tap-highlight-color:transparent;
+background-color:transparent;
+}
+.alertBox{
+    position: fixed;
+    top: 0rpx;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    text-align: center;
+}
+.alertBox image{
+    width: 148rpx;
+    height: 148rpx;
+    margin-top: 242rpx;
+}
+.alertBox view{
+    position: relative;
+    top: 450rpx;
+    font-size: 24rpx;
+    color: rgb(112,115,130);
+}

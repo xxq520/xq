@@ -1,0 +1,28 @@
+<view class='sp-pay bg'>
+  <view class='sp-pay-header'>
+    <image src='/images/dzsl.png'></image>
+    <view class='success'>支付成功</view>
+  </view>
+  <view class='sp-pay-p'>
+    <view class='sp-pay-btn' bindtap='shouye'>返回首页</view>
+    <view class='sp-pay-btn btn-bg' bindtap='chakan' data-id='{{order.id}}'>查看订单</view>
+  </view>
+  <view class='sp-pay-content'>
+    <view class='p-b-30'>
+      <text class='p-r-27'>支付金额：</text>
+      <text>￥{{order.qsum}}</text>
+    </view>
+    <view class='p-b-30'>
+      <text class='p-r-27'>联系人：</text>
+      <text>{{order.qusername||user.qnick}}</text>
+    </view>
+    <view class='p-b-30'>
+      <text class='p-r-27'>手机号：</text>
+      <text>{{order.qphone}}</text>
+    </view>
+    <view class='p-b-30 shdz'>
+      <view class='shdz-l'>收货地址：</view>
+      <view class='shdz-r'>{{order.qaddress||address}}</view>
+    </view>
+  </view>
+</view>

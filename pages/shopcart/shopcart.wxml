@@ -1,0 +1,62 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view wx:if="{{sum}}">
+<view class="header " >
+  <view class="box box-pack-between">
+    <view class="all">全部商品({{sum}})</view>
+    <view class="edit" bindtap="edit">{{edit?'编辑':'完成'}}</view>
+<!--    <view class="edit">完成</view>-->
+  </view>
+</view>
+<view class="goodList">
+  <view class="goods" wx:for="{{orderList1}}" wx:for-item="item" wx:key="index">
+<!--    商家的名字与头像-->
+    <view class="shop box"  >
+      <view bindtap="sjcheck" style="width:50rpx" data-index="{{index}}"><image src="{{arr[index]?'/images/maidaned.png':'/images/maidan.png'}}" class="wxz" /></view>
+      <image src="{{host+item[0].logo}}" class="shopImg"/>
+      <navigator class="shopName" url='/pages/shangjzy/shangjzy?id={{item[0].qshopid}}'>{{item[0].storeName}}</navigator>
+    </view>
+<!--    购买的产品-->
+    <view class="good-con box" wx:for="{{item}}" wx:for-item="items" wx:for-index="indexs" wx:key="{{items.qprocedureId}}">
+      <view  style="width:50rpx" bindtap="spcheck" data-index="{{indexs}}" data-par="{{index}}">
+        <image src="{{items.isTrue?'/images/maidaned.png':'/images/maidan.png'}}" class="goods-wxz"  />
+      </view>
+      <navigator class="box goods-box" url="/pages/goods/goods?id={{items.qprocedureId}}&qshopid={{items.qshopid}}">
+        <image class="goodImg" mode="aspectFill" rol="img" src="{{host+items.qprocedureImg}}"/>
+        <view class="goods-title">
+          <view class="goods-name line-clamp-1">{{items.qprocedureName}}</view>
+          <view class="goods-guige line-clamp-1">{{items.orderstr}}</view>
+          <view class="goods-price">￥{{filters.toFix(items.cost||items.danjia)}}</view>
+        </view>
+      </navigator>
+      <view class="subsum box box-pack-between">
+        <view class="subsub" bindtap="sub" data-index="{{indexs}}" data-id="{{items.id}}" data-par="{{index}}" ><image src="/images/sub.png"/></view>
+        <text>{{items.qtotal}}</text>
+        <view class="subsup" bindtap="sup" data-index="{{indexs}}" data-id="{{items.id}}" data-par="{{index}}" > <image src="/images/sup.png"/></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--固定的结算盒子-->
+<view class="sum-price box box-pack-between">
+  <view class="sum-price-tit" wx:if="{{edit}}">
+    合计：<text>￥{{filters.toFix(sumPrice)}}</text>
+  </view>
+<!--    bindtap="checkAll"-->
+  <view class="checkall box" wx:else >
+<!--    <image src="{{checkAll?'/images/maidaned.png':'/images/maidan.png'}}"/><text>全选</text>-->
+  </view>
+  <view class="jiesuan" wx:if="{{edit}}" bindtap="jiesuan">
+    结算
+  </view>
+  <view class="del" wx:else bindtap="del">
+    删除
+  </view>
+</view>
+</view>
+<view class="noneShop" wx:if="{{sum<=0}}">
+  <image src="https://jhs.1b1mall.com/img/xcx/noneshop.png"/>
+  <view class="none-title">购物车还没有商品哦~</view>
+  <view class="none-gg" bindtap="goIndex">去逛逛</view>
+</view>
+<!--加载动画-->
+<load wx:if="{{loading}}"></load>

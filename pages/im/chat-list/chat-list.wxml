@@ -1,0 +1,16 @@
+<import src="view/chat-item.wxml"/>
+
+  <view wx:if="{{!conversations}}" class="search_no" >
+    <view class="font_14">
+      <image class="scimg" src="/images/search_no.png"></image>
+    </view>
+    <text>暂时还没有好友/(ㄒoㄒ)/~~</text>
+  </view>
+
+<block wx:for="{{conversations}}" wx:key="conversationId">
+    <template is="chat-item" data="{{item:item}}"/>
+</block>
+
+<block wx:for="{{friends}}" wx:key="conversationId">
+    <template is="chat-item" data="{{item:item}}"/>
+</block>

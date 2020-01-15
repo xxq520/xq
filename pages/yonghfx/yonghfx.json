@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-load-more": "../../components/load-more/index"
+  },
+  "disableScroll": true,
+  "onReachBottomDistance": 100
+}

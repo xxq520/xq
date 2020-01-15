@@ -1,0 +1,21 @@
+<view class="report">
+  <view>
+    <view class='text-font font-size-30'>举报原因</view>
+    <view class='box-flex'>
+      <view class='box-item {{!!colorobj["1"]?"box-item-visited":""}}' data-items="1" data-info="诱导营销" bindtap='changeColor'>诱导营销</view>
+      <view class='box-item {{colorobj["2"]?"box-item-visited":""}}' data-items="2" data-info="色情" bindtap='changeColor'>色情</view>
+      <view class='box-item {{colorobj["3"]?"box-item-visited":""}}' data-items="3" data-info="信息不符" bindtap='changeColor'>信息不符</view>
+      <view class='box-item {{colorobj["4"]?"box-item-visited":""}}' data-items="4" data-info="违法犯罪" bindtap='changeColor'>违法犯罪</view>
+      <view class='box-item {{colorobj["5"]?"box-item-visited":""}}' data-items="5" data-info="侵权" bindtap='changeColor'>侵权</view>
+      <view class='box-item {{colorobj["6"]?"box-item-visited":""}}' data-items="6" data-info="其他" bindtap='changeColor'>其他</view>
+    </view>
+  </view>
+  <form bindsubmit='report'>
+    <view class='m-t-50'>
+      <view class='text-font font-size-30 m-b-35'>阐述说明</view>
+      <textarea class='text-box' placeholder="请输入需要说明的问题详情" placeholder-class='textarea' name="others"></textarea>
+    </view>
+    <button class='confire' form-type="submit">确定</button>
+  </form>
+
+</view>

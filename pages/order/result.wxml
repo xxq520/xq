@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="result-icon">
+    <icon type="success" size="80"></icon>
+  </view>
+  <view class="result-title">
+    订单确认成功
+  </view>
+  <view class="result-content">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder">订单号：D800000{{code}}</view>
+     <!--   <view class="placeholder"></view> -->
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder" style="padding-left: 3px;">金 额：￥{{total}}</view>
+      <!--  <view class="placeholder"></view> -->
+      </view>
+    </view>
+  </view>
+  <view class="result-title" wx:if="{{status==4}}">
+   <form bindsubmit="submitPinglun"> 
+    <textarea class='text-eara'  placeholder="亲，你的评价对我帮助很大！" name="note"/>
+    <view class="result-button">
+    <button class="weui-btn" form-type="submit" type="primary" >发表评价</button>
+    </view>
+   </form>
+  </view>
+  <view class="result-button">
+    <button class="weui-btn"  type="primary" bindtap="handleHome">返回首页</button>
+   <!-- <button class="weui-btn" type="default" bindtap="handleOrder">查看订单</button> -->
+  </view>
+</view>

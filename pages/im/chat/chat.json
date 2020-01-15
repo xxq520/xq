@@ -1,0 +1,4 @@
+{"navigationBarTitleText": "会话页面",
+  "usingComponents": {
+    "i-load-more": "../../components/load-more/index"
+  }}

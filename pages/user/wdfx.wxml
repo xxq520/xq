@@ -1,0 +1,24 @@
+<!--pages/user/wdfx.wxml-->
+<view style='width:100%;height: {{h}}px;'>
+  <view class='color-666 font-size-30  center font-w'>分享海报或小程序给好友</view>
+  <view class='color-666 font-size-30 center font-w'>好友扫一扫即可登陆小程序</view>
+  <!-- <canvas canvas-id='poster' class='border' style='width: {{canvasW}}px;height: {{canvasH}}px;margin: auto;' bindtap='previewImg'></canvas> -->
+
+  <!-- style='height:{{swiperH}};' -->
+  <swiper previous-margin='50px' next-margin='50px' circular="true" bindchange="swiperChange" style='height: {{canvasH}}px;margin: auto;'>
+    <swiper-item wx:for='{{imgList}}' wx:key=''>
+      <!-->
+      <canvas canvas-id='{{item.id}}' class='le-img {{nowIdx==index?"le-active":""}}' bindload='getHeight' style='height: {{canvasH}}px;margin: auto;' bindtap='previewImg' data-id='{{item.id}}'></canvas>
+      -->
+
+      <image class='le-img {{nowIdx==index?"le-active":""}}' data-img='{{host+item.logo}}' bindload='getHeight' src='{{host+item.logo}}' style='height: {{canvasH}}px;margin: auto;'></image>
+
+    </swiper-item>
+  </swiper>
+  <view class='flexspbet p-20-30 '>
+    <button open-type="share" class='w-50 center font-size-26 color-fff but-fxhb rounded-0 p-y-10 but-fxhb1 fxhb1-s m-r-30 '>分享好友</button>
+    <button bindtap='tohaibao' class='w-50 center font-size-26 color-fff but-fxhb rounded-0 p-y-10 but-fxhb2 fxhb2-s m-l-30 '>生成海报</button>
+  </view>
+</view>
+
+<canvas canvas-id='poster' class='border' style='width: {{canvasW}}px;height: {{hh}}px;margin: auto;' bindtap='previewImg'></canvas>

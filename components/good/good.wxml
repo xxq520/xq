@@ -1,0 +1,49 @@
+<template name='good'>
+  <view class='good' bindtap='goodDetail' data-id='{{good.id}}'>
+    <image src="{{host+good.qimage1}}" mode="aspectFill"></image>
+    <view class='mask'></view>
+    <view class='info'>
+      <view class='title'>
+        <text>{{good.qname}}</text>
+      </view>
+      <view class='detail'>
+        <view class='timeinfo'>
+          <text>{{good.qnote1}}</text>
+        </view>
+        <view class='address'>
+          <text>{{good.km}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='bottom'>
+      <view class='price'>￥{{good.qprice}}</view>
+      <view class='oldprice'>￥{{good.qprice}}</view>
+      <!-- <view class='selled'>已售{{good.qprice}}</view> -->
+    </view>
+  </view>
+</template>
+
+<!-- <template name='goods'>
+  <view class='good' bindtap='goodDetail'>
+    <image src="{{good.qimage1}}" mode="aspectFill"></image>
+    <view class='mask'></view>
+    <view class='info'>
+      <view class='title'>
+        <text>{{good.qname}}</text>
+      </view>
+      <view class='detail'>
+        <view class='timeinfo'>
+          <text>{{good.address}}</text>
+        </view>
+        <view class='address'>
+          <text>{{good.km}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='bottom'>
+      <view class='price'>￥{{good.qprice}}</view>
+      <view class='oldprice'>￥{{good.qprice}}</view>
+      <view class='selled'>已售{{good.sell}}</view>
+    </view>
+  </view>
+</template> -->

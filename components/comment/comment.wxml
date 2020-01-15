@@ -1,0 +1,39 @@
+<import src='../star/star.wxml' />
+<template name='comment'>
+  <view class='comments'>
+    <view class='conut'>网友点评({{count}})</view>
+    <block wx:for='{{comments}}' wx:for-item='comment' wx:for-index='index' wx:key='comment.id'>
+      <view class='comment'>
+        <image class='cover' src="{{comment.qicon}}" mode="aspectFill"></image>
+        <view class='info'>
+          <view class='name'>{{comment.qname}}</view>
+          <view class='star'>评分：
+            <template is='star' data='{{count:comment.qnum}}' />
+          </view>
+          <view class='msg'>{{comment.qcontent}}</view>
+          <view class='picture'>
+            <block wx:for="{{comment.qimg}}" wx:for-index='jdex' wx:key='*this'>
+              <image src="{{host+item}}" mode="aspectFill" bindtap='photoScan' data-index='{{index}}' data-jdex='{{jdex}}' data-imgs='{{comment.qimg}}' data-img='{{item}}'></image>
+            </block>
+          </view>
+        </view>
+      </view>
+
+    </block>
+<!-- 原有评论 -->
+     <block wx:for='{{commentss}}' wx:for-item='comment' wx:for-index='index' wx:key='comment.id'>
+      <view class='comment'>
+        <image class='cover' src="{{comment.cover}}" mode="aspectFill"></image>
+        <view class='info'>
+          <view class='name'>{{comment.name}}</view>
+          <view class='star'>评分：
+            <template is='star' data='{{count:comment.star}}' />
+          </view>
+          <view class='msg'>{{comment.comment}}</view>
+        </view>
+      </view>
+
+    </block>
+  </view>
+  
+</template>

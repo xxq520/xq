@@ -1,0 +1,126 @@
+{
+ "pages":[
+  "pages/index/index",
+   "pages/booszy/booszy",
+   "pages/shangjzy/shangjzy",
+   "pages/shopcart/shopcart",
+   "pages/goods/goods",
+    "pages/user/user",
+    "pages/boosdrz/boosdrz",
+    "pages/chongzhi/chongzhi",
+    "pages/pics/gdal/paysuccess",
+    "pages/shangpgl/shangpgl",
+    "pages/xinxfll/xinxfl",
+    "pages/xinxfl/xinxfl",
+    "pages/youhq/youhq",
+    "pages/storelist/storelist",
+    "pages/index/location",
+    "pages/index/fuli",
+    "pages/index/fenxyl",
+    "pages/index/rushbuy",
+    "pages/fenxhb/fenxhb",
+    "pages/delivery/detail",
+    "pages/delivery/index",
+    "pages/user/dingdan",
+    "pages/user/lipin",
+    "pages/user/shoucang",
+    "pages/user/tuihuo",
+    "pages/user/pinglun",
+    "pages/user/shangjrz",
+    "pages/user/zhuczc",
+    "pages/user/yjfk",
+    "pages/user/ddpl",
+    "pages/user/gywm",
+    "pages/user/bzzx",
+    "pages/user/bzzx/bzzxnr",
+    "pages/user/wdfx",
+    "pages/user/yqhb",
+    "pages/user/records",
+    "pages/user/message",
+    "pages/storelistss/storelist",
+    "pages/store/store",
+    "pages/goods/recordss",
+    "pages/pics/pics",
+    "pages/tixian/tixian",
+    "pages/tixian/tixiants",
+    "pages/shangjiadd/shangjiadd",
+    "pages/shangjhb/shangjhb",
+    "pages/shangjhb/report",
+    "pages/shangjhb/hongbaoxq",
+    "pages/pics/index/index",
+    "pages/pics/gdal/gdal",
+    "pages/shangpgl/shangpfb",
+    "pages/shangpfl/shangpfl",
+    "pages/order/check",
+    "pages/order/sppayok",
+    "pages/fahb/fahb",
+    "pages/fahb/hbjl",
+    "pages/xxfb/xxfb",
+    "pages/xxfb/fblb",
+    "pages/xxfb/fbxz",
+    "pages/ggtf/ggtf",
+    "pages/ggtf/ggxx",
+    "pages/ggtf/ggtj",
+    "pages/yhfb/yhfb",
+    "pages/yhfb/yhlb",
+    "pages/logs/logs",
+    "pages/logs/ysyyhq",
+    "pages/logs/djqpayok",
+    "pages/pics/shxx",
+    "pages/yonghfx/yonghfx",
+    "pages/yonghfx/yonghxq",
+    "pages/yhqhxd/yhqhxd",
+    "pages/im/chat-list/chat-list",
+    "pages/im/chat/chat",
+    "pages/im/chat-input/chat-input",
+    "pages/im/friends/friends",
+    "pages/order/sphb",
+    "pages/rzxy/rzxy"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "喜钱",
+    "navigationBarTextStyle": "black"
+  },
+
+  "tabBar": {
+    "color": "#9d9d9d",
+    "selectedColor": "#ff4d47",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/fei.png",
+        "selectedIconPath": "images/feii.png"
+      },
+      {
+        "pagePath": "pages/xinxfl/xinxfl",
+        "text": "信息分类",
+        "iconPath": "images/home2.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/youhq/youhq",
+        "text": "优惠券",
+        "iconPath": "images/test.png",
+        "selectedIconPath": "images/test2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine2.png"
+      }
+    ]
+  },
+  "debug": false,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于小程序获取附近商家信息"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

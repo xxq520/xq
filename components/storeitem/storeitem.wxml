@@ -1,0 +1,50 @@
+<import src='../../components/star/star.wxml' />
+<template name='store'>
+  <view class='store' bindtap="{{jj?'msks':(store.qgroupId==0?'yqg':'storelick')}}" data-id='{{store.id}}'>
+    <image src="{{ host+store.qimage1}}" mode="aspectFill"></image>
+    <view class='info'>
+      <view class='name'>{{store.qname}}</view>
+      <!-- <view class='star_price'>
+        <template is='star' data="{{count:store.qfen}}" /> 💴{{store.qprice}}
+      </view> -->
+      <view class='type_km'>
+        <view class='type'>{{store.qnote1}}</view>
+        <view class='km'>{{store.km}}</view>
+      </view>
+      <view class='jindt' wx:if="{{hd}}">
+        <view class=' color-666 p-r-20 font-size-28'>剩余</view>
+        <view class='progress'>
+          <progress percent="{{store.qgroupId}}" border-radius='90' show-info="true" color="red" stroke-width="10" activeColor="#2fa1ff" backgroundColor="#2fa1ff5d" />
+        </view>
+      </view>
+      <view class='msqg'>
+        <view class='star_price'>
+          <template is='star' data="{{count:store.qfen}}" /> ￥{{store.qprice}}
+        </view>
+        <view class='button font-size-22 ' wx:if="{{hd}}">
+          <button class='font-size-22 bg-but'>{{jj?'敬请期待':(store.qgroupId==0?'已抢光':'马上抢')}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name='stores'>
+  <view class='store' bindtap='storelick' data-id='{{stores.id}}'>
+    <image src="{{host+stores.qimg1}}" mode="aspectFill"></image>
+    <!--<image src="{{host+stores.qimg1}}" mode="aspectFill"></image>-->
+    <view class='info'>
+      <view class='name'>{{stores.qtitle}}</view>
+      <view class='star_price'>
+        👍推荐星级
+        <template is='star' data="{{count:stores.qprice}}" />
+      </view>
+      <view class='type_km'>
+        <view class='type'>{{stores.qtext1}}</view>
+      </view>
+      <!-- <view class='type_km'>
+        <view class='km'>🔥{{stores.qnum+99}}</view>
+      </view> -->
+    </view>
+  </view>
+</template>

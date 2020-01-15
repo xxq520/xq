@@ -1,0 +1,8 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "优惠券",
+  "usingComponents": {
+    "i-load-more": "../../components/load-more/index",
+    "empty":"../../components/empty/empty"    
+  }
+}

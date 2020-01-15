@@ -1,0 +1,10 @@
+<!--pages/user/wdfx.wxml-->
+<!-- <canvas canvas-id='poster' class='border' style='width: {{canvasW}}px;height: {{canvasH}}px;margin: auto;' bindtap='previewImg'></canvas>  -->
+<view class='text-align'>
+<image src='/images/yqewm.png' class='border' style='width: {{canvasW}}px;height: {{canvasH}}px;margin: auto;'></image>
+</view>
+<view class='font-size-28 color-666 mt-10 text-align'>长按保存图标分享好友、朋友圈</view>
+ <!-- <view  class='footc'>
+分享
+ 
+ </view> -->

@@ -1,0 +1,22 @@
+<view class="w100">
+  <view class="p_all">请认真填写好下面退货信息</view>
+  <view class="p_all01 mt10 bg">
+    <view class=" mt10">
+      <textarea class="min_60 inputStyle" auto-height name="remark" placeholder="退款原因" bindinput="remarkInput" value="{{remark}}"/>
+      <radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}">
+    <radio value="{{item.value}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+ <input wx:if="{{!zfb}}" class="inputStyle" name="input" bindinput="username" placeholder="微信号" value="{{username}}" />
+      <input wx:if="{{zfb}}" class="inputStyle" name="input" bindinput="username" placeholder="用户名" value="{{username}}" />
+       <input wx:if="{{zfb}}" class="inputStyle" name="input" bindinput="reasonInput" placeholder="支付宝账号" value="{{reason}}" />
+    </view>
+  </view>
+  <view class="p_all01 mtt0">
+    <view class="btnGreen">
+      <button type="primary" id="btnPay" formType="submit" bindtap="submitReturnData">确定</button>
+    </view>
+  </view>
+</view>

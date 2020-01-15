@@ -1,0 +1,85 @@
+<view class="page">
+    <view class="userinfo bg_red text-align p-y-50 ">
+        <image wx:if="{{shop.logo}}" class="userinfo-avatar text-align" src="{{host+shop.logo}}"
+               background-size="cover"></image>
+        <view>
+            <text class="font-size-30">{{shop.storeName}}{{shop.state==1?'[审核中]':(shop.state==3?'[未通过]':(shop.state==4?'[已过期]':''))}}</text>
+        </view>
+    </view>
+    <view class='flexcenter flexspbet foot bg-color color-333 p-x-30 p-y-20 '>
+        <view class='font-size-28' bindtap='mingxi'>
+            <view class='font-size-32'>店铺余额:
+                <text class='color-e51'>￥{{shop.money==null ? 0 : shop.money}}</text>
+            </view>
+            <view class='color-999'>查看余额明细</view>
+        </view>
+        <navigator class='color-e51 font-size-28 border p-x-30 rounded' hover-class='none'
+                   url='/pages/tixian/tixian?tp=2&money={{shop.money==null ? 0 : shop.money}}'>提现
+        </navigator>
+    </view>
+    <view class='wdzy m-x-20 '>
+        <view class='rounded  bg-color mb-15 p-x-20 p-y-15 '>
+            <navigator hover-class="none" url='/pages/pics/shxx' class='text-align flexcenter flexRowCen'>
+                <view class="font_14 c3">商户信息</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        <view class='rounded  bg-color mb-15 p-x-20 p-y-15 '>
+            <view hover-class="none" bindtap='xzewm' class='text-align flexcenter flexRowCen'>
+                <view class="font_14 c3">下载太阳码</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <view class='rounded  bg-color mb-15 p-x-20 p-y-15 ' bindtap='phone'>
+            <view hover-class="none" class='text-align flexcenter flexRowCen'>
+                <view class="font_14 c3">联系我们</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <view class='rounded  bg-color mb-15 p-x-20 p-y-15 '>
+            <navigator url='/pages/user/shangjrz?id={{shop.id}}' hover-class="none"
+                       class='text-align flexcenter flexRowCen flexspbet'>
+                <view class="font_14 c3">商家续费</view>
+                <view class="color-333 flexRowCen">
+                    <text class='font_14'>剩余{{shop.dqTime}}天</text>
+                    <text class='fa fa-angle-right '></text>
+                </view>
+            </navigator>
+        </view>
+        <view class='rounded  bg-color mb-15 p-x-20 p-y-15 '>
+            <view hover-class="none" bindtap='tcdl' class='text-align flexcenter flexRowCen'>
+                <view class="font_14 c3">退出登录</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view style='height:50px;'></view>
+<view class='posit-fix bottom-0 left-0 z-index center full-width'>
+    <view class='sjdh full-width bg_hui row-b'>
+        <view bindtap='shouye' hover-class='none' class='sjies text-align m-t10'>
+            <view>
+                <image src='/images/sj-home.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>首页</view>
+        </view>
+        <view bindtap='yonghfx' class='sjies text-align m-t10'>
+            <view>
+                <image src='/images/up.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>商机分析</view>
+        </view>
+        <view bindtap='xiaoxi' class='sjies text-align m-t10' hover-class='none'>
+            <view>
+                <image src='/images/sj-xx0.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-666'>订单消息</view>
+        </view>
+        <view class='sjies text-align m-t10' hover-class='none'>
+            <view>
+                <image src='/images/male1.png' mode="aspectFill" class='img-68'></image>
+            </view>
+            <view class='font-size-24 color-e51'>我的</view>
+        </view>
+    </view>
+</view>

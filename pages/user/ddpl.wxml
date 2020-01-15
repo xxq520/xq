@@ -1,0 +1,65 @@
+<view class='p-30'>
+    <!-- 头像 星星 -->
+    <view wx:for="{{shuju}}" wx:if="{{shuju}}">
+        <view class="box" style="margin-bottom:20rpx">
+            <image style="width:150rpx;height:150rpx" src="{{host+item.qprocedureImg}}" mode="aspectFill"/>
+            <view style="padding-left:14rpx">
+                <!-- -商品的每次-->
+                <view class="font-size-22" style="font-size:34rpx;margin-top:8rpx">
+                    {{item.qprocedureName}}
+                </view>
+                <!--商品的详情 -->
+                <view class="font-size-18" style="font-size:28rpx;margin-top:20rpx">
+                    {{item.orderstr}}
+                </view>
+            </view>
+        </view>
+        <view class='font-size-28 bg-white flexcenter p-head-20'>
+            <view bindtap="pinfen" data-index="1" data-num="{{index}}" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{item.pf>0?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="2" data-num="{{index}}" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{item.pf>1?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="3" data-num="{{index}}" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{item.pf>2?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="4" data-num="{{index}}" class='color-f36 p-lr-5   font-size-40'>
+                <image src="{{item.pf>3?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="5" data-num="{{index}}" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{item.pf>4?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+        </view>
+        <!-- 头像星星结束 -->
+        <view class='p-30-32 font-size-30 bg-white'>
+            <textarea bindinput='pinglun' data-num="{{index}}" placeholder="请输入您要评论的内容"
+                      class='wh-0 textarea-h'></textarea>
+        </view>
+    </view>
+    <view wx:if="{{!shuju}}">
+        <view class='font-size-28 bg-white flexcenter p-head-20'>
+            <view bindtap="pinfen" data-index="1" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{pf>0?'/images/stars.png':''}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="2" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{pf>1?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="3" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{pf>2?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="4" class='color-f36 p-lr-5   font-size-40'>
+                <image src="{{pf>3?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+            <view bindtap="pinfen" data-index="5" class='color-f36 p-lr-5  font-size-40'>
+                <image src="{{pf>4?'/images/stars.png':'/images/starsed.png'}}" class='img-30'></image>
+            </view>
+        </view>
+        <!-- 头像星星结束 -->
+        <view class='p-30-32 font-size-30 bg-white'>
+            <textarea bindinput='pinglun' placeholder="请输入您要评论的内容" class='wh-0 textarea-h'></textarea>
+        </view>
+    </view>
+    <view style='height:100px;'></view>
+    <button bindtap='tijiao' class='footc'>提交</button>
+</view>

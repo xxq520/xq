@@ -1,0 +1,237 @@
+page{
+    background-color: #F5F5F5;
+}
+.header{
+    height: 296rpx;
+    background: linear-gradient(to right,#F76033 10%,#F84935 30%);
+    padding: 0 41rpx;
+    color: white;
+}
+/*全部商品的标题*/
+.all{
+    margin-top: 20rpx;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    line-height:38rpx;
+    color:rgba(255,255,255,1);
+}
+.navigator-hover {
+    background-color: transparent;
+    opacity: 1;
+}
+
+/*编辑按钮*/
+.edit{
+    margin-top: 20rpx;
+    font-size:28rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    line-height:38rpx;
+    color:rgba(255,255,255,1);
+    opacity:1;
+}
+/*商品的列表*/
+.goodList{
+    width:688rpx;
+    margin: 0 auto;
+    margin-top: -190rpx;
+    padding-bottom: 130rpx;
+}
+.goods{
+    background-color: #fff;
+    border-radius: 8rpx;
+    padding: 27rpx 20rpx 9rpx 27rpx;
+    margin-bottom: 46rpx;
+}
+.shop{
+    height: 54rpx;
+    line-height: 54rpx;
+    margin-bottom: 40rpx;
+}
+.shop .shopName{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin-left: 10rpx;
+}
+.shopImg{
+    width:54rpx;
+    height:54rpx;
+    background:#ccc;
+    border-radius:50%;
+    opacity:1;
+    margin-left: 41rpx;
+}
+.wxz{
+    margin-top: 10rpx;
+    width: 34rpx;
+    height: 34rpx;
+}
+/*购买商品的内容*/
+
+.goodImg{
+    width:150rpx;
+    height:120rpx;
+    background:rgba(0,0,0,0);
+}
+.goods-wxz{
+    border-radius:50%;
+    margin-right: 44rpx;
+    width: 34rpx;
+    height: 34rpx;
+    margin-top: 44rpx;
+}
+.goods-price{
+    font-size:32rpx;
+    font-family:PingFang SC;
+    color:rgba(246,48,26,1);
+}
+.goods-guige{
+    font-size:22rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    margin-bottom: 16rpx;
+}
+.goods-name{
+    font-size:34rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin-bottom: 8rpx;
+    width: 100%;
+}
+.goods-title{
+    margin-top: -9rpx;
+    margin-left: 18rpx;
+    width: 396rpx;
+}
+.good-con{
+    position: relative;
+    margin-top: 44rpx;
+    margin-bottom: 10rpx;
+}
+.subsum{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 170rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    border:1rpx solid rgba(201,201,201,1);
+    border-radius:4rpx;
+}
+.subsup,.subsub{
+    width: 50rpx;
+    text-align: center;
+}
+.subsup image{
+    width: 22rpx;
+    height: 22rpx;
+}
+.subsub image{
+    width: 22rpx;
+    height: 3rpx;
+    vertical-align: middle;
+}
+.subsum text{
+    width:60rpx;
+    overflow: hidden;
+    text-align: center;
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    border-left: 1rpx solid rgba(201,201,201,1);
+    border-right: 1rpx solid rgba(201,201,201,1);
+}
+.sum-price{
+    width: 686rpx;
+    padding: 20rpx 32rpx 17rpx 32rpx;
+    height:71rpx;
+    line-height: 71rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0 0 10rpx rgba(0,0,0,0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.sum-price-tit{
+
+}
+.jiesuan{
+    text-align: center;
+    width:186rpx;
+    height:71rpx;
+    background:rgba(246,48,26,1);
+    border-radius:40rpx;
+    font-size:36prx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.sum-price-tit text{
+    color: #F6301A;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+.del{
+    text-align: center;
+    width:186rpx;
+    height:71rpx;
+    border-radius:40rpx;
+    font-size:36prx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(246,48,26,1);
+    border: 2rpx solid rgba(246,48,26,1);
+}
+.checkall{
+    align-items: center;
+}
+.checkall image{
+    width: 34rpx;
+    height: 34rpx;
+}
+.checkall text{
+    padding-left: 16rpx;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}.noneShop{
+    text-align: center;
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100vh;
+ }
+.noneShop image{
+    width: 382rpx;
+    margin: 0 auto;
+    height: 271rpx;
+    margin-top: 227rpx;
+}
+.noneShop .none-title{
+    margin-top: 53rpx;
+    font-size:26rpx;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(145,145,145,1);
+    margin-bottom: 148rpx;
+}
+.noneShop .none-gg{
+    width:276rpx;
+    height:88rpx;
+    line-height: 88rpx;
+    background:linear-gradient(87deg,rgba(255,4,46,1) 0%,rgba(255,70,57,1) 100%);
+    border-radius:88rpx;
+    margin: 0 auto;
+    font-size:34rpx;
+    font-family:PingFang SC;
+    /*font-weight:bold;*/
+    color:rgba(255,255,255,1);
+}

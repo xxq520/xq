@@ -1,0 +1,105 @@
+page{
+  background-color: #f8f8f8;
+  font-family: "苹方";
+  line-height: 100%;
+}
+.gobal{
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.msg-header{
+  box-sizing: border-box;
+  height: 246rpx;
+  width: 710rpx;
+  display: flex;
+  padding: 38rpx 130rpx 38rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+.msg-tips{
+  height: 120rpx;
+  width: 120rpx;
+}
+.msg-tips image{
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 42rpx;
+}
+.pr{
+  position: relative;
+}
+.pa{
+  position: absolute;
+  right: -28rpx;
+  top: 0;
+}
+.tips-small{
+  display: block;
+  width: 52rpx;
+  height: 30rpx;
+  background-color: red;
+  color: white;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 28rpx;
+  border-radius: 12rpx;
+}
+.m-r-210{
+  margin-right: 210rpx;
+}
+.msg-text{
+  padding-top: 18rpx;
+  /* width: 120rpx; */
+  font-size: 34rpx;
+  text-align: center;
+}
+.msg-content{
+  margin-top:20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+
+.person{
+  padding: 30rpx 26rpx;
+  display: flex;
+  border-bottom: 1rpx solid #eee;
+}
+.person-l{
+  padding-right:30rpx; 
+}
+.person-l image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.person-r{
+ padding-bottom: 5rpx;
+ width: 85%;
+}
+.bbox{
+  margin-top: 10rpx;
+  color: rgb(153,153,153);
+  font-weight: normal;
+}
+.person-r-t{
+  display: flex;
+  justify-content: space-between;
+  /* width: 518rpx; */
+  padding-bottom:22rpx;
+  font-weight: bold;
+  color: rgb(51, 51, 51);
+}
+.person-r-b{
+  display: flex;
+  justify-content: space-between;
+  color: rgb(153,153,153);
+}
+.small{
+  width: 52rpx;
+  height: 28rpx;
+  background-color: red;
+  color: white;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 28rpx;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="header"></view> 
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-media-box weui-media-box_appmsg m-20 rounded  bg-color" hover-class="weui-cell_active" wx:for="{{delivery_list}}" wx:for-item="delivery" wx:key="{{delivery.id}}">
+      <view class="delivery-list-checkbox" wx:if="{{is_select}}">  
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg {{is_select ? 'delivery-list-box' : ''}}">
+        <view class='lxr flexspbet'>
+          <view class='flex-0' id="{{delivery.id}}" bindtap="handleClick">
+            <view class="weui-media-box__title">{{delivery.qname}}</view>
+            <view class="weui-media-box__title weui-media-box__title-Phone">{{delivery.qphone}}</view>
+          </view>        
+        </view>
+        <view id="{{delivery.id}}" bindtap="handleClick" class="color-999 font-size-28 weui-media-box__desc address pb">收货地址：{{delivery.qprovince+delivery.qcity+delivery.qarea+delivery.qaddr}}</view>
+      </view>
+      <view class='p-x-20 flexspbet flexcenter pb'>
+        <view bindtap='moren' data-id='{{delivery.id}}' wx:if="{{delivery.qdefault==0}}" class='font-size-28 flexcenter'>
+          <image src='/images/mrdz.png' class='img-30'></image>
+          <text class='color-999  m-x-20'>设置为默认地址</text>
+        </view>
+        <view wx:if="{{delivery.qdefault==1}}" class='font-size-28 flexcenter'>
+          <image src='/images/mrdzed.png' class='img-30'></image>
+          <text class='color-999  m-x-20'>默认地址</text>
+        </view>
+        <view class='flexcenter font-size-28 color-999'>
+        <view bindtap="modify" data-id="{{delivery.id}}" class='flexcenter'>
+        <image src='/images/bianji.png' class='img-30' > </image>
+        <text class='m-x-20'>编辑</text>
+        </view>
+          <view bindtap='del' data-id="{{delivery.id}}" class='flexcenter'>
+          <image src='/images/dleicon.png' class='img-30' bindtap="modify" data-id="{{delivery.id}}"> </image>  
+            <text class='m-x-20'>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="height: 50px;"></view>
+  <view class="footer">
+    <view bindtap="changeNum"  class="footer-add">
+      新增收货地址
+    </view>
+  </view>
+</view>

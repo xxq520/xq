@@ -1,0 +1,28 @@
+<view class=''>
+  <view class='hb-1 rounded-x wddd '>
+    <view class='hb'></view>
+  </view>
+</view>
+<view class='text-align p-15'>
+  <view class='m-30 m-t-60'>
+    <image src="{{imghost+logo}}" class="image-100 rounded-x hb-b m-y-40" mode="aspectFill"></image>
+    <view class='color-fff font-size-28 line-48'>{{shopname}}埋了一个红包</view>
+    <view wx:if="{{hbzs!=0}}" class='color-fff font-size-28 line-48'>共{{hbzs}}个红包，已被挖了{{hbyq}}个，剩余{{hbzs-hbyq}}个</view>
+    <view wx:else class='color-fff font-size-28 line-48'>暂未有人领取~</view>
+  </view>
+</view>
+<view class='m-30 bg-color rounded'>
+  <view wx:for="{{hbdetails}}" wx:key="{{index}}" wx:if="{{(hbyq>10)?(index<10):(index<hbyq)}}" class='flexcenter flexspbet  p-15   xqbb'>
+    <view class=' flexcenter'>
+      <view>
+        <image src='{{item.qicon}}' mode="aspectFill" class='img-68 m-r-20 rounded-x'></image>
+      </view>
+      <view>
+        <view class='font-size-28'>{{item.qnick==null?'未知用户':item.qnick}}</view>
+        <view class='font-size-28 color-999'>{{item.time}}</view>
+      </view>
+    </view>
+    <view class='font-size-30 color-e51'>{{item.money}}元</view>
+  </view>
+
+</view>

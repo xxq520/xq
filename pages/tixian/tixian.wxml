@@ -1,0 +1,25 @@
+<view class="">
+    <view class=' p-y-50 text-align '>
+        <text class="font-size-60 je-w"><text class='font-size-28'>￥</text>{{money}}
+        </text>
+    </view>
+    <view class='text-align rounded search rounded m-x-40  wddd'>
+        <view class='p-y-15 '>
+            <text class="font-size-30">提现到{{tp==1?'账户':'商家'}}注册微信钱包</text>
+        </view>
+        <view class='flexcenter p-y-30 m-20'>
+            <view class='w-10'>￥</view>
+            <view class='b-b w-75'>
+                <input placeholder="最低{{xiane}}元起提" bindinput='money' type='digit' maxlength='6' value="{{txmoney}}"
+                       class='text-l'></input>
+            </view>
+            <view class='w-15'>
+                <button class='but-qb' bindtap='quanbu'>全部</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='font-size-24  p-y-20  m-x-60 color-999 xqbb'>· 提现收取{{shouxu}}手续费，3个工作日内到账！</view>
+<view class='m-x-60'>
+    <button class='but-qb1' bindtap="{{tijiao?'':'tixian'}}">立即提现</button>
+</view>

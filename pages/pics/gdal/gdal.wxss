@@ -1,0 +1,358 @@
+page {
+  background-color: #f8f8f8;
+  font-family: "苹方";
+}
+
+.text-ts {
+  color: #ff9800;
+}
+
+.bg-wh {
+  background: #ffddb3;
+}
+
+.text-xx {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.col-3 {
+  width: 25%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+}
+
+.col-9 {
+  width: 75%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+}
+
+.row-text {
+  /* margin-left: -10rpx;
+  margin-right: -10rpx; *//* padding: 30rpx; */
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+}
+
+.color-000 {
+  color: #000;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.container {
+  padding: 30rpx;
+}
+
+.row {
+  margin-left: -10rpx;
+  margin-right: -10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.content {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.border-bottom {
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+.border-zf {
+  border: 2rpx solid rgb(255, 48, 30);
+}
+
+.dd-zf {
+  color: rgb(255, 48, 30);
+}
+
+.dd-bg {
+  background: rgb(255, 48, 30);
+}
+
+/* .but{background-color: #} */
+
+.butt::after {
+  border: none;
+}
+
+.img-68 {
+  width: 58rpx;
+  height: 58rpx;
+}
+
+.img-36 {
+  width: 36rpx;
+  height: 36rpx;
+   /* border: 2rpx solid rgb(255, 48, 30); */
+
+}
+
+.z-index {
+  z-index: 99;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.posit-fix {
+  position: fixed;
+}
+
+.button-1 {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1.5;
+  background: none;
+  border-radius: 0rpx;
+}
+
+.button-1::after {
+  border: none;
+}
+
+/* button, view, navigator {
+  box-sizing: border-box;
+} */
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+.bg-theme {
+  background-color: rgba(0, 0, 0, 0.589) !important;
+}
+
+.btn-lg {
+  /* padding: 26rpx 40px; */
+  font-size: 30rpx;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.row-xx {
+  /* margin-left: -10rpx;
+  margin-right: -30rpx;
+  padding:15rpx; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sjdh {
+  height: 98rpx;
+  border-top: #eee solid 0.5rpx;
+}
+
+.pb-30 {
+  padding-bottom: 30rpx;
+}
+
+.p-pl {
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
+}
+
+.z-index {
+  z-index: 99;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.posit-fix {
+  position: fixed;
+}
+
+.butt1 {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1.5;
+  background: #ff4a50;
+}
+
+.butt1::after {
+  border: none;
+}
+
+.butt2 {
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.butt2::after {
+  border: none;
+}
+
+/* button, view, navigator {
+  box-sizing: border-box;
+} */
+
+.modal-content-x {
+  width: 620rpx;
+  height: 877rpx;
+}
+
+.no-rounded {
+  border-radius: 0 !important;
+}
+
+.bg-theme {
+  background-color: #f2f2f2;
+}
+
+.btn-lg {
+  margin-top: 450rpx;
+  /* font-size: 28rpx; */
+}
+
+.mod {
+  left: 32.5px;
+  right: 32.5px;
+  position: absolute;
+}
+
+.m-l-150 {
+  margin-left: 120rpx;
+}
+
+.mod11 {
+  width: 20%;
+  position: absolute;
+  padding-top: 4rpx;
+}
+
+page {
+  background-color: rgb(248, 248, 248);
+}
+
+.bg {
+  background-color: white;
+  padding: 0 30rpx;
+}
+
+.pay-header {
+  padding-top: 85rpx;
+  padding-left: 239rpx;
+  padding-bottom: 89rpx;
+}
+
+.pay-header image {
+  width: 55rpx;
+  height: 55rpx;
+  vertical-align: bottom;
+  margin-right: 23rpx;
+}
+
+.pay-header text {
+  font-size: 50rpx;
+  font-family: "PingFang-SC-Bold";
+  font-weight: bold;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+.pay-xq {
+  margin-top: 12rpx;
+}
+
+.pay-xq-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  color: rgb(51, 51, 51);
+  border-bottom: 1px solid rgb(248, 248, 248);
+}
+
+.hs {
+  color: rgb(153, 153, 153);
+}
+
+.pay-md {
+  margin-top: 12rpx;
+}
+
+.pay-dp {
+  margin-top: 12rpx;
+  display: flex;
+  padding: 30rpx 30rpx;
+}
+
+.pay-dp-l image {
+  width: 152rpx;
+  height: 152rpx;
+}
+
+.pay-dp-r {
+  padding-left: 27rpx;
+}
+
+.pay-dp-r-t {
+  font-weight: bold;
+}
+
+.pay-dp-r-b {
+  width: 510rpx;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 48rpx;
+}
+
+.pay-dp-btn {
+  width: 154rpx;
+  height: 56rpx;
+  border: 1px solid rgb(247, 47, 26);
+  color: rgb(247, 47, 26);
+  text-align: center;
+  line-height: 56rpx;
+  /* margin-left: 30rpx; */
+}
+
+.btn-bg {
+  background-color: rgb(247, 47, 26);
+  color: rgb(255, 255, 255);
+}
+
+.button{
+  padding-left: 0rpx;
+  padding-right: 0rpx;
+  border-radius: 0;
+}
+.button::after{border: none;}

@@ -1,0 +1,144 @@
+/* pages/shangpgl/shangpgl.wxss */
+
+page {
+  background: #fff;
+  font-family: '微软雅黑';
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  font-family: '微软雅黑';
+}
+
+.items {
+  display: block;
+  /* float: left; *//* width: 50%; */
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.items2 {
+  display: block;
+  /* float: right; */
+  width: 50%;
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.items.actives {
+  border-bottom: #dd2a2a solid 4rpx;
+  color: #dd2a2a;
+}
+
+.sp-wh{width: 31.5%;height: 160rpx;padding: 6rpx;}
+.row-spgl{
+  /* margin-left: -10rpx;
+  margin-right: -30rpx; */
+  padding:15rpx 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.line-24{line-height: 48rpx;}
+
+.wddd {
+  position: relative;
+  box-shadow: 0 0 30rpx 0 #e6e6e6;
+}
+.movable-view{
+  /* width: 110rpx;
+  height: 110rpx; */
+  top: unset;
+  left: unset;
+  bottom: 120rpx !important;
+  /* right: 20rpx !important; */
+}
+.button-kf{
+font-size: 28rpx;
+background:unset; 
+line-height:32rpx;
+/* border-radius: 90rpx; */
+padding-top: 22rpx;
+/* padding-bottom: 20rpx; */
+}
+.text-center{
+text-align: center;
+}
+.full-width{
+width: 100%;
+}
+view,text,img{
+  padding: 0;
+  margin: 0,
+}
+button,view,navigator{
+box-sizing: border-box;
+}
+.margin-auto { margin: auto;}
+.rounded-100{
+width: 92rpx;
+height: 92rpx;
+border-radius: 50%;
+background-color: rgba(255, 255, 255, 0.829);
+border: 1rpx solid #ff8732c4;
+color: #ff8732c4;
+}
+button,view,navigator{
+box-sizing: border-box;
+}
+.kefu-t{
+  padding-top: 15rpx;
+  width: 60rpx;
+  height:60rpx;
+}
+.button-kf{
+font-size: 28rpx;
+background:unset; 
+line-height:32rpx;
+/* border-radius: 90rpx; */
+padding-top: 22rpx;
+/* padding-bottom: 20rpx; */
+}
+.chb {text-align: center;
+/* color: #fff; */
+}
+.chb::after{border: none;}
+.redPackage{
+position: fixed;
+right: 0;
+z-index: 9999;
+}
+.footc {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgb(255, 88, 94);
+  z-index: 100;
+  width: 100%;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  line-height: 50px;
+  /* font-weight: 700; */
+  color: snow;
+  text-align: center;
+  border-radius: 0;
+}
+.footc::after {
+  border: none;
+}
+.text-s{color: #44c74a;}
+.text-w{color: #ff8800;}
+.text-g{color: #cccccc;}

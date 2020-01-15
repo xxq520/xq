@@ -1,0 +1,19 @@
+<view class='center'>
+  <image src="{{host+'fl-bg.png'}}" class='fl-bg' mode="aspectFill">
+  </image>
+</view>
+<view class='m-20'>
+  <navigator url="../goods/goods?id={{item.id}}&qshopid={{item.storeId}}" wx:if="{{procedure}}" wx:for="{{procedure}}" wx:key="index" class='p-20 bg-color rounded-md flexcenter mb-20'>
+    <image wx:if="{{item.lbImgs}}" src="{{item.show||index<2?host+item.lbImgs[0]:''}}" class='fl-bg1 rounded-md w-35 m-r-20 img' mode="aspectFill"></image>
+    <view class='w-65'>
+      <view class='font-size-28 color-333 font-w line-clamp-2'>{{item.goodsName}}</view>
+      <view class='font-size-38 color-333 font-w color-e51'>
+        <text class='font-size-24'>￥</text>{{item.goodsCost}}
+      </view>
+      <view class='font-size-24 color-999 font-w'>已售{{item.qkucun-item.syNum}}</view>
+      <view class='fl_r'>
+        <text class='font-size-24 color-fff bgcolor-ff3 p-y-10 p-x-30 rounded-0'>前往抢购</text>
+      </view>
+    </view>
+  </navigator>
+</view>

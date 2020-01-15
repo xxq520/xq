@@ -1,0 +1,8 @@
+<view class='m-20'>
+  <navigator class='p-20 font-size-30 bg-white rounded mt-10' url='/pages/user/bzzx/bzzxnr'>
+    <view class='font-size-28 color-333'>喜钱是什么</view>
+  </navigator> 
+  <navigator class='p-20 font-size-30 bg-white rounded mt-10' url='/pages/user/bzzx/bzzxnr'>
+    <view class='font-size-28 color-333'>喜钱是什么</view>
+  </navigator>
+</view>

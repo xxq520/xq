@@ -1,0 +1,203 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<form bindsubmit="{{xiugai?'spsxj':'formSubmit'}}">
+  <view class=''>
+    <view class='p-x-20 font-size-30 bg-white'>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>商品名称</view>
+        <input class="w-70" placeholder="请输入商品名称" name='goodsName' value='{{procedure.goodsName}}'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>商品类别</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{procedureType}}" range-key="{{'qcaption'}}">
+          <input class="w-70" disabled='true' placeholder="请选择商品类别" value='{{qcaption||procedure.qcaption}}'>
+          </input>
+        </picker>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>商品库存</view>
+        <input class="w-75" type='number' bindinput="changeQkucun" placeholder="请输入商品库存" name='qkucun' value='{{procedure.qkucun}}'></input>
+      </view>
+      <!-- <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>分销优惠</view>
+        <input class="w-75" type='digit' placeholder="请输入优惠金额" name='qbenefit' value='{{procedure.qbenefit}}'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>分销返佣</view>
+        <input class="w-75" type='digit' placeholder="请输入返佣金额" name='qcashback' value='{{procedure.qcashback}}'></input>
+      </view> -->
+      <view class='flexcenter border-b-sd p-y-15'>
+        <view class='w-25'>商品价格</view>
+        <input class="w-75" type='digit' placeholder="请输入商品价格" bindblur="blurchangeGoodsCost" bindinput="changeGoodsCost" name='goodsCost' value='{{procedure.goodsCost}}'></input>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15 flexspbet'>
+        <view class='w-25'>商品规格</view>
+        <view class=''>
+          <button bindtap='tj' data-tp='1' class='gg-but'>添加</button>
+        </view>
+      </view>
+      <view wx:if="{{guige!=''}}" class='flexcenter border-b-sd p-y-15 '>
+        <view class='blockItem flexColCCen-2 '>
+          <view class='item1 flexColCCen-2 flex-row flex-wrap'>
+            <view class='posit-rel img m-20' wx:for="{{guige}}" wx:key="{{index}}" data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.tpname}}" data-num="{{item.num}}" data-number="1" catchtap="changeType">
+              <text class='border-dashed p-x-15 p-y-5'>{{item.tpname}}[￥{{item.num}}]</text>
+              <view data-index='{{index}}' catchtap='scgg' data-id='{{item.id}}' class='bg-white rounded-x close icon-close color-ddd font-size-26 flexColCCen'>
+              <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='flexcenter border-b-sd p-y-15 flexspbet'>
+        <view class='w-25'>商品颜色</view>
+        <!-- <input class="w-75" type='digit' placeholder="请输入商品价格" name='goodsCost' value='{{procedure.goodsCost}}'></input> -->
+        <view class=''>
+          <button bindtap='tj' data-tp='2' class='gg-but'>添加</button>
+        </view>
+      </view>
+      <view wx:if="{{yanse!=''}}" class='flexcenter border-b-sd p-y-15 f'>
+        <view class='blockItem flexColCCen-2 '>
+          <view class='item1 flexColCCen-2 flex-row flex-wrap'>
+            <view class='posit-rel img m-20' wx:for="{{yanse}}" wx:key="{{index}}"  data-index="{{index}}" data-id="{{item.id}}" data-name="{{item.tpname}}"  data-number="2" bindtap="changeType">
+              <text class='border-dashed p-x-15 p-y-5'>{{item.tpname}}</text>
+              <view data-index='{{index}}' data-id='{{item.id}}' bindtap='scys' class='bg-white rounded-x close icon-close color-ddd font-size-26 flexColCCen'>
+              <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 包邮暂未启用 -->
+    </view>
+  </view>
+  <view class='p-15 font-size-30 bg-white'>
+    <view>商品描述</view>
+    <input class="weui-input" placeholder="请输入内容描述（最多54个字）" maxlength="54" name='goodsDetails' value='{{procedure.goodsDetails}}' bindinput='details'></input>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen-1' wx:for='{{images2}}' wx:key='' wx:if="{{index<9}}">
+          <view class='item flexColCCen-1'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg2'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-30  flexcenter' data-index='{{index}}' data-type='image' catchtap='del2'>
+                <image src='/images/sctp.png' class='image-30 '></image>
+              </view>
+            </image>
+          </view>
+        </view>
+        <!-- 选择图片并上传， 图片将被用在 轮播图 的图片 -->
+        <view class='blockItem flexColCCen-1' data-type='image' bindtap='upload2'>
+          <view class='item border-dashed flexColCCen-1'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='col-3 text-center'>*最多上传{{imgLimit2}}张主图(750px*800px)</view>
+  </view>
+
+  <!-- 用于首页的视频 -->
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 bg-white'>
+      <view>轮播图视频</view>
+      <view class='row-text align-items-center bg-white rounded m-10'>
+        <view class='col-9'>
+          <view wx:if='{{videoInCarousel}}' class='.video_area' >
+            <video class='video_item' src='{{videoInCarousel}}' controls></video>
+
+            <cover-view  class='video_delete' catchtap='delVideo'>
+                  <cover-image src='/images/dleicon.png'></cover-image>
+            </cover-view>
+          </view>
+          <!-- 选择视频并上传， 视频将被用在轮播图 -->
+          <view wx:else class='blockItem flexColCCen-1' data-type='video' bindtap='chooseAndUploadVideo'>
+            <view class='item border-dashed flexColCCen-1'>
+              <view class='icon-plus font-size-20 color-aaa'></view>
+              <view class='color-999 mt-5 font-size-12'>上传视频</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='col-3 text-center'>*轮播图视频 最多1个 (720p)</view>
+    </view>
+  </view>
+
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 bg-white'>
+      <view class='row-text align-items-center bg-white rounded m-10'>
+        <view class='flex-row flex-wrap col-9'>
+          <view class='blockItem flexColCCen-1' wx:for='{{images}}' wx:key='' wx:if="{{index<9}}">
+            <view class='item flexColCCen-1'>
+              <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg'>
+                <view class='bg-white rounded-x close icon-close color-ddd font-size-30  flexcenter' data-index='{{index}}' data-type='image' catchtap='del'>
+                  <image src='/images/sctp.png' class='image-30 '></image>
+                </view>
+              </image>
+            </view>
+          </view>
+          <!-- upload: 选择图片并上传， 图片将被用在详情中 -->
+          <view class='blockItem flexColCCen-1' data-type='image' bindtap='upload'>
+            <view class='item border-dashed flexColCCen-1'>
+              <view class='icon-plus font-size-20 color-aaa'></view>
+              <view class='color-999 mt-5 font-size-12'>上传图片</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='col-3 text-center'>*上传详情图(750px*Npx)</view>
+    </view>
+  </view>
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 bg-white flexcenter flexspbet'>
+      <view>是否列入掌柜推荐 <text style="display:block">已有掌柜推荐{{recommendNum}}件 最多列入16件商品</text></view>
+      <view>
+        <switch checked='{{procedure.isShow==1}}' name='isShow' disabled="{{recommendNum==16}}"/>
+      </view>
+    </view>
+  </view>
+  <view class='mt-10'>
+    <view class='p-15 font-size-30 bg-white flexcenter flexspbet'>
+      <view>是否上架</view>
+      <view>
+        <switch checked='{{procedure.qstatus==1}}' name='qstatus' />
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='mt-10'>
+  <view class='p-15 font-size-30'>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio">
+        <radio value="{{checked}}" checked="{{checked}}" />我已阅读并同意
+        <text class='color-e51'>《发布须知》</text>
+      </label>
+    </radio-group>
+  </view>
+</view> -->
+  <view style='height:100px;'></view>
+  <button wx:if="{{!xiugai}}" class='footc' form-type="submit">确认添加</button>
+  <!-- <button wx:else form-type='submit' data-spid='{{procedure.id}}' data-qstatus='{{procedure.qstatus}}' class="{{procedure.qstatus==2?'footc1':'footc2'}}">{{procedure.qstatus==1?'商品下架':'商品上架'}}</button> -->
+  <button wx:else class='footc' data-spid='{{procedure.id}}' data-qstatus='{{procedure.qstatus}}' form-type="submit">保存信息</button>
+</form>
+
+<!-- 颜色、规格弹窗 -->
+<view class='modal flexColCCen  top-200' wx:if="{{tc}}">
+  <view class='modal-content-x  bg-white footfixed p-20-30 font-size-28'>
+    <view class="close_icon" bindtap='gbtc' data-status="0">×</view>
+    <view class='font-size-30 center'>{{change?'修改':'添加'}}{{tp==1?'规格':'颜色'}}</view>
+    <view class='p-y-30'>
+      <view class='flexcenter m-y-20'>
+        <view class='w-25'>{{tp==1?'规格':'颜色'}}</view>
+        <input class="weui-input" placeholder="请输入{{tp==1?'规格':'颜色'}}" bindinput='tpname' value="{{nowguige}}"/>
+      </view>
+      <view class='flexcenter m-y-20' wx:if="{{tp==1}}">
+        <view class='w-25'>金额</view>
+
+        <input class="weui-input" placeholder="请输入金额" value="{{nowyanse}}" type='digit' maxlength='11' bindinput='num' />
+      </view>
+      <view scroll-y class='full-height text-justify center'>
+        <button wx:if="{{!change}}" bindtap='qrtj' data-tp='{{tp}}' data-tpname='{{tpname}}' data-num='{{num}}' data-spid='{{procedure.id}}' class='gg-but mt-15 p-y-10 '>确认添加</button>
+        <button bindtap='changeGuige' wx:if="{{change}}" data-tp='{{tp}}' data-tpname='{{tpname}}' data-num='{{num}}' data-spid='{{procedure.id}}' class='gg-but mt-15 p-y-10 '>确认修改</button>
+      </view>
+    </view>
+  </view>
+</view>

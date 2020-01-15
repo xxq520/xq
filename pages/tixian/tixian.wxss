@@ -1,0 +1,61 @@
+/* pages/tixian/tixian.wxss */
+
+page {
+  background-color: #f8f8f8;
+}
+
+.search {
+  background-color: #fff;
+  height: 400rpx;
+  color: #333;
+}
+
+.p-y-50 {
+  padding-top: 100rpx;
+  padding-bottom: 100rpx;
+}
+.p-y-30 {
+  padding-top: 60rpx;
+  padding-bottom: 60rpx;
+}
+
+.b-b {
+  border-bottom: 1rpx solid #999;
+}
+
+.but-qb {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  /* border: #ff4639 solid 2rpx; */
+  color: #ff4639;
+  border-radius: 0rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  /* padding-top: 5rpx;
+  padding-bottom: 5rpx; */
+}
+
+ .but-qb::after{border: none;}
+.je-w {
+  font-weight: bold;
+}
+/* 
+.wddd {
+  position: relative;
+  box-shadow: 0 0 30rpx 0 #e6e6e6;
+} */
+
+
+.but-qb1 {
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  margin-top: 200rpx;
+  /* border: #ff4639 solid 2rpx; */
+  background-color: #ff4639;
+  border-radius: 90rpx;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+}
+
+ .but-qb1::after{border: none;}

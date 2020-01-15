@@ -1,0 +1,14 @@
+/* pages/goods/recordss.wxss */
+page{background-color: #f8f8f8;
+font-family: "苹方";
+}
+.img-md{width: 28%; height: 180rpx;}
+.pb-20{padding-bottom: 20rpx;}
+.mb-20{margin-bottom: 20rpx;}
+  .logoyy-q{
+    /* border: 1rpx solid rgb(243, 89, 89); */
+    color: rgb(243, 89, 89);
+    }
+.br{border-right: 1rpx #ccc dashed ;}
+.img-80{width: 80rpx;height: 80rpx;}
+.w250{width: 230rpx;}

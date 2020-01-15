@@ -1,0 +1,125 @@
+<!-- 代金券 -->
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view wx:if="{{!fenxiang}}">
+    <view class='djq-header'>
+        <view class='header-left'>
+            <image wx:if="{{business.logo}}" src="{{imghost+business.logo}}" class="image-50 rounded-md m-r-15"
+                   mode="aspectFill"></image>
+        </view>
+        <view class='header-right p-l-30'>
+            <view class='font-size-32 djq-name'>{{coupon.name}}</view>
+            <view class='font-size-20 zk'>{{coupon.reduce}}折</view>
+            <view class='flexspbet'>
+                <view class='haomuch'>
+                    <text class='font-size-26'>￥</text>
+                    <text class='font-size-32'>{{coupon.full}}</text>
+                </view>
+                <view class='font-size-24 sum'>已售{{coupon.surplus-coupon.number}}张,剩余{{coupon.number}}张</view>
+            </view>
+        </view>
+    </view>
+    <view class='djq-header-b'>
+        <view class='number flexspbet'>
+            <view class='font-size-30'>数量</view>
+            <view class='flexspbet line-46'>
+                <view bindtap='jian' class='radius flexColCCen'>
+                    <text text class='loggg'>-</text>
+                </view>
+                <view class='p-x-17'>{{num}}</view>
+                <view bindtap='jia' class='radius flexColCCen'>
+                    <text class='loggg'>+</text>
+                </view>
+            </view>
+        </view>
+        <view class='getnumber flexspbet'>
+            <view class='font-size-30'>小计</view>
+            <view class='font-size-24 font-c-red'>￥
+                <text class='font-size-40'>{{coupon.full}}</text>
+            </view>
+        </view>
+    </view>
+    <view class='tips'>
+        <view class='font-size-36' style='font-weight:bold;'>购买须知</view>
+        <view class='tips-one'>
+            <view class='font-size-28'>有效日期</view>
+            <view class='font-size-26 timer'>{{coupon.time}}至{{coupon.endTime}}</view>
+        </view>
+        <view class='tips-one'>
+            <view class='font-size-28'>支付说明</view>
+            <view class='font-size-26 timer'>仅支持喜钱支付，不支持线上商城抵扣</view>
+        </view>
+        <view class='tips-one'>
+            <view class='font-size-28'>优惠细则</view>
+            <view class='font-size-26 timer'>仅支持喜钱支付</view>
+        </view>
+    </view>
+    <view style='height:50px;'></view>
+    <view class='posit-fix bottom-0 left-0 z-index full-width'>
+        <view class='sjdh full-width bg-color row-xx wh-0 flexcenter flexspbet'>
+            <view class='flexcenter'>
+                <view class='p-x-30 p-y-20' style='line-height:1;'>
+                    <view class='color-f36'>
+                        <text class='font-w-yhq font-size-38'>￥{{filters.toFix(coupon.money*num)}}</text>
+                        <text class='font-size-22 color-fff zk d-ib mlr-pl'>{{coupon.reduce}}折</text>
+                    </view>
+                    <view class='font-size-24 color-999  '>已优惠
+                        <text>￥{{ filters.toFix((coupon.full-coupon.money)*num)}}</text>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view wx:if="{{!gou}}" class='m-x-20  text-align bgcolor rounded-0'>
+                    <view bindtap="pay" class='font-size-30 color-fff text-align btn-wh' style='padding-right:6rpx;'
+                          wx:if="{{business.id}}">立即购买
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{fenxiang}}">
+    <view class=' bg pay-header'>
+        <image src='/images/Checked.png'></image>
+        <text>支付成功</text>
+    </view>
+
+    <view class='pay-xq bg'>
+        <view class='pay-xq-item font-size-30'>
+            <view>购买金额</view>
+            <view class='hs'>￥{{coupon.money*num}}</view>
+        </view>
+        <view class='pay-xq-item font-size-30'>
+            <view>优惠金额</view>
+            <view class='hs'>-￥{{filters.toFix((coupon.full-coupon.money)*num)}}</view>
+        </view>
+        <view class='pay-xq-item font-size-30'>
+            <view style='letter-spacing:30px;'>数量</view>
+            <view class='hs'>x{{num}}</view>
+        </view>
+    </view>
+
+    <view class='pay-md bg pr'>
+        <view class='pay-md-item font-size-30'>
+            <view>付款时间</view>
+            <view class='md-hs'>{{nowDate}}</view>
+        </view>
+    </view>
+    <view class='pay-dp-r-b bg'>
+        <form bindsubmit="tochat" report-submit>
+            <button wx:if="{{!phone}}" formType="submit" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"
+                    hover-class='none' class='flexColCCen w-icon p-x-15 bg-color '>
+                <view class='pay-dp-btn font-size-28'>
+                    联系商家
+                </view>
+            </button>
+            <button wx:else formType="submit" hover-class='none' class='flexColCCen w-icon p-x-15 bg-color '>
+                <view class='pay-dp-btn font-size-28'>
+                    联系商家
+                </view>
+            </button>
+        </form>
+        <view class='pay-dp-btn font-size-28 btn-bg' bindtap='daodianmaidan' data-business='{{business.storeName}}'
+              data-logo='{{business.logo}}' data-id='{{business.id}}'>去买单
+        </view>
+    </view>
+</view>

@@ -1,0 +1,70 @@
+
+<view class="m-20 bg-color">
+  <view class='bg-color  p-x-20 container   bba pt-20'>
+    <view class=''>
+      <view class='djq  font-size-30 color-999 b-djq-ysy ' hover-class='none'>
+        <view class='flex-0 '>
+          <image mode="aspectFill" class="scimg mr-15" src="{{imghost+business.logo}}"></image>
+          <view class='w-80'>
+            <view class='flexspbet'>
+              <view class='font-w-yhq1 color-999 w-95'>{{coupon.name}}</view>
+              <view class='color-999 font-size-24 fl_r text-right'>X1</view>
+            </view>
+            <view class='font-size-26 color-999 '>{{coupon.time}}至{{coupon.endTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='back'>
+    <view class='flexcenter'>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+      <image class='img-24 rounded-0 bg-color-f8 m-x-25'>
+      </image>
+    </view>
+  </view>
+  <view class="  bg-color  p-20 bb">
+    <view class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>适用门店</view>
+      <view class='color-999'>{{business.storeName}}</view>
+    </view>
+    <view wx:if="{{coupon.typeId==1}}" class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>价值金额</view>
+      <view class='color-999'>￥{{coupon.full}}</view>
+    </view>
+    <view wx:if="{{coupon.typeId==2}}" class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>减免金额</view>
+      <view class='color-999'>￥{{coupon.money}}</view>
+    </view>
+    <view wx:if="{{coupon.typeId==1}}" class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>购买金额</view>
+      <view class='color-999'>￥{{coupon.money}}</view>
+    </view>
+    <view class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>优惠券号</view>
+      <view class='color-999'>{{coupon.id}}</view>
+    </view>
+    <view class='flexcenter flexspbet font-size-30 p-y-20'>
+      <view class='color-333'>发布时间</view>
+      <view class='color-999'>{{coupon.time}}</view>
+    </view>
+
+  </view>
+</view>

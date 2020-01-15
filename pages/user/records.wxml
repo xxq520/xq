@@ -1,0 +1,32 @@
+<wxs module="filters" src="../../utils/filters.wxs"></wxs>
+<view class='records'>
+  <view class='info' wx:if="{{facepay}}" wx:for="{{facepay}}" wx:key="index">
+    <view class='info-l'>
+      <image src="{{host+item.qimg}}"></image>
+    </view>
+    <view class='info-r'>
+      <view class='info-r-t font-size-34'>{{item.qbusinessName}}</view>
+      <view class='font-size-24 info-r-c hs'>
+        <text>消费总额:<text class='red m-l-28 font-size-22'>{{item.qsum}}</text>元</text>
+        <text class='m-l-28'>实付金额：<text class='red font-size-22'>{{filters.toFix(item.qsum-item.qsale)}}</text>元</text>
+      </view>
+      <view class='font-size-24 hs'>
+        <text>下单时间</text>
+        <text class='m-l-28'>{{item.qtime}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='info' wx:if="{{SPfacepay}}" wx:for="{{SPfacepay}}" wx:key="index">
+    <view class='info-r'>
+      <view class='info-r-t font-size-34'>{{item.quserName}}</view>
+      <view class='font-size-24 info-r-c hs'>
+        <text>消费总额:<text class='red m-l-28 font-size-22'>{{item.qsum}}</text>元</text>
+        <text class='m-l-28'>实付金额：<text class='red font-size-22'>{{filters.toFix(item.qsum-item.qsale)}}</text>元</text>
+      </view>
+      <view class='font-size-24 hs'>
+        <text>下单时间</text>
+        <text class='m-l-28'>{{item.qtime}}</text>
+      </view>
+    </view>
+  </view>
+</view>

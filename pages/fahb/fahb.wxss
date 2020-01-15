@@ -1,0 +1,34 @@
+/* pages/fahb/fahb.wxss */
+page {
+  background: #fff;
+  font-family: '微软雅黑';
+}
+.border-b-sd {
+  background-color: #f8f8f8;
+}
+.font-w{font-weight: bold;}
+.footc {
+  font-size: 14px;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  color: snow;
+  text-align: center;
+  border-radius: 0;
+}
+
+.footc::after {
+  border: none;
+}
+.footc1 {
+  display: block;
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+  border-radius: 0;
+}
+.color-hbjl{color: rgb(0, 162, 236);}
+.m-x-80{margin-right: 200rpx;margin-left: 200rpx;}

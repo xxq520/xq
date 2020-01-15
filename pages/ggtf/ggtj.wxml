@@ -1,0 +1,61 @@
+<view class='p-15 font-size-30 bg-white'>
+  <view class='border-b-sd m-y-20 p-y-20'>
+    <input class="wh-0 " placeholder="广告标题" bindinput='qtitle'></input>
+  </view>
+  <view class='bg-text p-20'>
+    <textarea class="weui-input " placeholder="请输入内容描述（最多54个字）" bindinput='qtext'></textarea>
+  </view>
+</view>
+<view class='mt-10'>
+  <view class='p-x-20 font-size-30 bg-white'>
+    <view class='flexcenter border-b-sd p-y-15'>
+      <view class='w-25'>投放日期</view>
+      <input class="w-30 text-align" placeholder="开始日期" bindinput='name'></input>
+      <view class=''>~</view>
+      <input class="w-30 text-align" placeholder="结束日期" bindinput='name'></input>
+    </view>
+    <view class='flexcenter border-b-sd p-y-15'>
+      <view class='w-25'>投放位置</view>
+      <input class="w-75" placeholder="请输入投放位置" bindinput='phone'></input>
+    </view>
+  </view>
+</view>
+<view class=''>
+  <view class='p-15 font-size-30 bg-white'>
+    <view class='row-text align-items-center bg-white rounded m-10'>
+      <view class='flex-row flex-wrap col-9'>
+        <view class='blockItem flexColCCen-1' wx:for='{{images2}}' wx:key=''>
+          <view class='item flexColCCen-1'>
+            <image src='{{item}}' mode='aspectFill' class='full-width full-height posit-rel img' data-src='{{item}}' bindtap='previewImg2'>
+              <view class='bg-white rounded-x close icon-close color-ddd font-size-30  flexcenter' data-index='{{index}}' data-type='image' catchtap='del2'>
+              </view>
+            </image>
+          </view>
+        </view>
+        <view class='blockItem flexColCCen-1' data-type='image' bindtap='upload2'>
+          <view class='item border-dashed flexColCCen-1'>
+            <view class='icon-plus font-size-20 color-aaa'></view>
+            <view class='color-999 mt-5 font-size-12'>上传图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='col-3 text-center'>*上传广告图片</view>
+  </view>
+</view>
+<view class='mt-10'>
+  <view class='p-x-20 font-size-30 bg-white'>
+    <view class='flexcenter flexspbet  border-b-sd p-y-15'>
+      <view class=''>按点击收费</view>
+      <view class=''>0.9元/次</view>
+    </view>
+    <view class='flexcenter flexspbet border-b-sd p-y-15'>
+      <view class=''>广告金</view>
+      <view>
+        <button class='gg-but'>充值</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='height:100px;'></view>
+<button class='footc'>提交申请</button>

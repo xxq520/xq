@@ -1,0 +1,1 @@
+<canvas  canvas-id='poster' class='border' style='width: {{canvasW}}px;height: {{canvasH}}px;margin: auto;' bindtap='previewImg'></canvas> 

@@ -1,0 +1,215 @@
+<!--pages/user/user.wxml-->
+<button class='sqdl' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<view wx:else class="page">
+  <view class="custom flex_center center flexColCCen" style="padding-top:{{statusBarHeight}}px">
+    <navigator url="/pages/im/chat-list/chat-list" hover-class='none'>
+      <image class='img40 fhj-l' src='/images/grxx.png'></image>
+    </navigator>
+    <text>个人中心</text>
+  </view>
+  <button wx:if="{{showGetUser}}" open-type="getUserInfo" bindgetuserinfo="getUser" class="showGetUser"></button>
+  <view class="userinfo1 flexcenter">
+    <image src='/images/grbg.png' class='img-dw img-dwt'></image>
+    <view class="getUser" >
+    <image class="userinfo-avatar fl_l" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class="change">
+      <view class=' p-y-10'>
+        <text class="font-size-38 font-w">{{userInfo.nickName}}</text>
+      </view>
+      <view class=' p-y-10'>
+        <text class="font_14 color-fff">{{userInfo.nickName?'用户编号:JHS-'+user.id:'请登录'}}</text>
+      </view>
+    </view>
+    </view>
+    <!-- <view class='rounded-rz p-x-30 p-y-10 font-size-26 flexcenter' bindtap='ewm'>
+      <image src='/images/hxewm.png' class='img-30 m-r-10'></image> 提货二维码
+    </view> -->
+  </view>
+  <view class='flexcenter box-pack-around foot bg-color color-333 p-x-30 p-y-20 '>
+    <view bindtap='mingxi' class='font-size-28 color-333 center'>
+      <view class='font-size-50'>{{showGetUser?user.qnum==null|| 0 :user.qnum }}</view>
+      <view>余额</view>
+    </view>
+    <navigator class='font-size-28 color-333 center' hover-class="none" url="../user/lipin">
+      <view class='font-size-50'>{{showGetUser?0:coupons.length||0}}</view>
+      <view>券(张)</view>
+    </navigator>
+    <navigator class='font-size-28 color-333 center' url='/pages/user/records?userid={{user.id}}' hover-class='none'>
+      <view class='font-size-50'>{{showGetUser?0:facepay.length||0}}</view>
+      <view>买单</view>
+    </navigator>
+  </view>
+  <view class='wdzy m-x-20 '>
+    <view class='rounded bg-color mb-10 '>
+      <view class="qbdd mt110  p-y-20 pt-30 flexcenter flexspbet ">
+        <view class="font_17 c3">我的订单</view>
+        <navigator class="fl_r c9 font_13 l_h20" url="../user/dingdan?currentTab=0" hover-class="none">查看全部</navigator>
+      </view>
+      <view class="sc df tc  row-text wh-0">
+        <navigator class="df_1" url="../user/dingdan?currentTab=1&otype=deliver" hover-class="none">
+          <view class='pb-20'>
+            <image src="/images/dfk.png"></image>
+          </view>
+          <text class="font_12">待付款<text style="color:red" wx:if="{{!showGetUser}}">({{orderInfo.status1==undefined?0:orderInfo.status1}})</text></text>
+        </navigator>
+        <navigator class="df_1" url="../user/dingdan?currentTab=2&otype=receive" hover-class="none">
+          <view class='pb-20'>
+            <image src="/images/dsh.png"></image>
+          </view>
+           <text class="font_12  c3">待发货</text>
+<!--<text class="font_12  c3">待发货</text>-->
+        </navigator>
+
+        <navigator class="df_1" url="../user/dingdan?currentTab=3&otype=finish" hover-class="none">
+          <view class='pb-20'>
+            <image src="/images/dpl.png"></image>
+          </view>
+           <text class="font_12  c3">待收货</text>
+<!--<text class="font_12  c3">待收货</text>-->
+        </navigator>
+        <navigator class="df_1" url="../user/dingdan?currentTab=4" hover-class="none">
+          <view class='pb-20'>
+            <image src="/images/tksh.png"></image>
+          </view>
+           <text class="font_12 c3">已完成
+          </text>
+<!--<text class="font_12 c3">已完成</text>-->
+        </navigator>
+      </view>
+    </view>
+    <!-- <view class='mb-10 '>
+      <image src="{{imghost+'gezxgg.png'}}" class='gezxgg'></image>
+    </view> -->
+    <view class='rounded bg-color mb-10 p-y-10'>
+      <view class="qbdd mt110  p-y-20">
+        <view class="font_17 c3">我的工具</view>
+      </view>
+      <view class=" row-text">
+        <navigator hover-class="none" url="../user/lipin" class='p-y-20 text-align w-25 '>
+          <image src='/images/test3.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">优惠劵</view>
+        </navigator>
+        <navigator hover-class="none" url="../user/shoucang" class='p-y-20 text-align w-25 '>
+          <image src='/images/my-sc.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">我的收藏</view>
+        </navigator>
+        <navigator hover-class="none" url="/pages/user/wdfx" class='p-y-20 text-align w-25 '>
+          <image src='/images/qunzi.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">我的邀请</view>
+        </navigator>
+        <navigator hover-class="none" url="/pages/storelistss/storelist" class='p-y-20 text-align w-25 '>
+          <image src='/images/souu.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">我的钱包</view>
+        </navigator>
+        <navigator hover-class="none" url="../delivery/index" class='p-y-20 text-align w-25 '>
+          <image src='/images/book.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">我的地址</view>
+        </navigator>
+        <view class='p-y-20 text-align w-25 '>
+          <button open-type="contact" hover-class='none ' class='but '>
+            <view class="weui-cell__hd order-item-icon ">
+              <image src='/images/book2.png ' class='wd-image pb-20'></image>
+            </view>
+            <view class="font_14 c3 ">在线客服</view>
+          </button>
+        </view>
+        <navigator hover-class="none" url="/pages/shopcart/shopcart" class='p-y-20 text-align w-25 '>
+          <image src='/images/mycart.png ' class='wd-image pb-20'></image>
+          <view class="font_14 c3">购物车</view>
+        </navigator>
+      </view>
+    </view>
+    <view class='rounded bg-color mb-10 p-x-20 p-y-10'>
+      <view class="">
+        <navigator hover-class="none" url="/pages/user/gywm" class='text-align flexcenter flexRowCen'>
+          <image src='/images/gi.png ' class='img36 m-30 '></image>
+          <view class="font_14 c3">关于我们</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+      <view class=" bte ">
+        <navigator hover-class="none" url="/pages/user/yjfk" class='text-align flexcenter flexRowCen'>
+          <image src='/images/ggg.png ' class='img36 m-30 '></image>
+          <view class="font_14 c3">意见反馈</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+      <view class=" bte ">
+        <navigator hover-class="none" url="/pages/user/bzzx" class='text-align flexcenter flexRowCen'>
+          <image src='/images/shou.png ' class='img36 m-30 '></image>
+          <view class="font_14 c3">帮助中心</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+    <view class='rounded bg-color mb-10 p-x-20 '>
+      <view class="">
+        <view hover-class="none" bindtap='ruzhu' class='text-align flexcenter flexRowCen'>
+          <image src='/images/hui.png ' class='img36 m-30 '></image>
+          <view class="font_14 c3">我要入驻</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+      <view class=" bte ">
+        <view hover-class="none" class='text-align flexcenter flexRowCen' bindtap='guize'>
+          <image src='/images/huiyuan.png ' class='img36 m-30 '></image>
+          <view class="font_14 c3">商家入口</view>
+          <view class=" weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 登录弹窗  -->
+<view class='modal flexColCCen ' wx:if="{{!modalHidden}}">
+  <view class='modal-content-x bg-white footfixed p-20-30 font-size-28'>
+    <view class="close_icon" bindtap='modalConfirm' data-status="0">×</view>
+    <view class='font-size-30 center '>账号登录</view>
+    <view class='p-y-30 '>
+      <view class='flexcenter m-y-20 '>
+        <view class='w-20 '>手机号</view>
+        <input name="delivery_name" class="weui-input" type='number' maxlength='11' placeholder="输入手机号码" bindinput='inputPhone' />
+        <button wx:if="{{!isCodeN}}" bindtap="getCodeFun" class='but-fs'>发送</button>
+        <view wx:else class='but-fs'>{{codeText}}</view>
+      </view>
+      <view class='flexcenter m-y-20 pb-60'>
+        <view class='w-20 '>验证码</view>
+        <input name="delivery_name" class="weui-input" placeholder="输入验证码" bindinput='inputCode' value="" />
+        <!-- <view class='red '>59s</view> -->
+      </view>
+      <view scroll-y class='full-height text-justify center pt-30'>
+        <form bindsubmit="dhdl" report-submit>
+          <button formType="submit" class='radius0 m-x-50 m-b-30 font-size-28 color-fff mt-15 p-y-10 bg_cheng'>确认登陆</button>
+        </form>
+      </view>
+      <view scroll-y class='full-height text-justify center'>
+        <form bindsubmit="wxdl" report-submit>
+          <button formType="submit" class='radius0 m-x-50 m-b-30 font-size-28 color-fff mt-15 p-y-10 bg_green'>微信登录</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 提货二维码弹窗  -->
+<!-- <view class='modal flexColCCen ' wx:if="{{ewm}}" bindtap='ewm'>
+  <view class='modal-content-xx bg-white footfixed font-size-28'>
+    <view class=' flexcenter flexspbet  p-26-38'>
+      <view class='font_17 font-w'>您的提货码</view>
+      <view class="close_icons flexColCCen" bindtap='modalConfirm' data-status="0">
+        <image src='/images/tcgb.png' class='close_icons'></image>
+      </view>
+    </view>
+    <view class='p-y-20 bg-color weui-input'>
+      <view class='center '>
+        <view class='font-79 font-w text-nb pb-60'>632541</view>
+        <view class='font-24 color-999'>5分钟内有效</view>
+      </view>
+    </view>
+    <view style='height: 30rpx; width: 100%;' class='bg-sj '></view>
+    <view class='center p-y-10'>
+      <image src='/images/next.png' class='ewm-image' mode="aspectFill"></image>
+    </view>
+  </view>
+</view> -->
