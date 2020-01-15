@@ -1,4 +1,4 @@
-//app.js
+﻿//app.js
 import AppIMDelegate from "./delegate/app-im-delegate";
 const constant = require("./utils/constant.js");
 const http = require("./utils/http.js");
@@ -11,6 +11,7 @@ App({
     cxcity: 1,
     rzmoney: 0, //入驻费用
     shoplogin: false, //商户登录状态
+
     userInfo: {},
     imuserInfo: {},
     window_width: 0,
